@@ -1,0 +1,24 @@
+<%# render :partial => "page_nav" %>
+
+<% fields_for :slot, @version do |f| -%>
+  <% content_for :sidebar do %>
+    <%# render :partial => 'shared_options', :locals => { :form => f } %>
+  <% end %>
+<% end %>
+
+<%= error_messages_for :slot %>
+
+<% content_for :form do -%>
+  <%= form_tag({:action => 'update', :id => @slot}, {:id => 'slot-form', :multipart => true, :method => :put}) %>
+<% end -%>
+
+<% fields_for :slot, @version do |f| -%>
+  <%= render :partial => 'form', :object => f %>
+  <p class="btns">
+    <%= submit_tag 'Apply Changes' %>
+    <%= submit_tag 'Save without Revision' %>
+    <%= link_to "cancel", :controller => "slots" %>
+  </p>
+<% end -%>
+
+

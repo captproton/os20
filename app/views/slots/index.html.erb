@@ -1,0 +1,54 @@
+<% content_for :action_nav do %>
+<!-- begin action nav -->
+<div id="page-nav">
+  <ul id="act-nav" class="clear">
+    <li><%= link_to "Create new article", :action => "new" %></li>
+  </ul>
+</div>
+<!-- /end action nav -->
+<div id="filter" class="manual">
+  <ul class="clear">
+    <li><a href="#">&nbsp;</a></li>
+  </ul>
+</div>
+<% end %>
+
+<% if @slots.size > 0 -%>
+
+<% content_tag :p, :class => 'total' do %>
+  Total: <%# content_tag :strong, @slots.total_entries %> articles.
+<% end %>
+
+<!-- begin article list -->
+<table id="article-list" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th scope="col" class="small-col">Status</th>
+      <th scope="col">Article</th>
+      <th scope="col">Comments</th>
+      <th scope="col">Published</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody id="articles">
+      <%= render :partial => 'slot', :collection => @slots %>
+  </tbody>
+</table>
+<!-- /end article list -->
+
+<!-- begin pagination -->
+<%# if @slots.page_count > 1 -%>
+  <%# will_paginate @slots, :id => 'pagination' %>
+<%# end -%>
+<!-- /end pagination -->
+
+<% else %>
+  <div class="empty" style="margin-bottom:20px">
+    <% unless params[:filter] %>
+      You have no articles.  <%= link_to "Create one now &raquo;", :action => "new" %>
+    <% else %>
+      You don't seem to have any articles matching that criteria.
+    <% end %>
+  </div>
+<% end %>
+

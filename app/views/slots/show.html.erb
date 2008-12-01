@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%=h @slot.user_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @slot.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @slot.body %>
+</p>
+
+<p>
+  <b>Created:</b>
+  <%=h @slot.created_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_slot_path(@slot) %> |
+<%= link_to 'Back', slots_path %>

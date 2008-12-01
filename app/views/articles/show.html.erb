@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%=h @article.user_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @article.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @article.body %>
+</p>
+
+<p>
+  <b>Created:</b>
+  <%=h @article.created_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
