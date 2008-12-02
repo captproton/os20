@@ -1,6 +1,6 @@
 class SlotsController < ApplicationController
     @protected_actions = [ :edit, :update, :destroy ]
-    skip_before_filter :login_required, :only => [ :index, :new]
+    before_filter :login_required, :except => :feed
     ## before_filter :check_auth, :only => @protected_actions
 
     def index

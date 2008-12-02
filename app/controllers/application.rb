@@ -11,9 +11,10 @@ class ApplicationController < ActionController::Base
   session :session_key => '_restful_auth_rspec_session_id_hubby'
 
   # If you want timezones per-user, uncomment this:
-  ## before_filter :login_required
-
   before_filter :set_timezone
+  
+  before_filter :login_required
+
   around_filter :catch_errors
   
   protected
