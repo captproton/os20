@@ -13,21 +13,21 @@ ActiveRecord::Schema.define(:version => 20081130043558) do
 
   create_table "assets", :force => true do |t|
     t.string   "filename"
-    t.integer  "width",           :limit => 11
-    t.integer  "height",          :limit => 11
+    t.integer  "width"
+    t.integer  "height"
     t.string   "content_type"
-    t.integer  "size",            :limit => 11
+    t.integer  "size"
     t.string   "attachable_type"
-    t.integer  "attachable_id",   :limit => 11
+    t.integer  "attachable_id"
     t.datetime "updated_at"
     t.datetime "created_at"
     t.string   "thumbnail"
-    t.integer  "parent_id",       :limit => 11
+    t.integer  "parent_id"
   end
 
   create_table "contents", :force => true do |t|
-    t.integer  "article_id",     :limit => 11
-    t.integer  "user_id",        :limit => 11
+    t.integer  "article_id"
+    t.integer  "user_id"
     t.string   "title"
     t.string   "permalink"
     t.text     "excerpt"
@@ -40,16 +40,16 @@ ActiveRecord::Schema.define(:version => 20081130043558) do
     t.string   "author_url"
     t.string   "author_email"
     t.string   "author_ip",      :limit => 100
-    t.integer  "comments_count", :limit => 11,  :default => 0
-    t.integer  "updater_id",     :limit => 11
-    t.integer  "version",        :limit => 11
-    t.integer  "site_id",        :limit => 11
+    t.integer  "comments_count",                :default => 0
+    t.integer  "updater_id"
+    t.integer  "version"
+    t.integer  "site_id"
     t.boolean  "approved",                      :default => false
-    t.integer  "comment_age",    :limit => 11,  :default => 0
+    t.integer  "comment_age",                   :default => 0
     t.string   "filter"
     t.string   "user_agent"
     t.string   "referrer"
-    t.integer  "assets_count",   :limit => 11,  :default => 0
+    t.integer  "assets_count",                  :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(:version => 20081130043558) do
     t.datetime "last_login_at"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
-    t.integer  "visits_count",              :limit => 11, :default => 0
+    t.integer  "visits_count",                            :default => 0
     t.string   "time_zone",                               :default => "Etc/UTC"
     t.string   "permalink"
     t.boolean  "admin",                                   :default => false
