@@ -1,3 +1,8 @@
+<ul class="links cls">
+	<li class="first">
+		<%= link_to 'Edit Slot', edit_slot_path(@slot) %> 
+	</li>
+</ul>
 <p>
   <b>User:</b>
   <%=h @slot.user_id %>
@@ -10,7 +15,7 @@
 
 <p>
   <b>Body:</b>
-  <%=h @slot.body %>
+  <%= @slot.body %>
 </p>
 
 <p>
@@ -19,5 +24,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_slot_path(@slot) %> |
+<%= link_to 'Edit Slot', edit_slot_path(@slot) %> |
 <%= link_to 'Back', slots_path %>

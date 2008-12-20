@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081130043558) do
+ActiveRecord::Schema.define(:version => 20081217190235) do
 
   create_table "assets", :force => true do |t|
     t.string   "filename"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(:version => 20081130043558) do
     t.datetime "created_at"
     t.string   "thumbnail"
     t.integer  "parent_id"
+  end
+
+  create_table "assigned_sections", :force => true do |t|
+    t.integer  "article_id"
+    t.integer  "slot_id"
+    t.integer  "section_id"
+    t.integer  "position",   :default => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "contents", :force => true do |t|
@@ -50,6 +59,23 @@ ActiveRecord::Schema.define(:version => 20081130043558) do
     t.string   "user_agent"
     t.string   "referrer"
     t.integer  "assets_count",                  :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sections", :force => true do |t|
+    t.string   "name"
+    t.boolean  "show_paged_articles",               :default => false
+    t.integer  "articles_per_page",                 :default => 15
+    t.string   "layout"
+    t.string   "template"
+    t.integer  "site_id"
+    t.string   "path"
+    t.integer  "articles_count",                    :default => 0
+    t.string   "archive_path"
+    t.string   "archive_template"
+    t.string   "type",                :limit => 20
+    t.integer  "position",                          :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,33 +1,162 @@
-<!-- In later revisons things for excerpt and tags, and draft should be uncommented and put to work.  Captproton, Get her done -->
+<!--			<form action="/write/" method="POST" id="blogForm">
+-->				<div id="composeBlog">
+						<h1>Compose a New Blog Entry</h1>
+	<h2><span>1.</span> Enter Your Post</h2>
+	<p id="errorArea"><span class="required">*</span> indicates a required field</p>
 
-<%= error_messages_for 'slot' %>
-<%# @style = has_excerpt? ? "" : "display:none" %>
-<!-- begin required fields -->
-<div class="group">
-  <dl>
-    <dt><label for="slot_title">Title</label></dt>
-    <dd><%= form.text_field :title, :class => 'big'  %></dd>
-<!--    <dt id="x-lbl" style="<%= @style %>"><%# form.label_for :excerpt %> <span class="hint">(<%= link_to_function 'Hide', %(['x-lbl', 'x-body'].each(Element.toggle)) %>)</span></dt>
-    <dd id="x-body" style="<%= @style %>"><%= form.text_area :excerpt, :rows => '8', :class => 'fat'  %></dd>
--->    
-		<dt><label for="slot_body">Write your slot</label> 
-			<!-- <span class="hint">(<%= link_to_function 'Add an excerpt', %(['x-lbl', 'x-body'].each(Element.toggle)) %>)</span> -->
-		</dt>
-    <dd><%= form.text_area :body, :class => 'fat', :rows => 25  %></dd>
-<!--    <dt><label for="slot_tag">Tags</label> <span class="hint">Enter one or more tags separated by a comma or a space (for example, <em>"Web Dev" Tutorials</em> or <em>Web Dev, Tutorials</em>).</span></dt>
--->    <dd><%# form.text_field :tag %></dd>
-  </dl>
+	<input type="hidden" name="crb" value="ABZrpF1HEky">
+	<input type="hidden" name="post_id" value="">
+	
+	<label for="title"><span class="required">*</span> Title</label>
+	<%= form.text_field :title, :size => 75, :maxlength => 254 %>
+	
+<!--	<input type="text" name="title" size="75" value="" id="blog_title" maxlength="254">
+-->	
+	<label for="blog_text"><span class="required">*</span> Content</label>
+	<div id="editorCont">
+		<div id="rteModeLink"><a href="#" id="rteMode" class="rteOnSelect off">Visual</a> <a href="#" id="htmlMode" class="off">HTML</a></div> 
+		<%= form.text_area :body, :rows => 20, :cols => 80, :id => "editor" %>
+		
+<!--		<textarea id="editor" name="blog_text" rows="20" cols="80"></textarea>
+-->	</div>
+	<div id="slideShow">
+		<div id="slideShowHd">Gallery <span><a href="#" id="return_blog_ss">Return to Blog Entry &raquo;</a></span></div>
+		<div id="slideShowTool">
+			<div class="bd">
+				<div id="ylf-slideshow">
+					<div class="uploaded-content content"><p>A gallery can have a <em>maximum of 20</em> photos.</p></div>
+					<div class="detail-content content"><p>Add titles, descriptions and credits to your photos. This step is optional.</p></div>
+					<div class="sort-content content"><p><em>How to sort photos:</em></p><p>Drag the photo up or down. Release the mouse where you want to place the photo.<br>Or, click the 'up' and 'down' arrow on the left.</p><p>Photo #1 below will represent your gallery in the blog roll</p></div>
+					<div id="ylf-files"></div>
+					<div class="intro-content content"><p class="select">Click the button below to select and upload your gallery photos</p><p>A gallery can have a <em>maximum of 20</em> photos.</p><button type="button" id="uploadPhotosSS">Select and Upload Photos</button><p class="uploadDetails">*You can select multiple photos when you hold down CTRL<br />*We accept JPG and GIF file formats.</p></div>
+					<div class="finish-content content"><p><em>You are finished creating your gallery!</em></p><p>Choose where to display your gallery in the post:</p>			<p><input type='radio' value='1' name='SSTop' checked="checked" id='sstop' /> <label for="sstop">gallery will appear above the text</label></p><p><input type='radio' value='0' name='SSTop'  id='ssbottom' /> <label for="ssbottom">gallery will appear below the text</label></p><button type="button" id="addSS">Add gallery to My Post</button></div>
+				</div>
+
+				<div id="ylf-uploader">Unable to load Flash content. You can download the latest version of Flash Player from the <a href="http://www.adobe.com/go/getflashplayer">Adobe Flash Player Download Center</a>.</p></div>
+
+				<div id="ylf-thumb-start"><!--!<img src="http://l.yimg.com/us.yimg.com/i/us/avtr/site/default/avatar_medium.png" height="48" width="48" class="placeholder">!--></div>
+				<div id="ylf-thumb-progress"><!--!<img src="http://l.yimg.com/jn/images/20081208112220/lz.png" height="45" width="45" class="loading">!--></div>
+				<div id="ylf-thumb-done"><!--!<img src="{thumb}" height="45" width="60" class="done" title="{filename}">!--></div>
+
+				<div id="ylf-actions-tpl"><!--!
+				<div title="Delete Photo" class="delete">x</div><div title="Move Photo Up" class="move up">^</div><div title="Move Photo Down" class="move down">v</div>
+				!--></div>
+				<div id="ylf-details-tpl"><!--!
+				<div class="filename">{filename}</div>
+				<div class="meta title"><label for="{rowId}-title">Title</label> <input id="{rowId}-title" name="titless[]" value="{filename}"></div>
+				<div class="meta desc hide"><label for="{rowId}-desc">Description</label> <textarea id="{rowId}-desc" name="desc[]"></textarea></div>
+				<div class="meta credit hide"><label for="{rowId}-credit">Credit</label> <input id="{rowId}-credit" name="credit[]"></div>
+				<input id="{rowId}-id" name="id[]" type="hidden" value="{id}">
+				<input id="{rowId}-original" name="original[]" type="hidden" value="{original}">
+				<input id="{rowId}-thumb" name="thumb[]" type="hidden" value="{thumb}">
+				<input id="{rowId}-height" name="height[]" type="hidden" value="{height}">
+				<input id="{rowId}-width" name="width[]" type="hidden" value="{width}">
+				!--></div>
+
+				<div id="ylf-error-tpl"><!--!<p class="error">There was an error uploading the following file, please try again:</p>!--></div>
+				<div id="ylf-maxSizeUploadError-tpl"><!--!<p class="error">The following file was too large, please try again:</p>!--></div>
+			</div>
+			<div class="ft"></div>
+		</div>
+	</div>
+	<div class="channel sel cls">
+		<label for="channel"><span class="required">*</span> Submit my post to:</label>
+		<span class="sel-wrap" id="channel-wrap">
+			<select name="channel" id="channel"><option value="">Choose a Category</option><option  selected="selected" value="none">Only My Blog</option><option  value="beauty">Fashion + Beauty</option><option  value="health">Healthy Living</option><option  value="entertainment">Entertainment</option><option  value="parenting">Parenting</option><option  value="sex">Love + Sex</option><option  value="money">Work + Money</option><option  value="food">Food</option><option  value="home">At Home</option></select>
+		</span>
+	</div>
+	
+	
+	
+	<h2><span>2.</span> Options</h2>
+	<div class="tags">
+		<label for="tags">Tags</label>
+		<input type="text" name="tags" size="78" value="" id="blog_tags">
+		<p>To enter multiple tags, separate them with commas.</p>
+	</div>
+	
+	
+	
+	<a href="#adv_opt_dis" id="adv_opt">Show More Options &raquo;</a>
+	<div id="adv_opt_dis">
+		<label for="excerpt">Excerpt</label>
+		<a href="#" id="adv_opt_copy">Copy Content</a>
+		<textarea name="excerpt" id="excerpt" rows="5" cols="80"></textarea>
+		<p>Enter the content you would like to display as a preview of your post.</p>
+	</div><div id="yIdPhotoChooser" style="visibility: hidden; " class="yIdDialogs">
+  <div class="hd">
+    <p id="yIdHeaderText">Select Display Image</p><p id="yIdPhotoHeaderHelp"><a href="http://help.yahoo.com/l/us/yahoo/profiles/basicinfo/" target="yIdPhotoHelp">Help</a></p>
+  </div>
+
+
+  <div class="bd">
+    <iframe width="405" height="250" frameborder="no" id="yIdPhotoChooserFrame">
+      <p>We've detected that your browser can't use iframes, but fret not. <a href="yIdPhotoChooser.php?propname=Yahoo%21%20Shine&propcode=wisteria">We have you covered.</a></p>
+    </iframe>
+  </div>
+
+<!-- making the photo chooser dialog look pretty -->
+<!-- corner art pieces -->
+  <img src="http://us.i1.yimg.com/us.yimg.com/i/identity/modal_crn_ul.gif" height="36" width="10" class="yIdPhotoCorners" style="top: 0px; left: 0px; " alt="" />
+  <img src="http://us.i1.yimg.com/us.yimg.com/i/identity/whitebox_up.gif" height="36" width="33" class="yIdPhotoCorners" id="yIdPhotoCloseX" style="top: 0px; right: 0px; " alt="" />
+  <img src="http://us.i1.yimg.com/us.yimg.com/i/identity/modal_crn_ll.gif" height="10" width="10" class="yIdPhotoCorners" style="bottom: 0px; left: 0px; " alt="" />
+  <img src="http://us.i1.yimg.com/us.yimg.com/i/identity/modal_crn_lr.gif" height="10" width="10" class="yIdPhotoCorners" style="bottom: 0px; right: 0px; " alt="" />
+<!-- /corner art pieces -->
+
+<!-- border tiles --> 
+  <!-- horizontal -->
+  <div class="yIdPhotoHzBars" style="top: 0px; background-image: url(http://us.i1.yimg.com/us.yimg.com/i/identity/modal_mid_top.gif); "></div>
+  <div class="yIdPhotoHzBars" style="bottom: 0px; background-image: url(http://us.i1.yimg.com/us.yimg.com/i/identity/modal_mid_bott.gif); font-size: 0px; "></div>
+  <!-- vertical -->
+  <div class="yIdPhotoVtBars" style="left: 0px; background-image: url(http://us.i1.yimg.com/us.yimg.com/i/identity/modal_mid_left.gif); font-size: 0px; " id="yIdLeftVt"></div>
+  <div class="yIdPhotoVtBars" style="right: 0px; background-image: url(http://us.i1.yimg.com/us.yimg.com/i/identity/modal_mid_right.gif); " id="yIdRightVt"></div>
+<!-- /border tiles -->
+<!-- end photo chooser dialog pretties -->
+
 </div>
-<!-- /end required fields -->
-
-<!-- begin optional fields -->
-<!-- <dl id="slot-optional">
-  <dt><label for="slot-draft">Save as Draft?</label></dt>
-  <dd><label><%= check_box_tag :draft, '1', !@slot.new_record? && !@published, :id => 'slot-draft' %> Yes, save this slot as a draft.</label></dd>
-  <dt id="publish-date-lbl"<%= %( style="display:none") unless @slot.new_record? || @published -%>><%= label_tag 'slot_created_at', 'Publish on this date:' %></dt>
-  <dd id="publish-date"<%= %( style="display:none") unless @slot.new_record? || @published -%>>
-    <%= form.datetime_select :published_at, 
-          :start_year => (@slot.published_at || Time.now.utc).year-1, :end_year => (Time.now.utc.year + 5), :order => [:month, :day, :year] %>
-  </dd>
-</dl> -->
-<!-- /end optional fields -->
+<script text="type/javascript" charset="UTF-8">YAHOO.Lifestyles.ImagePicker.init("ylf-picker","propname=Yahoo%21%20Shine&propcode=wisteria&myAlias=rocketeer_capt.proton","tn24");</script>
+							<div class="cid cid-name">
+			<p>You will be seen as: <img id="avatar" class="avatar" src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn24.jpg?ciAwiiJBCGJhRH_P" longdesc="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn48.jpg?ciAwiiJBUS2R48hq" alt="Your avatar" height="24" width="24"/> <strong id="nickName">CaptProton</strong></p>
+			<p class="links"><a target="_blank" href="http://manage.community.yahoo.com/basicinfo/?.done=http%3A%2F%2Fshine.yahoo.com%2F">Edit Name</a> | <a id="ylf-picker" href="/my/?change_image">Change Image</a></p>
+			<input id="userAlias" name="alias" type="hidden" value="rocketeer_capt.proton"/>
+		</div>
+				</div>
+				<div id="previewBlog">
+					<h1>Preview Your Entry</h1>
+					<div class="buttons" id="buttons2">
+						<input type="button" name="action" id="edit2" value="Go Back to Edit">
+						<input type="submit" name="action" class="post" value="Save As Draft">
+						<input type="submit" name="action" class="post" value="Post This Entry">
+					</div>
+			
+					<h3 id="yourPost">Your Post</h3>
+					<div id="ylf-blogpost">
+						<div class="post-hdr">
+							<h2 id="blog_title_preview"></h2>
+							<div class="attr cls">
+								<img width="36" height="36" src="" id="cidImage2">
+								<ul>
+									<li class="last">by <a href="#" class="author" id="cidAuth2">User</a>, <span class="rel-time">a short while ago</span></li>
+								</ul>
+							</div>
+						</div>
+						<div class="post-body">
+							<div id="blog_gallery_preview_top"></div>
+							<div id="blog_content_preview"></div>
+							<div id="blog_gallery_preview_bottom"></div>
+							<p class="related"><strong>Related:</strong> <span id="blog_tags_preview"></span></p>
+						</div>
+					</div>
+					<div id="previewExcerpt">
+						<h3>Your Excerpt</h3>
+						<div id="excerpt_content_preview"></div>
+					</div>
+				</div>
+				<div class="buttons" id="buttons">
+					<input type="button" name="action" id="edit" value="Go Back to Edit">
+					<input type="button" name="action" id="preview" value="Preview">
+					<input type="submit" name="action" class="post" value="Save As Draft">
+					<input type="submit" name="action" class="post" value="Post This Entry">
+				</div>
+				<p class="blogInstructions">Your blog post will be displayed publicly along with your display image and nickname. You may edit or delete your post by visiting &ldquo;Manage My Blog&rdquo;.</p>
+				<p class="blogInstructions">Your post may take up to five minutes to display.</p>

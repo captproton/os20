@@ -4,6 +4,7 @@ class SlotsController < ApplicationController
     ## before_filter :check_auth, :only => @protected_actions
 
     def index
+      @side = "index"
       ## @slots = site.slots.paginate(slot_options(:order => 'contents.published_at DESC', :select => 'contents.*',
       ##                                                 :page => params[:page], :per_page => params[:per_page]))
       @slots = Slot.find(:all)
@@ -12,6 +13,7 @@ class SlotsController < ApplicationController
     end
 
     def show
+      @side = "show"
       @slot  = Slot.find(params[:id])
       ## @comments = @slot.comments.collect &:to_liquid
       ## @slot  = @slot.to_liquid(:mode => :single)
@@ -20,6 +22,8 @@ class SlotsController < ApplicationController
     end
 
     def new
+        @side = "new"
+      
         @slot = current_user.slots.build(:filter => current_user.filter, :published_at => Time.now.utc)
 
       respond_to do |format|
@@ -30,7 +34,8 @@ class SlotsController < ApplicationController
     end
 
     def edit
-        @slot = current_user.slots.find(params[:id])
+      @side = "new"
+      @slot = current_user.slots.find(params[:id])
       @version   = params[:version] ? @slot.find_version(params[:version]) : @slot or raise(ActiveRecord::RecordNotFound)
       @published = @version.published?
       @version.published_at = (@version.published_at || Time.now.utc)
@@ -90,6 +95,7 @@ class SlotsController < ApplicationController
     end
     
     private
+    
       def prevent_access(e)
         logger.info "SlotsController#prevent_access: #{e}"
         respond_to do |format|

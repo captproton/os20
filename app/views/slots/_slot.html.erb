@@ -1,6 +1,6 @@
 <tr class="<%# slot.status %>" id="slot_<%= slot.id %>">
   <td><%# image_tag "mephisto/icons/#{status_icon[slot.status][1]}", :class => "#{status_icon[slot.status][0]} icon", :title => "This slot is #{slot.status}", :alt => "#{slot.status}" %></td>
-  <td class="slot_title"><%= link_to(slot.title, {:action => 'edit', :id => slot}) %></td>
+  <td class="slot_title"><%= link_to(slot.title, {:action => 'show', :id => slot}) %></td>
   <td class="ccount">
     <%# if slot.comments.size == 0 %>
       none
