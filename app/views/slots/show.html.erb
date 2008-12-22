@@ -32,7 +32,7 @@
 			<ul>
 				<li>updated by <a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><span class="author alias"><%= @slot.user.login %></span></a>, <span class="rel-time" title="<%= @slot.updated_at %>"><%= time_ago_in_words(@slot.updated_at) %> ago</span></li>
 				<li class="last">
-					<%= link_to "Read More from This Author »", user_path(current_user) %>
+					<%= link_to "Read More from This Author »", user_path(@slot.user) %>
 				</li>
 			</ul>
 			<ul>

@@ -109,11 +109,14 @@ class SlotsController < ApplicationController
     end
 
     def destroy
+      @slot = current_user.slots.find(params[:id])
       @slot.destroy
-      flash[:notice] = "The slot: #{@slot.title.inspect} was deleted."
-      render :update do |page|
-        page.redirect_to :action => 'index'
+      
+      respond_to do |format|
+        format.html { redirect_to(slots_url) }
+        format.xml  { head :ok }
       end
+      
     end
     
     private
