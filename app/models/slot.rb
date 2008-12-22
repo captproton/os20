@@ -2,7 +2,7 @@ class Slot < Content
   class CommentNotAllowed < StandardError; end
     
   validates_presence_of :title, :user_id
-  
+  searchable_by :title, :body, :excerpt
 
   def published?
     !new_record? && !published_at.nil?
@@ -16,7 +16,16 @@ class Slot < Content
     pending? ? :pending : :published
   end
 
+  def self(search)
+    if search
+      search("#{search}")
+    else
+      find(:all)
+    end
+  end
+  
   class << self
+
     def with_published(&block)
       with_scope({:find => { :conditions => ['contents.published_at <= ? AND contents.published_at IS NOT NULL', Time.now.utc] } }, &block)
     end

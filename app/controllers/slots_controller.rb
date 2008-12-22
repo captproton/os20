@@ -10,7 +10,7 @@ class SlotsController < ApplicationController
       @doc_class = 'doc'
       ## @slots = site.slots.paginate(slot_options(:order => 'contents.published_at DESC', :select => 'contents.*',
       ##                                                 :page => params[:page], :per_page => params[:per_page]))
-      @slots = Slot.find(:all)
+      @slots = Slot.search(params[:search])
       ## @comments = @site.unapproved_comments.count :all, :group => :slot, :order => '1 desc'
       ## @sections = site.sections.find(:all)
     end

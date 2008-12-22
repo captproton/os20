@@ -88,8 +88,12 @@ if(window.yzq_d==null)window.yzq_d=new Object();
 		</div>
 		<div id="ylf-subnav"></div>
 		<div id="ylf-searchbar">
-			<form action="/search" name="searchform" id="searchform">
-				<label for="p">Search Lifestyles for:</label> <input type="text" value="" size="32" id="p" name="p"> <button type="submit">Search Slots</button>
+			<!-- form action="/search" name="searchform" id="searchform" -->
+			<% form_tag slots_path, :method => 'get' do %>
+			
+				<label for="p">Search Slots for:</label> <%= text_field_tag :search, params[:search], :size => 32 %>
+				<button type="submit">Search Slots</button>
+			<% end %>
 			</form>
 		</div>
 		<div <%= on_stage %>>
