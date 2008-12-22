@@ -4,7 +4,10 @@ class SlotsController < ApplicationController
     ## before_filter :check_auth, :only => @protected_actions
 
     def index
-      @side = "index"
+      @stylesheets = ['base', 'manage', 'uh-1.1.3']
+      @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js']
+      @doc_id = 'ylf-blog-mgr'
+      @doc_class = 'doc'
       ## @slots = site.slots.paginate(slot_options(:order => 'contents.published_at DESC', :select => 'contents.*',
       ##                                                 :page => params[:page], :per_page => params[:per_page]))
       @slots = Slot.find(:all)
@@ -14,6 +17,13 @@ class SlotsController < ApplicationController
 
     def show
       @side = "show"
+      @body_class = 'js'
+      @body_id = 'ylf-ch-none'
+      @stylesheets = ['base', 'uh-1.1.3']
+      @javascripts = ['http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js', 'http://us.js2.yimg.com/us.js.yimg.com/lib/rt/rto1_78.js']
+      @doc_id = "ylf-blog"
+      @doc_class = "doc nobg cls"
+      @related = Slot.find(:all, :limit => 5)
       @slot  = Slot.find(params[:id])
       ## @comments = @slot.comments.collect &:to_liquid
       ## @slot  = @slot.to_liquid(:mode => :single)
@@ -22,7 +32,13 @@ class SlotsController < ApplicationController
     end
 
     def new
-        @side = "new"
+        @side = "new"        
+        @body_class = "yui-skin-sam write js"
+        @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
+        @stylesheets = ['base', 'manage', 'uh-1.1.3']
+        @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
+        @page_title = 'Compose a New Slot Entry'
+        @doc_class = "doc nobg cls"
       
         @slot = current_user.slots.build(:filter => current_user.filter, :published_at => Time.now.utc)
 
@@ -35,6 +51,12 @@ class SlotsController < ApplicationController
 
     def edit
       @side = "new"
+      @body_class="yui-skin-sam write js"
+      @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
+      @stylesheets = ['base', 'manage', 'uh-1.1.3']
+      @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
+      @page_title = 'Edit a Slot Entry'
+      @doc_class = "doc cls"
       @slot = current_user.slots.find(params[:id])
       @version   = params[:version] ? @slot.find_version(params[:version]) : @slot or raise(ActiveRecord::RecordNotFound)
       @published = @version.published?

@@ -1,28 +1,105 @@
-<ul class="links cls">
-	<li class="first">
-		<%= link_to 'Edit Slot', edit_slot_path(@slot) %> 
-	</li>
-</ul>
-<p>
-  <b>User:</b>
-  <%=h @slot.user_id %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%=h @slot.title %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @slot.body %>
-</p>
-
-<p>
-  <b>Created:</b>
-  <%=h @slot.created_at %>
-</p>
 
 
-<%= link_to 'Edit Slot', edit_slot_path(@slot) %> |
-<%= link_to 'Back', slots_path %>
+		<div class="main" id="ylf-blog-main">
+		
+			
+<div id="ylf-hdrbar" class="cls">
+
+	
+	
+	<p><%= Time.now.strftime("%B %d, %Y") %> 
+	</p>
+	
+	<ul class="feeds cls"><li class="first"><a href="/subscriptions/add?yuid=anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg&amp;display_name=CaptProton%26rsquo%3Bs" class="subscribe"><span><!-- --></span>Subscribe to This Blog</a></li><li><a href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Fshine.yahoo.com%2Frss%2Fblog%2Fchannel%2Fnone%2F" class="myyahoo" title="My Yahoo!"><span><!-- --></span>Add to My Yahoo!</a></li><li><a href="http://shine.yahoo.com/rss/blog/channel/none/" class="rss" title="RSS"><span><!-- --></span>RSS</a></li></ul>
+
+</div>
+
+
+			
+			
+
+			
+<div id="ylf-blogpost" class="cls">
+	
+
+	<div class="post-hdr cls">
+		<div class="post-title cls">
+			<h1><%=h @slot.title %></h1>
+			
+		</div>
+		<div class="attr cls readmore">
+			<a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><img src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn32.jpg?ciAwiiJBD7xNDS7c" height="32" width="32"></a>
+			<ul>
+				<li>updated by <a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><span class="author alias"><%= @slot.user.login %></span></a>, <span class="rel-time" title="<%= @slot.updated_at %>"><%= time_ago_in_words(@slot.updated_at) %> ago</span></li>
+				<li class="last">
+					<%= link_to "Read More from This Author »", user_path(current_user) %>
+				</li>
+			</ul>
+			<ul>
+				
+				<li><a href="#postcomment" class="cmt-lnk">Post a Comment</a></li>
+				<li class="last"><a href="/">Report Abuse</a></li>
+			</ul>
+		</div>
+	</div>
+
+  	
+  
+	<div class="post-body cls">
+<%= @slot.body %>
+	</div>
+
+	
+
+	<p class="related"><strong>Related:</strong> <a href="/topic/song/">song</a>, <a href="/topic/christmas/">christmas</a>, <a href="/topic/chorus/">chorus</a></p>
+
+</div>
+
+
+	
+			<div class="tools"><ul class="cls"><li class="cmts"><span class="icon"><!-- --></span><span>Let’s talk:</span> <a href="#comments" class="cmt-lnk">Comment (0)</a> | <%= link_to "Blog", user_path(current_user) %></li><li class="email"><span class="icon"><!-- --></span><a href="/email-to-friend?id=335584&amp;title=The+goose+is+getting+fat.&amp;channel=none&amp;event=">Email to a Friend</a></li><li class="print"><span class="icon"><!-- --></span><%= link_to "Print this Page", slot_path(@slot) %></li></ul></div>
+			<div class="line"><!-- --></div>
+						
+			
+    	<div id="ylf-relatedlinks" class="line cls post-cols">
+    		<div class="col hlf-w full-w">
+  				<h3>related  slots</h3>
+				<ol>
+					<%= render :partial => 'related', :collection => @related %>
+				</ol>
+    		</div>
+    		<div class="col hlf-e hlf-hidden">
+  				
+    		</div>
+    	</div>
+  	
+			      <div id="ylf-cmnts" class="mod">
+      	<h2 id="comments">From the Community…</h2><p>Be the first to comment on this post.</p></div>
+			<div id="cmt-form" class="cls">
+	<h3 id="postcomment">leave your comment</h3>
+	
+	
+	
+			<form action="#postcomment" method="post">
+
+			<textarea rows="7" id="content" name="content"></textarea>
+			<input name="crb" value="zLTiXcHmAFk" type="hidden">
+			<input name="error" value="1" type="hidden">
+			<input name="title" value="Comment" type="hidden">
+			<input name="post_id" value="335584" id="post_id" type="hidden">
+
+			<div class="ft">
+						<div class="cid cid-name">
+			<p>You will be seen as: <img id="avatar" class="avatar" src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn24.jpg?ciAwiiJBCGJhRH_P" longdesc="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn48.jpg?ciAwiiJBUS2R48hq" alt="Your avatar" height="24" width="24"> <strong id="nickName"><%= current_user.login %></strong></p>
+			<input id="userAlias" name="alias" value="rocketeer_capt.proton" type="hidden">
+		</div>
+				<button type="submit">Post Comment</button>
+			</div>
+
+		</form>
+		
+		<p class="disclaimer">The information you provide on this page will be displayed publicly along with your display image and nickname.</p>
+</div>
+
+		</div>
+				

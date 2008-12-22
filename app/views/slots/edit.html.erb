@@ -1,24 +1,16 @@
-<%# render :partial => "page_nav" %>
+			<div class="main" id="ylf-write">
+				<ul class="links cls">
+					<li class="first"><a href="/manage/">Manage My Blog</a></li>
+					<li><a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/">View My Blog</a></li>
 
-<% fields_for :slot, @version do |f| -%>
-  <% content_for :sidebar do %>
-    <%# render :partial => 'shared_options', :locals => { :form => f } %>
-  <% end %>
-<% end %>
+				</ul>
+				<%# form_for :slot, :html => { :id => "blogForm" } do |f| %>
+				<% form_for :slot, @slot, :url => slot_path(@slot), :html => { :id => "blogForm", :method => :put } do |f| %> 
+				  <%= f.error_messages %>
 
-<%= error_messages_for :slot %>
-
-<% content_for :form do -%>
-  <%= form_tag({:action => 'update', :id => @slot}, {:id => 'slot-form', :multipart => true, :method => :put}) %>
-<% end -%>
-
-<% fields_for :slot, @version do |f| -%>
-  <%= render :partial => 'form', :object => f %>
-  <p class="btns">
-    <%= submit_tag 'Apply Changes' %>
-    <%= submit_tag 'Save without Revision' %>
-    <%= link_to "cancel", :controller => "slots" %>
-  </p>
-<% end -%>
-
+				<%# form_for :slot, :url => slot_path(@slot), :html => { :id => "blogForm" }  do |f| -%>
+					<%= render :partial => "form", :object => f %>
+					<!-- </form> -->
+				<% end %>
+			</div>
 

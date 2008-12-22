@@ -1,122 +1,24 @@
-<% content_for :action_nav do %>
-<!-- begin action nav -->
-<div id="page-nav">
-  <ul id="act-nav" class="clear">
-    <li><%= link_to "Create new article", :action => "new" %></li>
-  </ul>
-</div>
-<!-- /end action nav -->
-<div id="filter" class="manual">
-  <ul class="clear">
-    <li><a href="#">&nbsp;</a></li>
-  </ul>
-</div>
-<% end %>
 
-<% if @slots.size > 0 -%>
-
-<% content_tag :p, :class => 'total' do %>
-  Total: <%# content_tag :strong, @slots.total_entries %> articles.
-<% end %>
-
-<!-- begin article list -->
-<table id="article-list" cellspacing="0" cellpadding="0">
-  <thead>
-    <tr>
-      <th scope="col" class="small-col">Status</th>
-      <th scope="col">Article</th>
-      <th scope="col">Comments</th>
-      <th scope="col">Published</th>
-      <th scope="col">&nbsp;</th>
-    </tr>
-  </thead>
-  <tbody id="articles">
-      <%= render :partial => 'slot', :collection => @slots %>
-  </tbody>
-</table>
-<!-- /end article list -->
-
-<!-- begin pagination -->
-<%# if @slots.page_count > 1 -%>
-  <%# will_paginate @slots, :id => 'pagination' %>
-<%# end -%>
-<!-- /end pagination -->
-
-<% else %>
-  <div class="empty" style="margin-bottom:20px">
-    <% unless params[:filter] %>
-      You have no articles.  <%= link_to "Create one now &raquo;", :action => "new" %>
-    <% else %>
-      You don't seem to have any articles matching that criteria.
-    <% end %>
-  </div>
-<% end %>
-<!-- start shine -->
-
-
-		<div class="main idx">
-
-			
-<div id="ylf-blog-head" class="mod">
-	<div class="hd cls"><ul class="links cls"><li class="first"><a href="/manage/">Manage My Blog</a></li><li><a href="/write/">Write New Post</a></li><li class="my"><a href="/my/">Go to My Stuff</a></li></ul></div>
+		<div id="ylf-blog-head" class="cls inline-edit">
+	<div class="hd">
+		<ul class="links cls">
+			<li class="first">  <%= link_to 'Write a New Slot', new_slot_path %> </li>
+			<li><%= link_to 'View All Slots', slots_path %></li>
+			<li class="my"><a href="/my/">Go to My Stuff</a></li>
+		</ul>
+	</div>
 	<div class="bd">
-		<h1>CaptProton’s Blog</h1>
-		<cite>By <a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/">CaptProton</a>  <span class="date">Last updated: <span class="rel-time" title="Fri Dec 19, 2008 6:52pm PST">3 hours 46 minutes ago</span></span></cite>
+		<h1 class="" >Volunteer Slots</h1>
 	</div>
 </div>
-
-			
-<div id="ylf-blog-idx1" class="posts first">
-	<ul>
-			<li class="post">
-		<div class="post-title cls"><h2><a href="/channel/none/lets-see-the-new-video-on-youtube-334108/">let's see the new video on youtube!</a></h2></div>
-		<div class="author"> <cite>By <a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/">CaptProton</a>, on Thu Dec 18, 2008 8:08pm PST</cite></div>
-		
-		<div class="excerpt mod cls">
-			<p>Let's check out a video from yahoo news:<br><span class="yui-media" style="font-size: 100px;"><embed type="application/x-shockwave-flash" allowscriptaccess="never" flashvars="null" src="http://www.youtube.com/v/8IF8AX8PTUA&amp;hl=en&amp;fs=1" ...="" height="295" width="480"><a href="/channel/none/lets-see-the-new-video-on-youtube-334108/" class="more">Read More »</a></span></p>
-			<div class="clrie6"><!-- --></div>
-		</div>
-		<p class="related"><strong>Related:</strong> <a href="/topic/video/">video</a>, <a href="/topic/news/">news</a>, <a href="/topic/comedy/">comedy</a></p>
-		<div class="tools"><ul class="cls"><li class="cmts"><span class="icon"><!-- --></span><span>Let’s talk:</span> <a href="/channel/none/lets-see-the-new-video-on-youtube-334108/#comments" class="cmt-lnk">Comment (0)</a> | <a href="/write/">Blog</a></li><li class="email"><span class="icon"><!-- --></span><a href="/email-to-friend?id=334108&amp;title=let%26%2339%3Bs+see+the+new+video+on+youtube%21&amp;channel=none&amp;event=">Email to a Friend</a></li></ul></div>
-		
-	</li>	<li class="post">
-		<div class="post-title cls"><h2><a href="/channel/none/first-post-334105/">First Post</a></h2></div>
-		<div class="author"> <cite>By <a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/">CaptProton</a>, on Thu Dec 18, 2008 7:56pm PST</cite></div>
-		
-		<div class="excerpt custom mod cls">
-			<p>Nothing to see. Keep moving! <a href="/channel/none/first-post-334105/" class="more">Read More »</a></p>
-			<div class="clrie6"><!-- --></div>
-		</div>
-		<p class="related"><strong>Related:</strong> <a href="/topic/test/">test</a></p>
-		<div class="tools"><ul class="cls"><li class="cmts"><span class="icon"><!-- --></span><span>Let’s talk:</span> <a href="/channel/none/first-post-334105/#comments" class="cmt-lnk">Comment (0)</a> | <a href="/write/">Blog</a></li><li class="email"><span class="icon"><!-- --></span><a href="/email-to-friend?id=334105&amp;title=First+Post&amp;channel=none&amp;event=">Email to a Friend</a></li></ul></div>
-		
-	</li>
-	</ul>
+		<div class="mod">
+	<h2>Manage Slot Descriptons</h2>
+	<table id="posts">
+		<thead><tr><th>Last Updated</th><th>Title</th><th>Status</th><th>Channel</th><th>Comments</th><th>Action</th></tr></thead>
+		<tbody>
+			<%= render :partial => 'slot', :collection => @slots %>
+	      
+		</tbody>
+	</table>
 </div>
-
-
-
-			
-<div id="ylf-ysm" class="iysmcm ysmcm ysmcm-cols2">
-    <h3>Sponsored Links</h3>
-    <ul class="iysmcm-col ysmcm-col ysmcm-col1"><li><h4><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AB578EjMrvmXNYegUSrRDKK8yoGQ9fTbh0W6mySH8-Xkof41yF9QLuZ06GHgqb2fWQlxKheWfHVF302Mq8xkwEAckMnKK85u0_dquyCgsO1ejhoesKFh4YL0EUPBe1ShDUX47qtvaH8WVEbGKufmDbL8qH8O9zPKlT53mf56qxIApSUsSKabDoQmJJH5TjDJXdAUn4FbW-CPLJDX1NdOyJfEoAYsRHdOU2Q3eYCU6Fkp.0000000073a31990">Guzman Ariza Dominican Quick Divorce</a></h4><p class="iysmcm-desc ysmcm-desc"><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AB578EjMrvmXNYegUSrRDKK8yoGQ9fTbh0W6mySH8-Xkof41yF9QLuZ06GHgqb2fWQlxKheWfHVF302Mq8xkwEAckMnKK85u0_dquyCgsO1ejhoesKFh4YL0EUPBe1ShDUX47qtvaH8WVEbGKufmDbL8qH8O9zPKlT53mf56qxIApSUsSKabDoQmJJH5TjDJXdAUn4FbW-CPLJDX1NdOyJfEoAYsRHdOU2Q3eYCU6Fkp.0000000073a31990">Obtain a legal, cheap and quick divorce in the Dominican Republic with Guzman Ariza Attorneys at Law, a law firm devoted to representing foreign clients in the Dominican Republic.</a></p><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AB578EjMrvmXNYegUSrRDKK8yoGQ9fTbh0W6mySH8-Xkof41yF9QLuZ06GHgqb2fWQlxKheWfHVF302Mq8xkwEAckMnKK85u0_dquyCgsO1ejhoesKFh4YL0EUPBe1ShDUX47qtvaH8WVEbGKufmDbL8qH8O9zPKlT53mf56qxIApSUsSKabDoQmJJH5TjDJXdAUn4FbW-CPLJDX1NdOyJfEoAYsRHdOU2Q3eYCU6Fkp.0000000073a31990" class="iysmcm-url ysmcm-url yltasis">www.drlawyer.com</a></li><li class="ysmcm-odd"><h4><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AISSVpXQ7X6EdeKS-Wshp1WASpVZJ_LwlVRx-ZFXpUb5zO5cwngy7QNm0WkR2GksYW98pkUpWy_2J8s2G8xFm6sFU9v8YvR7hAz4l-B1tAFB0b9eEjVPkaKIY2sdzrEQSvEdiMomYlGYGxhn0wztOnLwHuhMQ5OdK5w78QLiVWl5ZB15BzD5wA4cB0ezx-ZhHd6JGZHFfpsEy6g0fjkUEB33HaKebq73NKCEACLSDqWs.0000000073a31990">1 Rule To A Flat Stomach:</a></h4><p class="iysmcm-desc ysmcm-desc"><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AISSVpXQ7X6EdeKS-Wshp1WASpVZJ_LwlVRx-ZFXpUb5zO5cwngy7QNm0WkR2GksYW98pkUpWy_2J8s2G8xFm6sFU9v8YvR7hAz4l-B1tAFB0b9eEjVPkaKIY2sdzrEQSvEdiMomYlGYGxhn0wztOnLwHuhMQ5OdK5w78QLiVWl5ZB15BzD5wA4cB0ezx-ZhHd6JGZHFfpsEy6g0fjkUEB33HaKebq73NKCEACLSDqWs.0000000073a31990">I Cut Down 12 lbs Of Stomach Fat Every 2 Weeks By Obeying This Rule.</a></p><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AISSVpXQ7X6EdeKS-Wshp1WASpVZJ_LwlVRx-ZFXpUb5zO5cwngy7QNm0WkR2GksYW98pkUpWy_2J8s2G8xFm6sFU9v8YvR7hAz4l-B1tAFB0b9eEjVPkaKIY2sdzrEQSvEdiMomYlGYGxhn0wztOnLwHuhMQ5OdK5w78QLiVWl5ZB15BzD5wA4cB0ezx-ZhHd6JGZHFfpsEy6g0fjkUEB33HaKebq73NKCEACLSDqWs.0000000073a31990" class="iysmcm-url ysmcm-url yltasis">WeightLoss.Blogdns.com</a></li></ul><ul class="iysmcm-col ysmcm-col ysmcm-col2"><li><h4><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AFegTu5gdA9rzcjgD9MlXVET3XSmBrmRY3SZeMd7OYwv8ekHkWaQ14PwmcqbUdS8VC8Dp0nYgnUVPoGKfG6ej_tT19Kgn7F5AcmohoGNA7i4EXPWlh3zYyToxnjlcnk_X6TbQlwG7g2gNoVvSohCjAwh3vhjtlgc2Gchk_OGugDgqKwY5ikTFaO91NieiJMrRQXBfX6ooNaFAcnSmhKA8XbzpQtIwvK6MlL0dc6fygBdiZkRZ_OtZH74wwJQjDLa-s_tUwvIYC9z.0000000073a31990">Dating Divorced Men</a></h4><p class="iysmcm-desc ysmcm-desc"><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AFegTu5gdA9rzcjgD9MlXVET3XSmBrmRY3SZeMd7OYwv8ekHkWaQ14PwmcqbUdS8VC8Dp0nYgnUVPoGKfG6ej_tT19Kgn7F5AcmohoGNA7i4EXPWlh3zYyToxnjlcnk_X6TbQlwG7g2gNoVvSohCjAwh3vhjtlgc2Gchk_OGugDgqKwY5ikTFaO91NieiJMrRQXBfX6ooNaFAcnSmhKA8XbzpQtIwvK6MlL0dc6fygBdiZkRZ_OtZH74wwJQjDLa-s_tUwvIYC9z.0000000073a31990">Single parent personals in the USA and Canada. Browse pics and video.</a></p><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AFegTu5gdA9rzcjgD9MlXVET3XSmBrmRY3SZeMd7OYwv8ekHkWaQ14PwmcqbUdS8VC8Dp0nYgnUVPoGKfG6ej_tT19Kgn7F5AcmohoGNA7i4EXPWlh3zYyToxnjlcnk_X6TbQlwG7g2gNoVvSohCjAwh3vhjtlgc2Gchk_OGugDgqKwY5ikTFaO91NieiJMrRQXBfX6ooNaFAcnSmhKA8XbzpQtIwvK6MlL0dc6fygBdiZkRZ_OtZH74wwJQjDLa-s_tUwvIYC9z.0000000073a31990" class="iysmcm-url ysmcm-url yltasis">www.singleparentmeet.com</a></li><li class="ysmcm-odd"><h4><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AB578EjMrvmXv_OV5KRccDXhMjjbY6PZZWLxQnLrMoVMVae33b27BTelz90VobK557JesR-AOl68dmDnS9fIsr5S9uyAJR7i5nFMjvtropXbneZfI5h2Pj4iO84D7YflC3K53fZcqZdRpVS8ImT3h7kXP5YPRz7W7BKaAb_JG_1_HGGB0Mf1aRBBGIdhyvWRw0QqOmhp83bU7V4fSKM8GCsCrB4jHoKqIaVB_b3c_ezq.0000000073a31990">Divorced Local Ladies</a></h4><p class="iysmcm-desc ysmcm-desc"><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AB578EjMrvmXv_OV5KRccDXhMjjbY6PZZWLxQnLrMoVMVae33b27BTelz90VobK557JesR-AOl68dmDnS9fIsr5S9uyAJR7i5nFMjvtropXbneZfI5h2Pj4iO84D7YflC3K53fZcqZdRpVS8ImT3h7kXP5YPRz7W7BKaAb_JG_1_HGGB0Mf1aRBBGIdhyvWRw0QqOmhp83bU7V4fSKM8GCsCrB4jHoKqIaVB_b3c_ezq.0000000073a31990">Searching for fresh young moms? Meet tons of singles close to you.</a></p><a href="http://rc.us-west.srv.overture.com/d/sr/?xargs=20AB578EjMrvmXv_OV5KRccDXhMjjbY6PZZWLxQnLrMoVMVae33b27BTelz90VobK557JesR-AOl68dmDnS9fIsr5S9uyAJR7i5nFMjvtropXbneZfI5h2Pj4iO84D7YflC3K53fZcqZdRpVS8ImT3h7kXP5YPRz7W7BKaAb_JG_1_HGGB0Mf1aRBBGIdhyvWRw0QqOmhp83bU7V4fSKM8GCsCrB4jHoKqIaVB_b3c_ezq.0000000073a31990" class="iysmcm-url ysmcm-url yltasis">www.DivorcedLocalDating.com</a></li></ul>
-    
-    <div></div>
-</div>
-
-			
-<div id="ylf-blog-idx2" class="posts">
-	<ul>
-		
-	</ul>
-</div>
-
-
-
-			
-
-		</div>
-
-
-
-<!-- finish shine-->
+<script type="text/javascript" charset="UTF-8">YAHOO.Lifestyles.DeletePost.init("zLTiXcHmAFk")</script>

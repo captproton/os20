@@ -2,23 +2,23 @@
 
 				<div class="mod" id="ylf-you">
 		<div class="hd line cls">
-					<a class="avatar" href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><img width="48" height="48" alt="CaptProton's avatar" src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn48.jpg?ciAwiiJBUS2R48hq"/></a>
+					<%= link_to image_tag("http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn48.jpg?ciAwiiJBUS2R48hq", :width => "48", :height => "48", :alt => "avatar"), user_path(current_user), :class => "avatar" %>
 		<div class="greets boxed">
-			<h3>hello, CaptProton</h3>
-			<a class="first" href="http://login.yahoo.com/config/login?.src=shine&amp;logout=1&amp;.done=http%3A%2F%2Fwww.yahoo.com%2F&amp;.direct=2">Sign Out</a>
+			<h3>hello, <%= current_user.login %></h3>
+			<%= link_to "Sign Out", sessions_path, :method => :delete, :class => "first" %>
+			
 		</div>
 		</div>
 		<div class="bd line">
-			<ul class="cls">
+<!--			<ul class="cls">
 				<li class="email new"><a href="http://mail.yahoo.com/">Mail <span>254 New</span></a></li>
 				<li title="Partly Cloudy" class="weath sep"><a style="background: rgb(255, 255, 255) url(http://l.yimg.com/jn/util/anysize/26*26c-86400,http%3A%2F%2Fl.yimg.com%2Fus.yimg.com%2Fi%2Fus%2Fwe%2F52%2F29.gif) no-repeat scroll 5px 0pt; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" href="http://us.rd.yahoo.com/dailynews/rss/weather/Pacifica__CA/*http://weather.yahoo.com/forecast/94044_f.html">45° F</a></li>
 				<li class="horo sep"><a href="/astrology/">Horoscopes</a></li>
 			</ul>
-						<p>Let’s talk:
-				<a class="nobg" href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/">My Blog</a>
-				<a href="/manage/">Manage</a>
-				<a href="/my/">My Stuff</a>
-				<a href="/write/">Write a Post</a>
+-->						<p>Let’s work:
+				<%= link_to "My Blog", user_path(current_user) %>
+				<%= link_to "My Stuff", user_path(current_user) %>
+				<%= link_to "Submit a Slot", :action => "new" %>
 			</p>
 		</div>
 	</div>
@@ -83,10 +83,10 @@ window.yzq_d['dQmYadj8ek4-']='&U=12clphemo%2fN%3ddQmYadj8ek4-%2fC%3d-1%2fD%3dLOG
 	<div class="bd">
 		<ul class="thumbs">
 						<li>
-				<a class="img" href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><img width="32" height="32" class="lz" src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn32.jpg?ciAwiiJBD7xNDS7c" alt="CaptProton's Avatar"/></a>
+				<a class="img" href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><img width="32" height="32" class="lz" src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn32.jpg?ciAwiiJBD7xNDS7c" alt="<%= @slot.user.login %>'s Avatar"/></a>
 				<div class="txt">
 					<a class="title" href="http://us.rd.yahoo.com/Updates/wisteria/SIG=187ahpein/*http%3A//shine.yahoo.com/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/">About Me</a>
-					<cite>by <a class="author" href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/">CaptProton</a> <span title="Fri Dec 19, 2008 11:23pm PST" class="rel-time">2 minutes ago</span></cite>
+					<cite>by <a class="author" href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><%= @slot.user.login %></a> <span title="Fri Dec 19, 2008 11:23pm PST" class="rel-time">2 minutes ago</span></cite>
 					
 				</div>
 			</li>
