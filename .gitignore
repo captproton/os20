@@ -7,6 +7,7 @@ vendor/rails
 db/*.sqlite
 db/*.sqlite2
 db/*.sqlite3
+db\/development.sqlite3
 db/*.db
 doc/api
 doc/app
