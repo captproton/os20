@@ -16,6 +16,7 @@ class SlotsController < ApplicationController
     end
 
     def show
+      # this is an autotest
       @side = "show"
       @body_class = 'js'
       @body_id = 'ylf-ch-none'
