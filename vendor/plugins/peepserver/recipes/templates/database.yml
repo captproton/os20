@@ -1,7 +1,7 @@
 production:
   adapter: mysql
   encoding: utf8
-  database: demo_prod
+  database: os20
   username: deploy
   password: Iwe2thst4ju!
   socket:  /var/run/mysqld/mysqld.sock

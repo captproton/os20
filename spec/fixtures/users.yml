@@ -1,5 +1,5 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 one:
-  id: 1
+  id: 1, login: "JoeLogin", email: "123456@COM.COM", crypted_password: "1002cbd92f4e39db332f7e9e7209f0c8601fd3bd", salt: "2420da442c2f54dcec80c3e7585eb2b13b94342f", created_at: "2008-12-22 14:52:46", updated_at: "2008-12-22 14:52:46", last_login_at: nil, remember_token: nil, remember_token_expires_at: nil, visits_count: 0, time_zone: "Hawaii", permalink: nil, admin: false, activation_code: nil, activated_at: nil, filter: nil
 two:
   id: 2

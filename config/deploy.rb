@@ -3,28 +3,33 @@
 #############################################################
 
 default_run_options[:pty] = true
-set :use_sudo, true
+set :use_sudo, false #sudo not needed since everything is in deploy account
 
 #############################################################
 #	Application
 #############################################################
-set :application, "demo"
-set :deploy_to, "/home/deploy/#{application}"
+set :user, "deploy"
+set :runner, "deploy"
 
-set :repository,  "git://github.com/captproton/caboo.se-sample-app-v3.git"
+set :application, "os20"
+set :deploy_to, "/home/#{user}/#{application}"
+
+set :repository,  "git@github.com:captproton/#{application}.git"
+set :scm_passphrase, "melorbode" #This is your custom github user password
+set :branch, "master"
 set :scm, :git
 
 #############################################################
 #	Servers
 #############################################################
 
-set :user, "deploy"
-set :runner, "deploy"
 set :ssh_options, { :forward_agent => true }
-set :domain, "bigquiz.info"
+set :domain, "beta.oceanshoreschool.info"
+set :rails_env, 'production'
 role :app, domain
 role :web, domain
 role :db,  domain, :primary => true
+
 
 
 namespace :deploy do 
@@ -137,7 +142,7 @@ RailsRuby /usr/bin/ruby1.8
   task :config_vhost do
     vhost_config =<<-EOF
 <VirtualHost *:80>
-  ServerName bigquiz.info
+  ServerName #{domain}
   DocumentRoot #{deploy_to}/current/public
   
   ErrorLog /var/log/apache2/error.log
@@ -155,4 +160,63 @@ RailsRuby /usr/bin/ruby1.8
     ## sudo touch "#{deploy_to}/tmp/restart.txt"
     sudo "/etc/init.d/apache2 reload"
   end
+end
+
+# =============================================================================
+# RAILS VERSION
+# =============================================================================
+# Use this to freeze your deployment to a specific rails version.  Uses the rake
+# init task run in after_symlink below.
+
+set :rails_version, "rel_2-2-0" # used by the custom deploy_edge rake task
+
+
+# TODO: test this works and I can remove the restart task and use the cleanup task
+# set :use_sudo, false
+
+# =============================================================================
+# ROLES
+# =============================================================================
+# You can define any number of roles, each of which contains any number of
+# machines. Roles might include such things as :web, or :app, or :db, defining
+# what the purpose of each machine is. You can also specify options that can
+# be used to single out a specific subset of boxes in a particular role, like
+# :primary => true.
+
+role :app, domain
+role :web, domain
+role :db,  domain, :primary => true
+
+
+# =============================================================================
+# OPTIONAL VARIABLES
+# =============================================================================
+# set :gateway, "gate.host.com"  # default to no gateway
+
+# =============================================================================
+# SSH OPTIONS
+# =============================================================================
+# ssh_options[:keys] = %w(/path/to/my/key /path/to/another/key)
+# ssh_options[:port] = 25
+
+# =============================================================================
+# TASKS
+# =============================================================================
+# Define tasks that run on all (or only some) of the machines. You can specify
+# a role (or set of roles) that each task should be executed on. You can also
+# narrow the set of servers to a subset of a role by specifying options, which
+# must match the options given for the servers to select (like :primary => true)
+
+# no sudo access on txd :)
+
+# ** Nota Bene:     Because Capistrano 2 can use plugins, most tasks will be run in the plugin
+#                   See:  http://peepcode.com/products/capistrano-2
+
+desc "Freezes rails version ##{rails_version}"
+task :after_symlink do
+  run <<-CMD
+    cd #{current_release} &&
+    rake rails:freeze:edge TAG=#{rails_version}
+    
+  CMD
 end

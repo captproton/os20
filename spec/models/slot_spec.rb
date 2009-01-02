@@ -6,6 +6,8 @@ describe Slot do
   end
 
   it "should be valid" do
+    @slot.user_id = 1
+    @slot.title = "life in the fast lane"
     @slot.should be_valid
   end
 end
