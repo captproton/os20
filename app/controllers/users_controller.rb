@@ -2,9 +2,7 @@ class UsersController < ApplicationController
 
   @protected_actions = [ :edit, :update, :destroy ]
   before_filter :load_user, :except => [ :index, :create, :new ]
-  skip_before_filter :login_required, :only => [ :index, :new, :create]
   before_filter :check_auth, :only => @protected_actions
-  
   
   delegate_url_helpers :for => UserAssetsController
   

@@ -8,13 +8,12 @@ class ApplicationController < ActionController::Base
   class AccessDenied < StandardError; end
 
   # Pick a unique cookie name to distinguish our session data from others'
-  session :session_key => '_restful_auth_rspec_session_id_hubby'
+  session :session_key => '_restful_auth_rspec_session_id'
 
   # If you want timezones per-user, uncomment this:
-  before_filter :set_timezone
-  
-  before_filter :login_required
+  #before_filter :login_required
 
+  before_filter :set_timezone
   around_filter :catch_errors
   
   protected
@@ -26,6 +25,7 @@ class ApplicationController < ActionController::Base
 
     def set_timezone
       Time.zone = current_user.time_zone if logged_in?
+      
     end
 
     def catch_errors
