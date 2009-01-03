@@ -168,7 +168,7 @@ end
 # Use this to freeze your deployment to a specific rails version.  Uses the rake
 # init task run in after_symlink below.
 
-set :rails_version, "rel_2-2-0" # used by the custom deploy_edge rake task
+set :rails_version, "rel_2-2-2" # used by the custom deploy_edge rake task
 
 
 # TODO: test this works and I can remove the restart task and use the cleanup task
