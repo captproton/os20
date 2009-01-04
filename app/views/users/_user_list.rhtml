@@ -1,0 +1,5 @@
+  <tr>
+    <td><%= link_to h(user_list.login), user_path(user_list) %></td>
+    <td><%= link_to 'Edit', edit_user_path(user_list) %></td>
+    <td><%= link_to 'Destroy', user_path(user_list), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>

@@ -7,13 +7,8 @@
     <th colspan="2">Actions</th>
   </tr>
 </thead>
-<% for user in @users %>
-  <tr>
-    <td><%= link_to h(user.login), user_path(user) %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user_path(user), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<%= render :partial => "user_list", :collection => @users %>
+
 </table>
 
 <br />
