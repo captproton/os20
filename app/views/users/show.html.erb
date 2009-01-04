@@ -4,5 +4,5 @@
 <p>Timezone: <%=h @user.time_zone %></p>
 
 <%= link_to 'Assets', user_assets_path %> |
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Edit', edit_user_path(@user.login) %> |
 <%= link_to 'Back', users_path %>
