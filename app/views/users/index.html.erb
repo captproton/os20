@@ -9,7 +9,7 @@
 </thead>
 <% for user in @users %>
   <tr>
-    <td><%= link_to h(user.login), user_path("2") %></td>
+    <td><%= link_to h("2"), user_path("2") %></td>
     <td><%= link_to 'Edit', edit_user_path("2") %></td>
     <td><%= link_to 'Destroy', user_path("2"), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
