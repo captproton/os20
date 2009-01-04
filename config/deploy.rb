@@ -15,7 +15,7 @@ set :application, "os20"
 set :deploy_to, "/home/#{user}/#{application}"
 
 set :repository,  "git@github.com:captproton/#{application}.git"
-set :scm_passphrase, "melorbode" #This is your custom github user password
+## set :scm_passphrase, "p00p" #This is your custom users password
 set :branch, "master"
 set :scm, :git
 
