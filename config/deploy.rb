@@ -26,10 +26,19 @@ set :scm, :git
 set :ssh_options, { :forward_agent => true }
 set :domain, "beta.oceanshoreschool.info"
 set :rails_env, 'production'
+
+# =============================================================================
+# ROLES
+# =============================================================================
+# You can define any number of roles, each of which contains any number of
+# machines. Roles might include such things as :web, or :app, or :db, defining
+# what the purpose of each machine is. You can also specify options that can
+# be used to single out a specific subset of boxes in a particular role, like
+# :primary => true.
+
 role :app, domain
 role :web, domain
 role :db,  domain, :primary => true
-
 
 
 namespace :deploy do 
@@ -173,19 +182,6 @@ set :rails_version, "rel_2-2-2" # used by the custom deploy_edge rake task
 
 # TODO: test this works and I can remove the restart task and use the cleanup task
 # set :use_sudo, false
-
-# =============================================================================
-# ROLES
-# =============================================================================
-# You can define any number of roles, each of which contains any number of
-# machines. Roles might include such things as :web, or :app, or :db, defining
-# what the purpose of each machine is. You can also specify options that can
-# be used to single out a specific subset of boxes in a particular role, like
-# :primary => true.
-
-role :app, domain
-role :web, domain
-role :db,  domain, :primary => true
 
 
 # =============================================================================
