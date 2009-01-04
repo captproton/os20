@@ -4,41 +4,6 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'spec'
 require 'spec/rails'
-require 'tzinfo'
-
-require 'rspec_extensions' # custom in lib/
-
-
-module Spec
-  module Rails
-    module Matchers
-      class BeValid  #:nodoc:
-
-        def matches?(model)
-          @model = model
-          @model.valid?
-        end
-
-        def failure_message
-          "#{@model.class} expected to be valid but had errors:\n  #{@model.errors.full_messages.join("\n  ")}"
-        end
-
-        def negative_failure_message
-          "#{@model.class} expected to have errors, but it did not"
-        end
-
-        def description
-          "be valid"
-        end
-
-      end
-
-      def be_valid
-        BeValid.new
-      end
-    end
-  end
-end
 
 Spec::Runner.configure do |config|
   # If you're not using ActiveRecord you should remove these
@@ -78,17 +43,5 @@ Spec::Runner.configure do |config|
   #
   # == Notes
   # 
-  # For more information take a look at Spec::Example::Configuration and Spec::Runner
-  def mock_user
-    user = mock_model(User, 
-      :id => 1, 
-      ##:tz => TimeZone.new('USA/PDT'),
-      :login => 'flappy',
-      :email => 'flappy@email.com',
-      :password => '', :password_confirmation => '',
-      :time_zone => 'USA/PDT'
-    ) 
-  end
-  
-  
+  # For more information take a look at Spec::Runner::Configuration and Spec::Runner
 end
