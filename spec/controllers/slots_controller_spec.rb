@@ -12,10 +12,10 @@ describe SlotsController do
       get :index
     end
   
-    it "should be successful" do
+    it "should be redirect if not logged in" do
       pending "Not done yet"
       ## do_get
-      ## response.should be_success
+      ## response.should be_redirect
     end
 
     it "should render index template" do
@@ -82,10 +82,10 @@ describe SlotsController do
       get :show, :id => "1"
     end
 
-    it "should be successful" do
+    it "should be redirect if not logged in" do
       ## pending "Not done yet"
       do_get
-      response.should be_success
+      response.should be_redirect
     end
   
     it "should render show template" do
@@ -150,10 +150,10 @@ describe SlotsController do
       get :new
     end
 
-    it "should be successful" do
+    it "should redirect to new session if not logged in" do
       ## pending "Not done yet"
       do_get
-      response.should be_success
+      response.should redirect_to("/sessions/new")
     end
   
     it "should render new template" do
