@@ -1,6 +1,7 @@
 class Slot < Content
   class CommentNotAllowed < StandardError; end
-    
+  
+  acts_as_taggable_on :tags, :categories
   validates_presence_of :title, :user_id
   searchable_by :title, :body, :excerpt
 

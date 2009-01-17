@@ -3,6 +3,25 @@ class SessionsController < ApplicationController
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
 
+  # Once we explain REST in the book this will obviously be
+  # refactored.
+  def create_xml
+    self.current_user =
+      User.authenticate(params[:login], params[:password])
+    if logged_in?
+      if params[:remember_me] == "1"
+        self.current_user.remember_me
+        cookies[:auth_token] = {
+         :value => self.current_user.remember_token,
+         :expires => self.current_user.remember_token_expires_at
+        }
+      end
+      render :xml => self.current_user.to_xml
+    else
+      render :text => "badlogin"
+    end
+  end
+
   def new
   end
   

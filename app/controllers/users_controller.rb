@@ -16,6 +16,18 @@ protected
   end
 
 public
+
+  # Once we explain REST in the book this will obviously be 
+  # refactored. 
+  def create_xml 
+    @user = User.new(params[:user]) 
+    @user.save! 
+    self.current_user = @user 
+    render :xml => @user.to_xml 
+  rescue ActiveRecord::RecordInvalid 
+    render :text => "error" 
+  end 
+  
   # GET /users
   # GET /users.xml
   def index

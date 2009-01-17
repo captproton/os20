@@ -2,7 +2,9 @@
 		<div id="ylf-blog-head" class="cls inline-edit">
 	<div class="hd">
 		<ul class="links cls">
-			<li class="first">  <%= link_to 'Write a New Slot', new_slot_path %> </li>
+			<%if @current_user.admin %>
+				<li class="first">  <%= link_to 'Write a New Slot', new_slot_path %> </li>
+			<% end %>
 			<li><%= link_to 'View All Slots', slots_path %></li>
 			<li class="my"><a href="/my/">Go to My Stuff</a></li>
 		</ul>

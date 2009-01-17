@@ -3,7 +3,7 @@
 <%= 	h slot.updated_at.strftime("%m/%d/%Y")
 
  %> | <%= time_ago_in_words(slot.updated_at) %> ago</span></td>
-<td class="title"><div><%=h slot.title %></div></td>
+<td class="title"><div>	<%= link_to h(slot.title), slot %></div></td>
 <td class="status"><%# image_tag "mephisto/icons/#{status_icon[slot.status][1]}", :class => "#{status_icon[slot.status][0]} icon", :title => "This slot is #{slot.status}", :alt => "#{slot.status}" %></td>
 <td class="channel"><a href="/slots" class="c-none">Volunteer Slots</a></td>
 <td class="comments">
@@ -16,8 +16,9 @@
 </td>
 <td class="actions">
 	<%= link_to 'view', slot %>
+	<%- if @current_user.admin -%>
     <%= link_to 'edit', edit_slot_path(slot) %>
     <%= link_to 'delete', slot, :confirm => 'Are you sure?', :method => :delete %>
-    
+    <%- end -%>
 </td>
 

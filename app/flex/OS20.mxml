@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<mx:Application 
+    xmlns:mx="http://www.adobe.com/2006/mxml" 
+    xmlns:oss="com.oceanshore.components.*" 
+    layout="vertical" 
+    backgroundGradientColors="[#ffffff, #c0c0c0]"
+    horizontalAlign="center"
+    verticalAlign="top" 
+    paddingLeft="0" 
+    paddingRight="0" 
+    paddingTop="0" 
+    paddingBottom="0" 
+    width="100%" 
+    height="100%"> 
+<mx:Script> 
+<![CDATA[
+    import com.oceanshore.events.AccountCreateEvent; 
+    import com.oceanshore.events.LoginEvent; 
+
+
+    private function handleAccountCreate(e:AccountCreateEvent): 
+    void { 
+        showMain(); 
+    } 
+    private function handleLogin(e:LoginEvent):void { 
+        showMain(); 
+    } 
+    private function showMain():void { 
+        mainStack.selectedChild = mainBox; 
+    } 
+]]> 
+</mx:Script> 
+    <mx:ViewStack id="mainStack" width="100%" height="100%"> 
+		<oss:SplashBox id="splashBox" 
+            accountCreate="handleAccountCreate(event)" 
+            login="handleLogin(event)"/>
+        <oss:MainBox id="mainBox"/> 
+    </mx:ViewStack> 
+</mx:Application> 
