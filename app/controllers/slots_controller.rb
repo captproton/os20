@@ -1,7 +1,7 @@
 class SlotsController < ApplicationController
-    @protected_actions = [ :edit, :update, :destroy ]
+    @protected_actions = [  :edit, :update, :destroy ]
     before_filter :login_required, :except => :feed
-    ## before_filter :check_auth, :only => @protected_actions
+    before_filter :check_auth, :only => @protected_actions
 
     def index
       @stylesheets = ['base', 'manage', 'uh-1.1.3']
@@ -26,6 +26,9 @@ class SlotsController < ApplicationController
       @doc_class = "doc nobg cls"
       @related = Slot.find(:all, :limit => 5)
       @slot  = Slot.find(params[:id])
+      @remark = Remark.new
+      @remarks = Remark.find_remarks_for_remarkable("Slot", @slot.id)
+
       ## @comments = @slot.comments.collect &:to_liquid
       ## @slot  = @slot.to_liquid(:mode => :single)
 
@@ -33,6 +36,7 @@ class SlotsController < ApplicationController
     end
 
     def new
+        @slot = Slot.new
         @side = "new"        
         @body_class = "yui-skin-sam write js"
         @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
@@ -40,8 +44,8 @@ class SlotsController < ApplicationController
         @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
         @page_title = 'Compose a New Slot Entry'
         @doc_class = "doc nobg cls"
+        
       
-        @slot = current_user.slots.build(:filter => current_user.filter, :published_at => Time.now.utc)
 
       respond_to do |format|
         format.html # new.html.erb
@@ -65,7 +69,7 @@ class SlotsController < ApplicationController
     end
 
     def create
-        @slot = current_user.slots.create params[:slot]
+        @slot = current_user.slots.build(params[:slot])
       respond_to do |format|
         if @slot.save
           format.html do
@@ -99,14 +103,6 @@ class SlotsController < ApplicationController
           end
         rescue ActiveRecord::RecordNotFound => e
           prevent_access(e)
-        ## Mephisto code commented out  
-        ## @slot.attributes = params[:slot].merge(:updater => current_user)
-        ## save_with_revision? ? @slot.save! : @slot.save_without_revision!
-        ## flash[:notice] = "Your slot was updated"
-        ## redirect_to :action => 'edit', :id => params[:id]
-    ## rescue ActiveRecord::RecordInvalid
-      ## load_sections
-      ##render :action => 'edit'
     end
 
     def destroy
@@ -119,6 +115,27 @@ class SlotsController < ApplicationController
       end
       
     end
+    
+    def remark
+      @slot = current_user.slots.find([:id])
+      #@slot = Slot.find(params[:id]) 
+      ##@remark = current_user.new_remark_attributes.build(params[:new_remark_attributes])
+      
+      ## @remark = params[:slot:new_remark_attributes]
+      ## Format: article.users.create!(:name => "dave")
+      ## @slot.remarks.create!(@remarks)
+      ## @slot.remarks << @remark
+      if @slot.update_attributes(params[:slot])
+        flash[:notice] = "Successfully added comment." 
+        redirect_to slot_path(@slot) 
+      else 
+        flash[:notice] = "You lose." 
+        
+        redirect_to users_path
+      end 
+    end
+      
+    
     
     private
     
@@ -135,8 +152,10 @@ class SlotsController < ApplicationController
       # This is implemented on a per-polymorph basis because the asset.attachable may be
       # an object that is *indirectly* tied to the current user.
       def check_auth
-        @slot.user == current_user or raise AccessDenied
+        @slot.user == (current_user ) or raise AccessDenied
       end
+      
+      
 
 
 end

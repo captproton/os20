@@ -1,0 +1,13 @@
+<p>
+  <b>Title:</b>
+  <%=h @remark.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @remark.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_remark_path(@remark) %> |
+<%= link_to 'Back', slot_remarks_path(@remarkable) %>

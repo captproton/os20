@@ -7,11 +7,11 @@
 <td class="status"><%# image_tag "mephisto/icons/#{status_icon[slot.status][1]}", :class => "#{status_icon[slot.status][0]} icon", :title => "This slot is #{slot.status}", :alt => "#{slot.status}" %></td>
 <td class="channel"><a href="/slots" class="c-none">Volunteer Slots</a></td>
 <td class="comments">
-	<%# if slot.comments.size == 0 %>
+	<%- if Remark.find_remarks_for_remarkable("Slot", 3).size == 0 -%>
       none
-    <%# else %>
-      <%# link_to slot.comments.size.to_s.rjust(2, '0'), slot_comments_path(slot) %>
-    <%# end %>
+    <%- else -%>
+      <%= link_to Remark.find_remarks_for_remarkable("Slot", slot.id).size, slot_path(slot) %>
+    <%- end -%>
     
 </td>
 <td class="actions">

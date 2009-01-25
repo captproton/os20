@@ -1,24 +1,64 @@
-<%# render :partial => "page_nav" %>
+<h1>Editing article</h1>
 
-<% fields_for :article, @version do |f| -%>
-  <% content_for :sidebar do %>
-    <%# render :partial => 'shared_options', :locals => { :form => f } %>
-  <% end %>
+<% form_for(@article) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :permalink %><br />
+    <%= f.text_field :permalink %>
+  </p>
+  <p>
+    <%= f.label :excerpt %><br />
+    <%= f.text_area :excerpt %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.label :excerpt %><br />
+    <%= f.text_field :excerpt %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_field :body %>
+  </p>
+  <p>
+    <%= f.label :published_at %><br />
+    <%= f.datetime_select :published_at %>
+  </p>
+  <p>
+    <%= f.label :comment_age %><br />
+    <%= f.text_field :comment_age %>
+  </p>
+  <p>
+    <%= f.label :filter %><br />
+    <%= f.text_field :filter %>
+  </p>
+  <p>
+    <%= f.label :user_agent %><br />
+    <%= f.text_field :user_agent %>
+  </p>
+  <p>
+    <%= f.label :referrer %><br />
+    <%= f.text_field :referrer %>
+  </p>
+  <p>
+    <%= f.label :assets_count %><br />
+    <%= f.text_field :assets_count %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
 <% end %>
 
-<%= error_messages_for :article %>
-
-<% content_for :form do -%>
-  <%= form_tag({:action => 'update', :id => @article}, {:id => 'article-form', :multipart => true, :method => :put}) %>
-<% end -%>
-
-<% fields_for :article, @version do |f| -%>
-  <%= render :partial => 'form', :object => f %>
-  <p class="btns">
-    <%= submit_tag 'Apply Changes' %>
-    <%= submit_tag 'Save without Revision' %>
-    <%= link_to "cancel", :controller => "articles" %>
-  </p>
-<% end -%>
-
-
+<%= link_to 'Show', @article %> |
+<%= link_to 'Back', articles_path %>

@@ -10,7 +10,10 @@
 	<p><%= Time.now.strftime("%B %d, %Y") %> 
 	</p>
 	
-	<ul class="feeds cls"><li class="first"><a href="/subscriptions/add?yuid=anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg&amp;display_name=CaptProton%26rsquo%3Bs" class="subscribe"><span><!-- --></span>Subscribe to This Blog</a></li><li><a href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Fshine.yahoo.com%2Frss%2Fblog%2Fchannel%2Fnone%2F" class="myyahoo" title="My Yahoo!"><span><!-- --></span>Add to My Yahoo!</a></li><li><a href="http://shine.yahoo.com/rss/blog/channel/none/" class="rss" title="RSS"><span><!-- --></span>RSS</a></li></ul>
+	<ul class="feeds cls">
+		<!-- Link to be added when backpack is designed <li><a href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Fshine.yahoo.com%2Frss%2Fblog%2Fchannel%2Fnone%2F" class="myyahoo" title="My Favorites"><span></span>Add to My favorites!</a></li> -->
+		<li><a href="http://shine.yahoo.com/rss/blog/channel/none/" class="rss" title="RSS"><span><!-- --></span>RSS</a></li>
+	</ul>
 
 </div>
 
@@ -30,15 +33,12 @@
 		<div class="attr cls readmore">
 			<a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><img src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn32.jpg?ciAwiiJBD7xNDS7c" height="32" width="32"></a>
 			<ul>
-				<li>updated by <a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><span class="author alias"><%= @slot.user.login %></span></a>, <span class="rel-time" title="<%= @slot.updated_at %>"><%= time_ago_in_words(@slot.updated_at) %> ago</span></li>
-				<li class="last">
-					<%= link_to "Read More from This Author »", user_path(@slot.user) %>
-				</li>
+				<li>Last updated by <%= link_to current_user.login, user_path(current_user) %>, <span class="rel-time" title="<%= @slot.updated_at %>"><%= time_ago_in_words(@slot.updated_at) %> ago</span></li>
 			</ul>
 			<ul>
 				
 				<li><a href="#postcomment" class="cmt-lnk">Post a Comment</a></li>
-				<li class="last"><a href="/">Report Abuse</a></li>
+				<!-- <li class="last"><a href="/">Report Abuse</a></li> Enable after plugin installed -->
 			</ul>
 		</div>
 	</div>
@@ -51,21 +51,46 @@
 
 	
 
-	<p class="related"><strong>Related:</strong> <a href="/topic/song/">song</a>, <a href="/topic/christmas/">christmas</a>, <a href="/topic/chorus/">chorus</a></p>
+	<p class="related"><strong>Related:</strong> 
+		<% if !@slot.topic_list.blank? %>
+		  <% for item in @slot.topic_list %>
+			<% @tag = Tag.find_by_name(item) %>
+		    <%= link_to item, topic_path(@tag.id) %>
+		  <% end %>
+		<% else %>
+		  	none
+		<% end %>
+		
+	</p>
 
 </div>
 
 
 	
-			<div class="tools"><ul class="cls"><li class="cmts"><span class="icon"><!-- --></span><span>Let’s talk:</span> <a href="#comments" class="cmt-lnk">Comment (0)</a> | <%= link_to "Blog", user_path(current_user) %></li><li class="email"><span class="icon"><!-- --></span><a href="/email-to-friend?id=335584&amp;title=The+goose+is+getting+fat.&amp;channel=none&amp;event=">Email to a Friend</a></li><li class="print"><span class="icon"><!-- --></span><%= link_to "Print this Page", slot_path(@slot) %></li></ul></div>
+			<div class="tools">
+				<ul class="cls">
+					<li class="cmts">
+						<span class="icon"><!-- --></span>
+						<span>Let’s talk:</span> 
+						<a href="#comments" class="cmt-lnk">Comment (<%= @remarks.size %>)</a> <!-- | spacer here --> <%# link_to "Blog", user_path(current_user) ##Consider after user blog section is built%>
+					</li>
+					<%# <li class="email">
+						<span class="icon"><!-- --></span>
+						<a href="/email-to-friend?id=335584&amp;title=The+goose+is+getting+fat.&amp;channel=none&amp;event=">Email to a Friend</a>
+					</li> ## after email controller built %>
+					<%# <li class="print">
+						<span class="icon"><!-- --></span><%= link_to "Print this Page", slot_path(@slot) 
+					</li> ## Enable after print css written.%>
+				</ul>
+			</div>
 			<div class="line"><!-- --></div>
 						
 			
     	<div id="ylf-relatedlinks" class="line cls post-cols">
     		<div class="col hlf-w full-w">
-  				<h3>related  slots</h3>
+  				<h3>related  slots (jobs with similar interests will go here)</h3>
 				<ol>
-					<%= render :partial => 'related', :collection => @related %>
+					<%# render :partial => 'related', :collection => @related %>
 				</ol>
     		</div>
     		<div class="col hlf-e hlf-hidden">
@@ -74,32 +99,52 @@
     	</div>
   	
 			      <div id="ylf-cmnts" class="mod">
-      	<h2 id="comments">From the Community…</h2><p>Be the first to comment on this post.</p></div>
-			<div id="cmt-form" class="cls">
-	<h3 id="postcomment">leave your comment</h3>
-	
-	
-	
-			<form action="#postcomment" method="post">
+      	<h2 id="comments">From the Community…</h2>
+		<div class="spgnav cls">
+		    		<div class="count"><%= pluralize(@remarks.size, "Comment") %> </div>
 
-			<textarea rows="7" id="content" name="content"></textarea>
-			<input name="crb" value="zLTiXcHmAFk" type="hidden">
-			<input name="error" value="1" type="hidden">
-			<input name="title" value="Comment" type="hidden">
-			<input name="post_id" value="335584" id="post_id" type="hidden">
+		    	</div>
+				<ul class="thumbs">      
+					<% if !@remarks.blank? %>
+					  <% for remark in @remarks %>
+							<% remark_user_id = 2 %>
+							<% remark_login = User.find(remark_user_id).login %>
+						<li>
+		      				<a href="" class="img"><img width="32" height="32" src="/images/userIconBig.gif" alt="<%= remark_login %>'s Avatar" class="lz" /></a>
+		      				<div class="txt">
+		      					<cite>Posted by 
+									<a href="/" >
+										<span class="author"> <%= remark_login %></span>
+									</a> 
+									<span class="rel-time" title="<%= remark.updated_at %>"><%= time_ago_in_words(remark.updated_at) %> ago</span>
+								</cite>
+		      					<blockquote>
+		      						<p><%= remark.body %></p>
+		      					</blockquote>
+								<!-- <a href="/" class="abuse">Report Abuse</a> -->
+			      			</div>
+		      			</li>      		
+					
+					  <% end %>
+					<% else %>
+					  <p>Be the first to comment on this post.</p>
+					<% end %>
+							
+				</ul>
+    	<div class="spgnav cls">
+			<div class="count"><%# pluralize(@remarks.size, "Comment") %> </div>
 
-			<div class="ft">
-						<div class="cid cid-name">
-			<p>You will be seen as: <img id="avatar" class="avatar" src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn24.jpg?ciAwiiJBCGJhRH_P" longdesc="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn48.jpg?ciAwiiJBUS2R48hq" alt="Your avatar" height="24" width="24"> <strong id="nickName"><%= current_user.login %></strong></p>
-			<input id="userAlias" name="alias" value="rocketeer_capt.proton" type="hidden">
-		</div>
-				<button type="submit">Post Comment</button>
-			</div>
-
-		</form>
 		
-		<p class="disclaimer">The information you provide on this page will be displayed publicly along with your display image and nickname.</p>
-</div>
-
 		</div>
+			<div id="cmt-form" class="cls">
+				<h3 id="postcomment">leave your comment</h3>
+				<p>
+					<%= link_to "Click here",       new_slot_remark_path(:slot) %>
+				</p>
+				
+		
+			<p class="disclaimer">The information you provide on this page will be displayed publicly along with your display image and nickname.</p>
+		</div>
+
+	</div>
 				

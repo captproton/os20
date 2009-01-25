@@ -21,10 +21,16 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   include AuthenticatedBase
   has_many :assets, :as => :attachable
-  has_many :articles
-  has_many :slots
+  has_many :discussions
+  has_many :remarks
+  has_many :articles, :through => :authorships, :source => :article,
+                      :conditions => "discussions.remarkable_type = 'Article'"
+  has_many :slots,    :through => :discussions, :source => :slot,
+                      :conditions => "discussions.remarkable_type = 'Slot'"
   
-
+  
+  
+  
   ## outdated with rails 2.1 composed_of :tz, :class_name => 'TZInfo::Timezone', :mapping => %w( time_zone time_zone )  ## in rails 2.1 this will be updated.
   validates_presence_of     :login, :email
   validates_presence_of     :password,                   :if => :password_required?

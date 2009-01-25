@@ -1,0 +1,10 @@
+<textarea id="slot[new_remark_attributes][][body]" name="slot[new_remark_attributes][][body]" style="margin:0 15px; width:594px; padding:3px;" rows="7"></textarea>
+						
+<input type="hidden" id="slot[new_remark_attributes][][remarkable_type]" name="slot[new_remark_attributes][][remarkable_type]" value="Slot">
+<input type="hidden" id="slot[new_remark_attributes][][remarkable_id]" name="slot[new_remark_attributes][][remarkable_id]" value="<%= @slot.id %>">
+<input type="hidden" id="slot[new_remark_attributes][][user_id]" name="slot[new_remark_attributes][][user_id]" value="<%= current_user.id %>">
+
+
+<%# hidden_field_tag 'remark[remarkable_id]', @slot.id %>
+<%# hidden_field_tag 'remark[remarkable_type]', @slot.class %>
+<%# text_area_tag 'remark[body]', nil, :style => "margin:0 15px; width:594px; padding:3px;" rows => "7" %>

@@ -9,7 +9,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090117060310) do
+ActiveRecord::Schema.define(:version => 20090124205139) do
+
+  create_table "articles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "permalink"
+    t.text     "excerpt"
+    t.text     "body"
+    t.datetime "published_at"
+    t.integer  "comment_age",  :default => 0
+    t.string   "filter"
+    t.string   "user_agent"
+    t.string   "referrer"
+    t.integer  "assets_count", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "assets", :force => true do |t|
     t.string   "filename"
@@ -34,34 +50,31 @@ ActiveRecord::Schema.define(:version => 20090117060310) do
     t.datetime "updated_at"
   end
 
-  create_table "contents", :force => true do |t|
-    t.integer  "article_id"
-    t.integer  "user_id"
-    t.string   "title"
-    t.string   "permalink"
-    t.text     "excerpt"
-    t.text     "body"
-    t.text     "excerpt_html"
-    t.text     "body_html"
-    t.datetime "published_at"
-    t.string   "type",           :limit => 20
-    t.string   "author",         :limit => 100
-    t.string   "author_url"
-    t.string   "author_email"
-    t.string   "author_ip",      :limit => 100
-    t.integer  "comments_count",                :default => 0
-    t.integer  "updater_id"
-    t.integer  "version"
-    t.integer  "site_id"
-    t.boolean  "approved",                      :default => false
-    t.integer  "comment_age",                   :default => 0
-    t.string   "filter"
-    t.string   "user_agent"
-    t.string   "referrer"
-    t.integer  "assets_count",                  :default => 0
+  create_table "discussions", :force => true do |t|
+    t.integer  "remark_id"
+    t.integer  "publication_id",                 :default => 0,  :null => false
+    t.string   "publication_type", :limit => 15, :default => "", :null => false
+    t.integer  "user_id",                        :default => 0
+    t.string   "commentator_type"
+    t.string   "context"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "discussions", ["publication_id", "publication_type", "context"], :name => "index_discussions_on_remarkable_id_and_remarkable_type_and_context"
+  add_index "discussions", ["remark_id"], :name => "index_discussions_on_remark_id"
+
+  create_table "remarks", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "remarkable_id",   :default => 0,  :null => false
+    t.string   "remarkable_type", :default => "", :null => false
+    t.integer  "user_id",         :default => 0,  :null => false
+  end
+
+  add_index "remarks", ["user_id"], :name => "index_remarks_on_user_id"
 
   create_table "sections", :force => true do |t|
     t.string   "name"
@@ -76,6 +89,22 @@ ActiveRecord::Schema.define(:version => 20090117060310) do
     t.string   "archive_template"
     t.string   "type",                :limit => 20
     t.integer  "position",                          :default => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "slots", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "permalink"
+    t.text     "excerpt"
+    t.text     "body"
+    t.datetime "published_at"
+    t.integer  "comment_age"
+    t.string   "filter"
+    t.string   "user_agent"
+    t.string   "referrer"
+    t.integer  "assets_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,18 @@
+<h1>Topics#index</h1>
+<p>Find me in app/views/topics/index.html.erb</p>
+
+<% if !@topics.blank? %>
+  <% for topic in @topics %>
+    <%= topic.name %><br />
+  <% end %>
+<% else %>
+  No topics
+<% end %>
+
+<% if !@topics.blank? %>
+  <% for topic in @topics %>
+    <%= link_to topic, :action => "show", :id => topic.id %>
+  <% end %>
+<% else %>
+  no topic links
+<% end %>

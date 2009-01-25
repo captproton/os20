@@ -32,7 +32,7 @@ module SlotsHelper
   end
   
   def sidebar
-     render :partial => '/slots/side_for_' + @side if @side
+     render :partial => '/shared/side_for_' + @side if @side
     ##stylesheet_link_tag(*@side) if @side
   end
   

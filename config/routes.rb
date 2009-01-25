@@ -1,4 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :articles
+  
+
+  map.resources :discussions
+
+
+  map.resources :topics
+  map.resources :remarks
+
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
@@ -6,10 +15,14 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :sections
 
-  map.resources :slots
-
-  map.resources :articles
-
+  map.resources :slots, :has_many => :remarks
+  
+  map.resources :slots do |slots|
+    slots.resources :remarks
+  end
+  
+  ## map.resources :slots, :member => { :remark => :put }
+  map.resources :articles, :has_many => [ :remarks ]
 
   map.resource :sessions
   map.resources :users do |user|
@@ -26,6 +39,6 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '', :controller => 'users'
 
   # Install the default route as the lowest priority.
-  map.connect ':controller/:action/:id.:format'
-  map.connect ':controller/:action/:id'
+  ## map.connect ':controller/:action/:id.:format'
+  #map.connect ':controller/:action/:id'
 end
