@@ -1,11 +1,17 @@
 class SlotsController < ApplicationController
-    @protected_actions = [  :edit, :update, :destroy ]
+    @protected_actions  = [  :edit, :update, :destroy ]
+    @managable_actions     =  [ :index ]
     before_filter :login_required, :except => :feed
     before_filter :check_auth, :only => @protected_actions
+    ## before_filter :managed_action, :only => @managable_actions
 
     def index
+      @side = "show"
+      @body_class="ylf-home"
+      @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
       @stylesheets = ['base', 'manage', 'uh-1.1.3']
-      @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js']
+      @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
+      
       @doc_id = 'ylf-blog-mgr'
       @doc_class = 'doc'
       ## @slots = site.slots.paginate(slot_options(:order => 'contents.published_at DESC', :select => 'contents.*',
@@ -17,6 +23,7 @@ class SlotsController < ApplicationController
 
     def show
       # this is an autotest
+      
       @side = "show"
       @body_class = 'js'
       @body_id = 'ylf-ch-none'
@@ -36,15 +43,14 @@ class SlotsController < ApplicationController
     end
 
     def new
-        @slot = Slot.new
-        @side = "new"        
-        @body_class = "yui-skin-sam write js"
-        @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
-        @stylesheets = ['base', 'manage', 'uh-1.1.3']
-        @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
-        @page_title = 'Compose a New Slot Entry'
-        @doc_class = "doc nobg cls"
-        
+      @side = "new"
+      @body_class = "yui-skin-sam write js"
+      @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
+      @stylesheets = ['base', 'manage', 'uh-1.1.3']
+      @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
+      @page_title = 'Compose a New Slot Entry'
+      @doc_class = "doc cls"
+
       
 
       respond_to do |format|
@@ -55,11 +61,6 @@ class SlotsController < ApplicationController
     end
 
     def edit
-      @side = "new"
-      @body_class="yui-skin-sam write js"
-      @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
-      @stylesheets = ['base', 'manage', 'uh-1.1.3']
-      @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
       @page_title = 'Edit a Slot Entry'
       @doc_class = "doc cls"
       @slot = current_user.slots.find(params[:id])
@@ -145,6 +146,17 @@ class SlotsController < ApplicationController
           format.html { redirect_to(slots_url) }
           format.xml  { render :text => "error" }
         end
+      end
+      
+      def managed_action
+        # changes layout for new, edit, and search
+        render  :layout  => "manage"
+        @side = "new"
+        @body_class="yui-skin-sam write js"
+        @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
+        @stylesheets = ['base', 'manage', 'uh-1.1.3']
+        @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
+        
       end
     
     protected

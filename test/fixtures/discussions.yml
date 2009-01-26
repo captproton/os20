@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  remark_id: 1
+  remarkable_id: 1
+  commentator_id: 1
+  commentator_type: MyString
+  remarkable_type: MyString
+  context: MyString
+
+two:
+  remark_id: 1
+  remarkable_id: 1
+  commentator_id: 1
+  commentator_type: MyString
+  remarkable_type: MyString
+  context: MyString

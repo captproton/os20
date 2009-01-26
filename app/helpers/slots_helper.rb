@@ -32,8 +32,12 @@ module SlotsHelper
   end
   
   def sidebar
-     render :partial => '/shared/side_for_' + @side if @side
-    ##stylesheet_link_tag(*@side) if @side
+    unless @doc_id == 'ylf-blog-mgr'
+        render :partial => '/shared/side_for_' + @side
+
+    else
+    ## no sidebar at all
+  end
   end
   
 end
