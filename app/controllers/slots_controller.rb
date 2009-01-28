@@ -8,8 +8,7 @@ class SlotsController < ApplicationController
     def index
       @side = "show"
       @body_class="ylf-home"
-      @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
-      @stylesheets = ['base', 'manage', 'uh-1.1.3']
+      @method = 'index'
       @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
       
       @doc_id = 'ylf-blog-mgr'
@@ -27,7 +26,7 @@ class SlotsController < ApplicationController
       @side = "show"
       @body_class = 'js'
       @body_id = 'ylf-ch-none'
-      @stylesheets = ['base', 'uh-1.1.3']
+      @method = 'show'
       @javascripts = ['http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js', 'http://us.js2.yimg.com/us.js.yimg.com/lib/rt/rto1_78.js']
       @doc_id = "ylf-blog"
       @doc_class = "doc nobg cls"
@@ -46,7 +45,7 @@ class SlotsController < ApplicationController
       @side = "new"
       @body_class = "yui-skin-sam write js"
       @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
-      @stylesheets = ['base', 'manage', 'uh-1.1.3']
+      @method = 'new'
       @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
       @page_title = 'Compose a New Slot Entry'
       @doc_class = "doc cls"
@@ -62,7 +61,6 @@ class SlotsController < ApplicationController
 
     def edit
       @page_title = 'Edit a Slot Entry'
-      @doc_class = "doc cls"
       @slot = current_user.slots.find(params[:id])
       @version   = params[:version] ? @slot.find_version(params[:version]) : @slot or raise(ActiveRecord::RecordNotFound)
       @published = @version.published?
@@ -136,7 +134,9 @@ class SlotsController < ApplicationController
       end 
     end
       
-    
+    def manage
+      @slots = Slot.search(params[:search]) ## manage_slots_path
+    end
     
     private
     
@@ -154,7 +154,6 @@ class SlotsController < ApplicationController
         @side = "new"
         @body_class="yui-skin-sam write js"
         @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
-        @stylesheets = ['base', 'manage', 'uh-1.1.3']
         @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
         
       end

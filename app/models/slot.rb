@@ -4,6 +4,7 @@ class Slot < ActiveRecord::Base
   
   ##has_many :discussions, :as => :publication
   has_many :remarks
+  belongs_to :user
   
   
   validates_presence_of :title, :user_id

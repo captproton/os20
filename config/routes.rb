@@ -15,13 +15,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :sections
 
-  map.resources :slots, :has_many => :remarks
+  map.resources :slots, :collection => { :manage => :get }
   
   map.resources :slots do |slots|
     slots.resources :remarks
   end
   
-  ## map.resources :slots, :member => { :remark => :put }
   map.resources :articles, :has_many => [ :remarks ]
 
   map.resource :sessions

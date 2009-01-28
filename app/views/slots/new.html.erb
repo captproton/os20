@@ -10,4 +10,9 @@
 						<!-- </form> -->
 						<% end %>
 		</div>
+		
+		<% content_for(:sidebar) do %>
+		
+			<%= render :partial => 'sidebar_new_or_edit' %>
+		<% end %>		
 

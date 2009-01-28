@@ -8,9 +8,12 @@
 				<% form_for :slot, @slot, :url => slot_path(@slot), :html => { :id => "blogForm", :method => :put } do |f| %> 
 				  <%= f.error_messages %>
 
-				<%# form_for :slot, :url => slot_path(@slot), :html => { :id => "blogForm" }  do |f| -%>
+				<% form_for :slot, :url => slots_path, :html => { :id => "blogForm" }  do |f| -%>
 					<%= render :partial => "form", :object => f %>
 					<!-- </form> -->
 				<% end %>
 			</div>
 
+			<% content_for(:sidebar) do %>
+				<%= render :partial => 'sidebar_new_or_edit' %>
+			<% end %>		

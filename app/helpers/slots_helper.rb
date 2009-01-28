@@ -1,34 +1,40 @@
 module SlotsHelper
+  
+  def palooza_style
+      @stylesheets = ['base', 'uh-1.1.3'] if controller.action_name  == "index" || controller.action_name  ==  "show"
+      
+      @stylesheets = ['skin', 'base', 'manage', 'uh-1.1.3'] if controller.action_name  == "new" || controller.action_name  == "edit"
+          
+      @stylesheets = ['base', 'manage', 'uh-1.1.3']  if controller.action_name  == "manage"     
+    
+
+  end
   def page_title 
   @page_title || "Our Slots" 
   end 
   
   def body_class_and_id
-    if @body_class
-      @classes = " class='" + @body_class +"'"
-    else
-      @classes = ""
-    end
-    if @body_id
-      @id = " id='" + @body_id +"'"
-    else
-      @id = ""
-    end
-    return @classes + @id  
+    # show:  	ylf-blog-main, side, super-footer
+		# index:				main idx, side, super-footer
+		# new:					main, side
+		# edit:					main, side
+		#manage(?manage=yes):	cls inline-edit (id = ylf-blog-head), mod, 
+		
+    
+    body_class_id = 'class="js"' if controller.action_name  == "manage" 
+    body_class_id = 'id="ylf-blog-index" class="posts-index js"' if controller.action_name  == "index" 
+    body_class_id = 'id="ylf-ch-none" class="js"'  if controller.action_name  == "show" 
+    body_class_id = 'class="yui-skin-sam write js"'  if controller.action_name  == "new" ||  controller.action_name  == "edit" 
+    return body_class_id 
   end
   
   def on_stage
-    if @doc_class
-      @classes = " class='" + @doc_class +"'"
-    else
-      @classes = ""
-    end
-    if @doc_id
-      @id = " id='" + @doc_id +"'"
-    else
-      @id = ""
-    end
-    return @classes + @id  
+   
+    main_column_class_id = 'id="ylf-blog-mgr" class="doc"' if controller.action_name  == "manage" 
+    main_column_class_id = ' class="doc cls"' if controller.action_name  == "index" 
+    main_column_class_id = 'id="ylf-blog" class="doc cls"'  if controller.action_name  == "show" 
+    main_column_class_id = 'class="doc cls"'  if controller.action_name  == "new" ||  controller.action_name  == "edit" 
+    return main_column_class_id 
   end
   
   def sidebar

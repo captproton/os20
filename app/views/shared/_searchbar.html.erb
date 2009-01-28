@@ -1,0 +1,9 @@
+<div id="ylf-searchbar">
+    <% form_tag slots_path, :method => 'get' do %>
+
+	        <label for="p">Search Slots for:</label> <%= text_field_tag :search, params[:search], :size => 32 %>
+	        <button type="submit">Search Slots</button>
+	      <% end %>
+	 </form>
+
+</div>

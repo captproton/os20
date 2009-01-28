@@ -21,12 +21,10 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   include AuthenticatedBase
   has_many :assets, :as => :attachable
-  has_many :discussions
+  ## has_many :discussions #this model will be used to group user content to one spot, like backpack
   has_many :remarks
-  has_many :articles, :through => :authorships, :source => :article,
-                      :conditions => "discussions.remarkable_type = 'Article'"
-  has_many :slots,    :through => :discussions, :source => :slot,
-                      :conditions => "discussions.remarkable_type = 'Slot'"
+
+  has_many :slots
   
   
   
