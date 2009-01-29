@@ -15,10 +15,10 @@
 	<label for="blog_text"><span class="required">*</span> Content</label>
 	<div id="editorCont">
 		<div id="rteModeLink"><a href="#" id="rteMode" class="rteOnSelect off">Visual</a> <a href="#" id="htmlMode" class="off">HTML</a></div> 
-		<%= form.text_area :body, :rows => 20, :cols => 80, :id => "editor" %>
+		<%# form.text_area :body, :rows => 20, :cols => 80, :id => "editor", :name => "blog_text" %>
 		
-<!--		<textarea id="editor" name="blog_text" rows="20" cols="80"></textarea>
--->	</div>
+<!--		--><textarea id="editor" name="blog_text" rows="20" cols="80"></textarea>
+	</div>
 	<div id="slideShow">
 		<div id="slideShowHd">Gallery <span><a href="#" id="return_blog_ss">Return to Blog Entry &raquo;</a></span></div>
 		<div id="slideShowTool">

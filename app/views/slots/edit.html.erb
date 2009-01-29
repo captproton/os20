@@ -1,19 +1,28 @@
-			<div class="main" id="ylf-write">
-				<ul class="links cls">
-					<li class="first"><a href="/manage/">Manage My Slots</a></li>
-					<li><a href="/">View My Slot</a></li>
+<!-- Skin CSS file -->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/assets/skins/sam/skin.css">
+<!-- Utility Dependencies -->
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script> 
+<!-- Needed for Menus, Buttons and Overlays used in the Toolbar -->
+<script src="http://yui.yahooapis.com/2.6.0/build/container/container_core-min.js"></script>
+<!-- Source file for Rich Text Editor-->
+<script src="http://yui.yahooapis.com/2.6.0/build/editor/simpleeditor-min.js"></script>
 
-				</ul>
-				<%# form_for :slot, :html => { :id => "blogForm" } do |f| %>
-				<% form_for :slot, @slot, :url => slot_path(@slot), :html => { :id => "blogForm", :method => :put } do |f| %> 
-				  <%= f.error_messages %>
+<div class="main" id="ylf-write">
+	<ul class="links cls">
+		<li class="first"><a href="/manage/">Manage My Slots</a></li>
+		<li><a href="/">View My Slots</a></li>
 
-				<% form_for :slot, :url => slots_path, :html => { :id => "blogForm" }  do |f| -%>
-					<%= render :partial => "form", :object => f %>
-					<!-- </form> -->
+	</ul>
+	
+	<% form_for :slot, :url => slots_path, :html => { :id => "blogForm" }  do |f| -%>
+	<%= render :partial => "form", :object => f %>
+				<!-- </form> -->
 				<% end %>
-			</div>
+</div>
 
-			<% content_for(:sidebar) do %>
-				<%= render :partial => 'sidebar_new_or_edit' %>
-			<% end %>		
+<% content_for(:sidebar) do %>
+
+	<%= render :partial => 'sidebar_new_or_edit' %>
+<% end %>		
+

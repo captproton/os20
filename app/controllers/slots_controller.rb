@@ -1,5 +1,5 @@
 class SlotsController < ApplicationController
-    @protected_actions  = [  :edit, :update, :destroy ]
+    @protected_actions  = [  :update, :destroy ]
     @managable_actions     =  [ :index ]
     before_filter :login_required, :except => :feed
     before_filter :check_auth, :only => @protected_actions
@@ -62,9 +62,6 @@ class SlotsController < ApplicationController
     def edit
       @page_title = 'Edit a Slot Entry'
       @slot = current_user.slots.find(params[:id])
-      @version   = params[:version] ? @slot.find_version(params[:version]) : @slot or raise(ActiveRecord::RecordNotFound)
-      @published = @version.published?
-      @version.published_at = (@version.published_at || Time.now.utc)
     end
 
     def create

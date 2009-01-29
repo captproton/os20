@@ -6,8 +6,15 @@ module SlotsHelper
       @stylesheets = ['skin', 'base', 'manage', 'uh-1.1.3'] if controller.action_name  == "new" || controller.action_name  == "edit"
           
       @stylesheets = ['base', 'manage', 'uh-1.1.3']  if controller.action_name  == "manage"     
+  end
+  
+  def palooza_javascripts
+    @javascripts = ['http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js', 'http://us.js2.yimg.com/us.js.yimg.com/lib/rt/rto1_78.js'] if controller.action_name  == "index" || controller.action_name  ==  "show"
     
-
+    @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js'] if controller.action_name  == "new" || controller.action_name  == "edit"
+        
+    @javascripts = ['base', 'manage', 'uh-1.1.3']  if controller.action_name  == "manage"     
+        
   end
   def page_title 
   @page_title || "Our Slots" 

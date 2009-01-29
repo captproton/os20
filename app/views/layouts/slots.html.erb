@@ -7,7 +7,10 @@
 		</title>
 		<meta name="keywords" lang="en" content="diet, nutrition, fitness, wellness, aging, Array, Array">
 		<meta name="description" lang="en" content="A blog and online community that offers women tips and advice on living a healthier life, eating better, exercise, staying well, and keeping their families healthy.">
-		<meta http-equiv="content-type" content="text/html; charset=utf-8"><% palooza_style %><%= stylesheet_link_tag(*@stylesheets) if @stylesheets %><%= javascript_include_tag(*@javascripts) if @javascripts %>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<% palooza_style %>
+		<%= stylesheet_link_tag(*@stylesheets) if @stylesheets %>
+		<%= javascript_include_tag(*@javascripts) if @javascripts %>
 		<link rel="alternate" type="application/rss+xml" title="Healthy Living | on Shine" href="http://shine.yahoo.com/rss/blog/channel/health/">
 		<link type="text/css" rel="stylesheet" href="http://l.yimg.com/a/lib/uh/css/uh-1.1.3.css">
 		<style type="text/css">
@@ -89,5 +92,7 @@ if(window.yzq_d==null)window.yzq_d=new Object();
 		</div>
 		<%# render :partial => "super_footer" main_column_class_id = 'class="doc cls"'  if controller.action_name  == "index" ||  controller.action_name  == "show"   rendered after content channels are figured out with more content %>
 		<%= render :partial => "/shared/foot" %>
+		<%= yield :javascript_tail %>
+	    
 	</body>
 </html>
