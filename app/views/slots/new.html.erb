@@ -12,7 +12,7 @@
 			<% form_for :slot, :url => slots_path, :html => { :id => "blogForm" }  do |f| -%>
 			<%= render :partial => "form", :object => f %>
 						<!-- </form> -->
-						<% end %>
+			<% end %>
 			<p>================</p>
 
 			<% form_for :slot, :url => slots_path, :html => { :id => "blogForm" }  do |f| -%>
@@ -221,7 +221,9 @@
 		<noscript>
 			<img width=1 height=1 alt="" src="http://us.bc.yahoo.com/b?P=3FX4HGKIKqhcbnXdSUWfng3OYmBoZkmAnOwADSRO&T=1421nctp8%2fX%3d1233165549%2fE%3d967143184%2fR%3dyliving%2fK%3d5%2fV%3d2.1%2fW%3dH%2fY%3dYAHOO%2fF%3d3447701283%2fQ%3d-1%2fS%3d1%2fJ%3dCBABA342&U=13go8j7l5%2fN%3dM6K3Adj8ek4-%2fC%3d289534.12425434.12800114.12044330%2fD%3dFOOT%2fB%3d5279471%2fV%3d1">
 		</noscript>
-	
+		
+		<%= javascript_include_tag('write') %>
+		
 		<script type="text/javascript" charset="UTF-8" src="http://l.yimg.com/jn/js/20090128045025/write.js"></script>
 	
 		<!-- finish javascript tail -->
