@@ -1,5 +1,5 @@
 class SlotsController < ApplicationController
-    @protected_actions  = [  :update, :destroy ]
+    @protected_actions  = [ :destroy ]
     @managable_actions     =  [ :index ]
     before_filter :login_required, :except => :feed
     before_filter :check_auth, :only => @protected_actions
@@ -8,7 +8,6 @@ class SlotsController < ApplicationController
     def index
       @side = "show"
       @body_class="ylf-home"
-      @method = 'index'
       @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
       
       @doc_id = 'ylf-blog-mgr'
@@ -18,6 +17,8 @@ class SlotsController < ApplicationController
       @slots = Slot.search(params[:search])
       ## @comments = @site.unapproved_comments.count :all, :group => :slot, :order => '1 desc'
       ## @sections = site.sections.find(:all)
+      @remark = Remark.new
+      
     end
 
     def show
@@ -42,20 +43,14 @@ class SlotsController < ApplicationController
     end
 
     def new
-      @side = "new"
+      @slot = Slot.new
+      
+      ## render(:layout => false) # never use a layout
       @body_class = "yui-skin-sam write js"
-      @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
-      @method = 'new'
-      @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
       @page_title = 'Compose a New Slot Entry'
       @doc_class = "doc cls"
 
       
-
-      respond_to do |format|
-        format.html # new.html.erb
-        format.xml  { render :xml => @slot }
-      end
       
     end
 
@@ -101,6 +96,7 @@ class SlotsController < ApplicationController
           prevent_access(e)
     end
 
+
     def destroy
       @slot = current_user.slots.find(params[:id])
       @slot.destroy
@@ -144,6 +140,7 @@ class SlotsController < ApplicationController
           format.xml  { render :text => "error" }
         end
       end
+      
       
       def managed_action
         # changes layout for new, edit, and search

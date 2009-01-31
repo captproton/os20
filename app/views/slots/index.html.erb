@@ -3,14 +3,16 @@
 			
 <div id="ylf-hdrbar" class="cls">
 
-	<h1>Fashion + Beauty</h1>
+	<h1>Shine Opportunities</h1>
 	
-	<p>Tuesday, January 27, 2009</p>
+	<p><%= d = Date.today;d.strftime("%A, %B %d, %Y" ) %></p>
 	
 	<ul class="feeds cls"><li class="first"><a href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Fshine.yahoo.com%2Frss%2Fblog%2Fchannel%2Fbeauty%2F" class="myyahoo" title="My Yahoo!"><span><!-- --></span>Add to My Yahoo!</a></li><li><a href="http://shine.yahoo.com/rss/blog/channel/beauty/" class="rss" title="RSS"><span><!-- --></span>RSS</a></li></ul>
 
 </div>
-<div id="ylf-all-filter">editor’s picks | <a href="/channel/beauty/all/">raw feed</a></div>
+
+<!-- editor's pics backend needs work 
+	<div id="ylf-all-filter">editor’s picks | <a href="/channel/beauty/all/">raw feed</a></div>
 
 			
 <div class="mod feature cls">
@@ -45,10 +47,22 @@
 	
 	</ul>
 </div>
+-->
 
 			
 <div id="ylf-ch-idx1" class="posts first">
 	<ul>
+		<% if !@slots.blank? %>
+		  <% for slot in @slots %>
+		    <%= render :partial => "slot_summary", :collection => @slots %>
+			
+		  <% end %>
+		<% else %>
+		  <li>
+		  	no slots listed
+		  </li>
+		<% end %>
+		
 			<li class="post">
 		<div class="post-title cls"><h2><a href="/channel/beauty/12-questions-for-quot-mad-men-quot-costume-designer-janie-bryant-359044/">12 Questions For "Mad Men" Costume Designer Janie Bryant</a></h2></div>
 		<div class="author cls"><a href="/blog/a_mdRq26yWZH3tR5VZb.h9e5KgqL_tjevjYHT/"><img src="http://l.yimg.com/jn/images/20090123141053/lz.png" alt="Slaves to Fashion, Glamour Magazine's Avatar" class="lz" height="32" width="32"></a> <p class="badge partner"><span>partner</span></p> <cite>By <a href="/blog/a_mdRq26yWZH3tR5VZb.h9e5KgqL_tjevjYHT/">Slaves to Fashion, Glamour Magazine</a>, <span class="rel-time" title="Tue Jan 27, 2009 9:00am PST">2 hours 15 minutes ago</span></cite></div>
@@ -128,6 +142,16 @@ The whole thing just felt so...antiquated.</p> <a href="/channel/beauty/beauty-p
 			
 <div id="ylf-ch-idx2" class="posts">
 	<ul>
+		<% if !@slots.blank? %>
+		  <% for slot in @slots %>
+		    <li><%= slot.title %></li>
+		  <% end %>
+		<% else %>
+		  <li>
+		  	no slots listed
+		  </li>
+		<% end %>
+		
 			<li class="post">
 		<div class="post-title cls"><h2><a href="/channel/beauty/q-i-like-to-try-lots-of-different-skin-care-regimes-can-one-cancel-out-another-358979/">Q: I like to try lots of different skin-care regimes. Can one cancel out another?</a></h2></div>
 		<div class="author cls"><a href="/blog/arHOTidulbv3H9Usqa5lLkNf_qD2B/"><img src="http://l.yimg.com/jn/images/20090123141053/lz.png" alt="Self Magazine's Avatar" class="lz" height="32" width="32"></a> <p class="badge partner"><span>partner</span></p> <cite>By <a href="/blog/arHOTidulbv3H9Usqa5lLkNf_qD2B/">Self Magazine</a>, <span class="rel-time" title="Tue Jan 27, 2009 7:30am PST">3 hours 44 minutes ago</span></cite></div>
@@ -172,7 +196,8 @@ theme we saw in the celebrity photo gallery.&nbsp; The first one... <a href="/ev
 		<p class="related"><strong>Related:</strong> <a href="/topic/dress+for+less/">dress for less</a>, <a href="/topic/click-to-buy/">click-to-buy</a></p>
 		<div class="tools"><ul class="cls"><li class="cmts"><span class="icon"><!-- --></span><span>Let’s talk:</span> <a href="/event/the-thread/celeb-trend-of-the-week-two-toned-dresses-and-options-you-can-buy-for-less-357758/#comments" class="cmt-lnk">Comment (1)</a> | <a href="/write/">Blog</a></li><li class="email"><span class="icon"><!-- --></span><a href="/email-to-friend?id=357758&amp;title=Celeb+trend+of+the+week%3A+Two-toned+dresses+%28and+options+you+can+buy+for+less%29&amp;channel=beauty&amp;event=">Email to a Friend</a></li></ul></div>
 		
-	</li>	<li class="post">
+	</li>	
+	<li class="post">
 		<div class="post-title cls"><h2><a href="/event/the-thread/click-to-buy-budget-friendly-accessories-that-can-change-your-look-354923/">Click-to-buy: Budget-friendly accessories that can change your look</a></h2></div>
 		<div class="author cls"><a href="/blog/alkiRws2NR_DsvSQQCEBcjrju_0nk3df./"><img src="http://l.yimg.com/jn/images/20090123141053/lz.png" alt="Sarah Bernard, Host of The Thread's Avatar" class="lz" height="32" width="32"></a> <p class="badge editor"><span>editor</span></p> <cite>By <a href="/blog/alkiRws2NR_DsvSQQCEBcjrju_0nk3df./">Sarah Bernard, Host of The Thread</a>, on Tue Jan 20, 2009 4:45pm PST</cite></div>
 		
@@ -182,7 +207,7 @@ already have in my closet with budget-friendly accessories. In this
 episode we highlight FOUR super chic and trendy accessories that
 can change your look and not break your bank.<br>
 <br>
-<embed type="application/x-shockwave-flash" allowscriptaccess="never" src="http://d.yimg.com/static.video.yahoo.com/yep/YV_YEP.swf?ver=2.2.7.1" flashvars="id=11650774&amp;vid=4338763〈=en-us&amp;intl=us&amp;thumbUrl=http://l.yimg.com/a/i/us/shine/fashion/intro_kate_beckinsale_ep45.jpg&amp;embed=0&amp;autoPlay=1&amp;relatedByPublisher=1" bgcolor="#000000" height="358" width="576"><br> <a href="/event/the-thread/click-to-buy-budget-friendly-accessories-that-can-change-your-look-354923/" class="more">Read More »</a></p>
+	<br> <a href="/event/the-thread/click-to-buy-budget-friendly-accessories-that-can-change-your-look-354923/" class="more">Read More »</a></p>
 			<div class="clrie6"><!-- --></div>
 		</div>
 		<p class="related"><strong>Related:</strong> <a href="/topic/accessories/">accessories</a></p>

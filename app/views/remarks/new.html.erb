@@ -3,13 +3,7 @@
 <% form_for [@remarkable, @remark] do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
 
-	<%= f.hidden_field :remarkable_id, :value => @remarkable.id %>
-	<%= f.hidden_field :remarkable_type, :value => @remarkable.class %>
-</p>
   <p>
     <%= f.label :body %><br />
     <%= f.text_area :body %>
@@ -20,3 +14,25 @@
 <% end %>
 
 <%= link_to 'Back', slot_remarks_path(@remarkable) %>
+
+<h1>Listing remarks</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+  </tr>
+
+<% for remark in @remarks %>
+  <tr>
+    <td><%=h remark.title %></td>
+    <td><%=h remark.body %></td>
+    <td><%= link_to 'Show', slot_remark_path(@remarkable, remark) %></td>
+    <td><%= link_to 'Edit', edit_slot_remark_path(@remarkable, remark) %></td>
+    <td><%= link_to 'Destroy', remark, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

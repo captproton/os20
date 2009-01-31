@@ -2,6 +2,8 @@ class RemarksController < ApplicationController
   # GET /remarks
   # GET /remarks.xml
   before_filter :get_remarkable
+  ## before_filter :use_slot_layout
+  
 
   def index
     @remarks = Remark.find(:all)
@@ -28,6 +30,9 @@ class RemarksController < ApplicationController
   # GET /remarks/new.xml
   def new
     @remark = Remark.new
+    @remarks = Remark.find_remarks_for_remarkable("Slot", @remarkable.id)
+    
+    
     ## @remark.user_id = current_user
 
     respond_to do |format|
@@ -46,8 +51,9 @@ class RemarksController < ApplicationController
   def create
     @remark = current_user.remarks.build(params[:remark])
     @remark.user_id = current_user
-    ## @remark.remarkable_type = "Slot"
-    @remark.remarkable_id = @remarkable.id
+    @remark.remarkable_id = (params[:slot_id])
+    @remark.remarkable_type = "Slot"
+
     respond_to do |format|
       if @remark.save
         flash[:notice] = 'Remark was successfully created.'
@@ -97,6 +103,11 @@ end
 def load_slot
   @slot ||=  Slot.find(params[:slot_id])  
 end
+
+def use_slot_layout 
+render(:layout => "/layouts/slots") 
+end 
+
 
 def prevent_access(e)
   logger.info "SlotsController#prevent_access: #{e}"

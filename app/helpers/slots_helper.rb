@@ -44,6 +44,11 @@ module SlotsHelper
     return main_column_class_id 
   end
   
+  def remarks_count(parent_model, parent_id)
+    r_count = Remark.find_remarks_for_remarkable(parent_model, parent_id)
+    return r_count
+  end
+  
   def sidebar
     unless @doc_id == 'ylf-blog-mgr'
         render :partial => '/shared/side_for_' + @side

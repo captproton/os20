@@ -25,13 +25,14 @@
 						</ul>
 						<ul>
 							<li>
-								<a href="#postcomment" class="cmt-lnk">Post a Comment</a>
+								 <%= link_to "Post a Comment",       new_slot_remark_path(@slot), :class => "cmt-lnk" %>
 							</li><!-- <li class="last"><a href="/">Report Abuse</a></li> Enable after plugin installed -->
 						</ul>
 					</div>
 				</div>
 				<div class="post-body cls">
-					<%= @slot.body %>
+					<%= simple_format(@slot.body) %>
+
 				</div>
 				<p class="related">
 					<strong>Related:</strong> <% if !@slot.topic_list.blank? %> <% for item in @slot.topic_list %> <% @tag = Tag.find_by_name(item) %> <%= link_to item, topic_path(@tag.id) %> <% end %> <% else %> none <% end %>
@@ -40,7 +41,7 @@
 			<div class="tools">
 				<ul class="cls">
 					<li class="cmts">
-						<span class="icon"><!-- --></span> <span>Let’s talk:</span> <%= link_to "Comment " + @remarks.size.to_s,       new_slot_remark_path(@slot), :class => "cmt-lnk" %> <a href="#comments" class="cmt-lnk">Comment (<%= @remarks.size %>)</a> <!-- | spacer here --> <%# link_to "Blog", user_path(current_user) ##Consider after user blog section is built%>
+						<span class="icon"><!-- --></span> <span>Let’s talk:</span> <%= link_to "Comment (" + @remarks.size.to_s + ")",       new_slot_remark_path(@slot), :class => "cmt-lnk" %> <!-- <a href="#comments" class="cmt-lnk">Comment (<%= @remarks.size %>)</a> --> <!-- | spacer here --> <%# link_to "Blog", user_path(current_user) ##Consider after user blog section is built%>
 					</li><%# <li class="email">
 											<span class="icon"><!-- --></span>
 											<a href="/email-to-friend?id=335584&amp;title=The+goose+is+getting+fat.&amp;channel=none&amp;event=">Email to a Friend</a>
@@ -80,7 +81,7 @@
 							<cite>Posted by <a href="/"><span class="author"><%= remark_login %></span></a> <span class="rel-time" title="<%= remark.updated_at %>"><%= time_ago_in_words(remark.updated_at) %> ago</span></cite>
 							<blockquote>
 								<p>
-									<%= remark.body %>
+									<%= simple_format(h remark.body) %>
 								</p>
 							</blockquote><!-- <a href="/" class="abuse">Report Abuse</a> -->
 						</div>
@@ -99,7 +100,7 @@
 				<div class="tools">
 					<ul class="cls">
 						<li class="cmts">
-							<span class="icon"><!-- --></span> <span>Let’s talk:</span> <%= link_to "Comment " + @remarks.size.to_s,       new_slot_remark_path(@slot), :class => "cmt-lnk" %> <!-- | spacer here --> <%# link_to "Blog", user_path(current_user) ##Consider after user blog section is built%>
+							<span class="icon"><!-- --></span> <span>Let’s talk:</span> <%= link_to "Comment (" + @remarks.size.to_s + ")",       new_slot_remark_path(@slot), :class => "cmt-lnk" %> <!-- | spacer here --> <%# link_to "Blog", user_path(current_user) ##Consider after user blog section is built%>
 						</li><%# <li class="email">
 											<span class="icon"><!-- --></span>
 											<a href="/email-to-friend?id=335584&amp;title=The+goose+is+getting+fat.&amp;channel=none&amp;event=">Email to a Friend</a>

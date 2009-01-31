@@ -1,4 +1,3 @@
-			<% form_for :slot, :url => slots_path, :html => { :id => "blogForm" }  do |f| -%>
 			
 			<div id="composeBlog">
 						<h1><%= page_title %></h1>
@@ -7,14 +6,14 @@
 
 	
 	<label for="title"><span class="required">*</span> Title</label>
-	<%= f.text_field :title, :size => 75, :maxlength => 254, :id => "blog_title", :class => "" %>
+	<%= form.text_field :title, :size => 75, :maxlength => 254 %>
 	
 	
 	<label for="blog_text"><span class="required">*</span> Content</label>
 	<div id="editorCont" class="">
 		<div id="rteModeLink"><a href="#" id="rteMode" class="rteOnSelect off">Visual</a> <a href="#" id="htmlMode" class="off">HTML</a></div> 
 
-		<%= f.text_area :body, :rows => 20, :cols => 80, :id => "editor", :name => "slot[body]" %>
+		<%= form.text_area :body, :rows => 20, :cols => 80 %>
 		
 	</div>
 	<div id="slideShow">
@@ -69,17 +68,18 @@
 	
 	<h2><span>2.</span> Options</h2>
 	<div class="tags">
-		<label for="tags">Tags</label>
-		<input type="text" name="tags" size="78" value="dad@home" id="blog_tags">
+<!--		<label for="tags">Tags</label>
+		<%# form.text_field :tags, :size => 78, :maxlength => 254 %>
 		<p>To enter multiple tags, separate them with commas.</p>
-	</div>
+-->	</div>
 	<a href="#adv_opt_dis" id="adv_opt">Show More Options &raquo;</a>
 	<div id="adv_opt_dis">
 		
 		
 		<label for="excerpt">Excerpt</label>
 		<a href="#" id="adv_opt_copy">Copy Content</a>
-		<textarea name="excerpt" id="excerpt" rows="5" cols="80"></textarea>
+		<%= form.text_area :excerpt, :rows => 5, :columns => 80 %>
+		<!-- textarea name="excerpt" id="excerpt" rows="5" cols="80"></textarea> -->
 		<p>Enter the content you would like to display as a preview of your post.</p>
 	</div><div id="yIdPhotoChooser" style="visibility: hidden; " class="yIdDialogs">
   <div class="hd">
@@ -158,5 +158,4 @@
 				</div>
 				<p class="blogInstructions">Your blog post will be displayed publicly along with your display image and nickname. You may edit or delete your post by visiting &ldquo;Manage My Blog&rdquo;.</p>
 				<p class="blogInstructions">Your post may take up to five minutes to display.</p>
-			<!-- </form> -->
-			<% end %>
+
