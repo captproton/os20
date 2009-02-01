@@ -78,7 +78,7 @@
 					<li>
 						<a href="" class="img"><img width="32" height="32" src="/images/userIconBig.gif" alt="<%= remark_login %>'s Avatar" class="lz"></a>
 						<div class="txt">
-							<cite>Posted by <a href="/"><span class="author"><%= remark_login %></span></a> <span class="rel-time" title="<%= remark.updated_at %>"><%= time_ago_in_words(remark.updated_at) %> ago</span></cite>
+							<cite>Posted by <a href="/"><span class="author"><%= remark.user.login %></span></a> <span class="rel-time" title="<%= remark.updated_at %>"><%= time_ago_in_words(remark.updated_at) %> ago</span></cite>
 							<blockquote>
 								<p>
 									<%= simple_format(h remark.body) %>
@@ -109,6 +109,26 @@
 										</li> ## Enable after print css written.%>
 					</ul>
 				</div>
+							<div id="cmt-form" class="cls">
+					<h3 id="postcomment">leave your comment</h3>
+					<% form_for [@slot, @remark] do |f| %>
+
+					    <%= f.text_area :body, :rows => 7, :id => "content" %>
+						<div class="ft">
+
+										<div class="cid cid-name">
+							<p>You will be seen as: <img id="avatar" class="avatar" src="/images/userIconBig.gif" alt="Your avatar" height="24" width="24"/> <strong id="nickName"><%= current_user.login %></strong></p>
+						</div>
+
+							<button type="submit">Post Comment</button>
+						</div>
+					<%# </form> %>
+					<% end %>
+
+
+						<p class="disclaimer">The information you provide on this page will be displayed publicly along with your display image and nickname.</p>
+				</div>
+				
 				<div class="line">
 					<!-- -->
 				</div>

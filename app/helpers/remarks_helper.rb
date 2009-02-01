@@ -16,7 +16,7 @@ module RemarksHelper
         
   end
   def page_title 
-  @page_title || "Our Slots" 
+  @page_title || "Remarks" 
   end 
   
   def body_class_and_id
@@ -30,7 +30,7 @@ module RemarksHelper
     body_class_id = 'class="js"' if controller.action_name  == "manage" 
     body_class_id = 'id="ylf-blog-index" class="posts-index js"' if controller.action_name  == "index" 
     body_class_id = 'id="ylf-ch-none" class="js"'  if controller.action_name  == "show" 
-    body_class_id = 'class="yui-skin-sam write js"'  if controller.action_name  == "new" ||  controller.action_name  == "edit" 
+    body_class_id = 'id="ylf-ch-none" class="js"'  if controller.action_name  == "new" ||  controller.action_name  == "edit" 
     return body_class_id 
   end
   

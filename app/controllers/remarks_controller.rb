@@ -31,6 +31,7 @@ class RemarksController < ApplicationController
   def new
     @remark = Remark.new
     @remarks = Remark.find_remarks_for_remarkable("Slot", @remarkable.id)
+    render(:layout => "layouts/slots")
     
     
     ## @remark.user_id = current_user
@@ -50,7 +51,7 @@ class RemarksController < ApplicationController
   # POST /remarks.xml
   def create
     @remark = current_user.remarks.build(params[:remark])
-    @remark.user_id = current_user
+    @remark.user_id = current_user.id
     @remark.remarkable_id = (params[:slot_id])
     @remark.remarkable_type = "Slot"
 
