@@ -1,38 +1,62 @@
-<h1>New remark</h1>
+<div id="ylf-cmnts" class="mod line">
+      	<h2 id="comments">From the Community&hellip;</h2>    	<div class="spgnav cls">
+    		<div class="count">Comments 1-10 of 37 </div>
 
-<% form_for [@remarkable, @remark] do |f| %>
-  <%= f.error_messages %>
+    		<ul>
+	
+				<li class="first"><span>First</span></li>
+				<li class="prev"><span>&laquo; Prev</span></li>
+				<li class="next">
+					<a href="/channel/beauty/are-these-women-quot-hot-quot-361074/;_ylt=AgYigPalN.lQa6W7hvXIUCJpbqU5?pg=2#comments" >Next &raquo;</a></li>
+				<li class="last">
+					<a href="/channel/beauty/are-these-women-quot-hot-quot-361074/;_ylt=Aj9VZJWplTmsHbasN2fpzoJpbqU5?pg=4#comments" >Last</a>
+				</li>
+			</ul>
+    	</div>
+		<ul class="thumbs">      		
+			<% for remark in @remarks %>
+  		
+			<li>
+      			<a href="/blog/aQoqC39iqcZBYkuY_tuqvNaAoI.KSJG47jsdn/;_ylt=Apz7EhSWpTJGD1NMsssBuQRpbqU5" class="img"><img width="32" height="32" src="http://l.yimg.com/jn/images/20090129191543/lz.png" alt="<%= remark.user.login %>'s Avatar" class="lz" /></a>
+
+      			<div class="txt">
+      				<cite>Posted by <%= link_to remark.user.login, user_path(remark.user.login) %>   <%= d = Date.today;d.strftime("%A, %B %d, %Y" ) %></cite>
+      				<blockquote>
+						<%=  simple_format(h remark.body) %>
+      				</blockquote>
+      				<%# Uncomment after plugin is installed: <a href="http://us.lrd.yahoo.com/_ylt=Al01njZzYCsOMI.lJcwY0OVpbqU5/SIG=13mo7iljp/**http%3A//help.yahoo.com/l/us/yahoo/shine/abuse.html%3Feaci=aQoqC39iqcZBYkuY_tuqvNaAoI.KSJG47jsdn%26commentid=943513" class="abuse">Report Abuse</a> %>
+      			</div>
+      		</li> 
+     		<% end %>
+
+</ul>    	<div class="spgnav cls">
+    		<div class="count">Comments 1-10 of 37 </div>
+    		<ul>
+				<li class="first"><span>First</span></li><li class="prev"><span>&laquo; Prev</span></li>
+				<li class="next"><a href="/channel/beauty/are-these-women-quot-hot-quot-361074/;_ylt=Aq6_gmmPxF0nvtVJ5n55TDFpbqU5?pg=2#comments" >Next &raquo;</a></li>
+				<li class="last"><a href="/channel/beauty/are-these-women-quot-hot-quot-361074/;_ylt=AsvAIknsTuI933PpFOU54zZpbqU5?pg=4#comments" >Last</a></li>
+			</ul>
+
+    	</div></div> 
+			<div id="cmt-form" class="cls">
+	<h3 id="postcomment">leave your comment</h3>
+	<% form_for [@remarkable, @remark] do |f| %>
+
+	    <%= f.text_area :body, :rows => 7, :id => "content" %>
+		<div class="ft">
+
+						<div class="cid cid-name">
+			<p>You will be seen as: <img id="avatar" class="avatar" src="/images/userIconBig.gif" alt="Your avatar" height="24" width="24"/> <strong id="nickName"><%= current_user.login %></strong></p>
+		</div>
+
+			<button type="submit">Post Comment</button>
+		</div>
+	<%# </form> %>
+	<% end %>
+	
+		
+		<p class="disclaimer">The information you provide on this page will be displayed publicly along with your display image and nickname.</p>
+</div>
 
 
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', slot_remarks_path(@remarkable) %>
-
-<h1>Listing remarks</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-  </tr>
-
-<% for remark in @remarks %>
-  <tr>
-    <td><%=h remark.title %></td>
-    <td><%=h remark.body %></td>
-    <td><%= link_to 'Show', slot_remark_path(@remarkable, remark) %></td>
-    <td><%= link_to 'Edit', edit_slot_remark_path(@remarkable, remark) %></td>
-    <td><%= link_to 'Destroy', remark, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
 
