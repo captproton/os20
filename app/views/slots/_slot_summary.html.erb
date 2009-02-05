@@ -17,7 +17,7 @@
 		
 		<div class="tools">
 			<ul class="cls">
-				<li class="cmts"><span class="icon"><!-- --></span><span>Let’s talk:</span> <%= link_to "Comment (" + remarks_count("Slot", slot_summary.id).size.to_s + ")",       new_slot_remark_path(slot_summary), :class => "cmt-lnk" %>
+				<li class="cmts"><span class="icon"><!-- --></span><span>Let’s talk:</span> <%= link_to "Comment (" + remarks_count("Slot", slot_summary.id).size.to_s + ")",       slot_path(slot_summary, :anchor => "comments"), :class => "cmt-lnk" %>
 				<%#  | <li class="email"><span class="icon"><!-- --></span><a href="/write/">Blog</a></li> ## To be added after all member may blog %>
 					<%# <a href="/email-to-friend?id=358234&amp;title=Red+Carpet+Fashion%3A+The+Best%2C+Worst%2C+and+everything+in+between+at+the+SAG+Awards&amp;channel=beauty&amp;event=">Email to a Friend</a> ## To be added after  %>
 				</li> 
