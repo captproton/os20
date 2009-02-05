@@ -6,7 +6,6 @@ class SlotsController < ApplicationController
     ## before_filter :managed_action, :only => @managable_actions
 
     def index
-      @side = "show"
       @body_class="ylf-home"
       @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
       
@@ -14,10 +13,15 @@ class SlotsController < ApplicationController
       @doc_class = 'doc'
       ## @slots = site.slots.paginate(slot_options(:order => 'contents.published_at DESC', :select => 'contents.*',
       ##                                                 :page => params[:page], :per_page => params[:per_page]))
-      @slots = Slot.search(params[:search])
+      @slots = Slot.search(params[:search]).paginate  :per_page => 5, :page => params[:page],
+                              :order => 'name'
+      #@slots = Slot.paginate  :per_page => 5, :page => params[:page],
+      #                        :conditions => ['name_like ?', "%#{params[:search]}%"],
+      #                        :order => 'name'
+      
       ## @comments = @site.unapproved_comments.count :all, :group => :slot, :order => '1 desc'
       ## @sections = site.sections.find(:all)
-      @remark = Remark.new
+      ## @remark = Remark.new
       
     end
 

@@ -6,7 +6,7 @@
 				<ul class="feeds cls">
 					<!-- Link to be added when backpack is designed <li><a href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Fshine.yahoo.com%2Frss%2Fblog%2Fchannel%2Fnone%2F" class="myyahoo" title="My Favorites"><span></span>Add to My favorites!</a></li> -->
 					<li>
-						<a href="http://shine.yahoo.com/rss/blog/channel/none/" class="rss" title="RSS"><span><!-- --></span>RSS</a>
+						<!-- <a href="http://shine.yahoo.com/rss/blog/channel/none/" class="rss" title="RSS"><span></span>RSS</a> -->
 					</li>
 				</ul>
 			</div>
@@ -24,9 +24,8 @@
 							</li>
 						</ul>
 						<ul>
-							<li>
-								 <%= link_to "Post a Comment",       new_slot_remark_path(@slot), :class => "cmt-lnk" %>
-							</li><!-- <li class="last"><a href="/">Report Abuse</a></li> Enable after plugin installed -->
+								 <li><a href="#postcomment" class="cmt-lnk">Post a Comment</a></li>
+								<!-- <li class="last"><a href="/">Report Abuse</a></li> Enable after plugin installed -->
 						</ul>
 					</div>
 				</div>
@@ -41,7 +40,7 @@
 			<div class="tools">
 				<ul class="cls">
 					<li class="cmts">
-						<span class="icon"><!-- --></span> <span>Let’s talk:</span> <%= link_to "Comment (" + @remarks.size.to_s + ")",       new_slot_remark_path(@slot), :class => "cmt-lnk" %> <!-- <a href="#comments" class="cmt-lnk">Comment (<%= @remarks.size %>)</a> --> <!-- | spacer here --> <%# link_to "Blog", user_path(current_user) ##Consider after user blog section is built%>
+						<span class="icon"><!-- --></span> <span>Let’s talk:</span> <%= link_to "Comment (" + @remarks.size.to_s + ")",       "#comments", :class => "cmt-lnk" %>  <!-- | spacer here --> <%# link_to "Blog", user_path(current_user) ##Consider after user blog section is built%>
 					</li><%# <li class="email">
 											<span class="icon"><!-- --></span>
 											<a href="/email-to-friend?id=335584&amp;title=The+goose+is+getting+fat.&amp;channel=none&amp;event=">Email to a Friend</a>
@@ -66,7 +65,7 @@
 			</div>
 			<div id="ylf-cmnts" class="mod">
 				<h2 id="comments">
-					From the Community…
+					From the Community&hellip;
 				</h2>
 				<div class="spgnav cls">
 					<div class="count">
@@ -74,9 +73,9 @@
 					</div>
 				</div>
 				<ul class="thumbs">
-					<% if !@remarks.blank? %><% for remark in @remarks %><% remark_user_id = 2 %><% remark_login = User.find(remark_user_id).login %>
+					<% if !@remarks.blank? %><% for remark in @remarks %>
 					<li>
-						<a href="" class="img"><img width="32" height="32" src="/images/userIconBig.gif" alt="<%= remark_login %>'s Avatar" class="lz"></a>
+						<a href="" class="img"><img width="32" height="32" src="/images/userIconBig.gif" alt="<%= remark.user.login %>'s Avatar" class="lz"></a>
 						<div class="txt">
 							<cite>Posted by <a href="/"><span class="author"><%= remark.user.login %></span></a> <span class="rel-time" title="<%= remark.updated_at %>"><%= time_ago_in_words(remark.updated_at) %> ago</span></cite>
 							<blockquote>

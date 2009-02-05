@@ -1,0 +1,63 @@
+SearchableBy
+============
+
+This simple plugin will create for you a named scope which you can use
+for a quick search. You can specify which fields and how should be searched
+
+Installation
+============
+
+Inside your rails application root, run
+
+git submodule add git://github.com/MadRabbit/searchable_by.git vendor/plugins/searchable_by
+git submodule init
+
+
+Example
+=======
+
+This will return you all the users which login or email is like '%asdf%'
+
+class User < ActiveRecord::Base
+  searchable_by :login, :email
+end
+
+User.like('asdf').all 
+
+By default if you don't specify anything but feild-names all of them will
+be matched by the " LIKE '%serach%' rule.
+
+
+But you can specify some additional matching logic
+
+class Book < ActiveRecord::Base
+  searchable_by :title => :like,     # for LIKE '%?%' search (caseinsensitive)
+                :url   => :begin     # for LIKE '?%'  search (caseinsensitive)
+                :kind  => :end,      # for LIKE '%?'  search (caseinsensitive)
+                :hash  => :exact,    # for exact case sensitive match
+                :ISBN  => :exact_i   # for exact case insensitive match
+                
+end
+
+You can specify additional parameters for your named scope by passing an
+options hash to the end of the arguments list. Like that
+
+class User < ActiveRecord::Base
+  belongs_to :role
+  
+  searchable_by {:login => :like, 'roles.name' => :exact}, {
+    :include => :role, :order => 'users.login'
+  }
+end
+
+By default the name of the named scope will be 'like', but you can specify
+any name you want in the options hash.
+
+class Dog < ActiveRecord::Base
+  searchable_by :breed, :method_name => 'with_breed'
+end
+
+Dog.with_breed('Pitbull')
+
+
+Copyright (c) 2008 [Nikolay V. Nemshilov], released under the MIT license

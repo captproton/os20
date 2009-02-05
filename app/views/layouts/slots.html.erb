@@ -12,7 +12,7 @@
 		<%= stylesheet_link_tag(*@stylesheets) if @stylesheets %>
 		<%= javascript_include_tag(*@javascripts) if @javascripts %>
 		<link rel="alternate" type="application/rss+xml" title="Healthy Living | on Shine" href="http://shine.yahoo.com/rss/blog/channel/health/">
-		<link type="text/css" rel="stylesheet" href="http://l.yimg.com/a/lib/uh/css/uh-1.1.3.css">
+		<!-- link type="text/css" rel="stylesheet" href="http://l.yimg.com/a/lib/uh/css/uh-1.1.3.css" -->
 		<style type="text/css">
 #ygma .sprite_bg{background-image:url(http://l.yimg.com/a/i/us/uh/bt2/shine_sprite_v1.gif);}#ygma .bd{background:none;}#ygma{background:none;}#ygma .srch{border-bottom:1px solid #D1D1D1;border-top:1px solid #D1D1D1;}#ygma .srch .srchinner{border-left:1px solid #D1D1D1;border-right:1px solid #D1D1D1;background-position:-0px -173px;background-repeat:repeat-x;}#ygma #ygmatop #ygmauseroptions{background:#FCFCFC;color:#000;}#ygma #ygmatop #ygmauseroptions li{background:#fff;color:#000;border-right:1px solid #B9B9B9;}#ygma #ygmatop #ygmauseroptions li.last-child
 		{
@@ -91,7 +91,7 @@ if(window.yzq_d==null)window.yzq_d=new Object();
 			<%= (sidebar = yield :sidebar) ? sidebar : render(:partial => 'shared/sidebar') unless controller.action_name  == "manage" %>
 		</div>
 		<%# render :partial => "super_footer" main_column_class_id = 'class="doc cls"'  if controller.action_name  == "index" ||  controller.action_name  == "show"   rendered after content channels are figured out with more content %>
-		<%= render :partial => "/shared/foot" %>
+		foot goes here <%= render :partial => "shared/foot" %>
 		<%= yield :javascript_tail %>
 	    
 	</body>

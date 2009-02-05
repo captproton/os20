@@ -107,7 +107,21 @@
 
   /* Blog post comments */
  
-	#ylf-cmnts { padding-bottom:30px; } #ylf-cmnts h2 { margin-bottom:5px; }  #ylf-cmnts .count { float:left; color:#555; } #ylf-cmnts .spgnav ul { float:right; _display:inline; } #ylf-cmnts .spgnav ul li { float:left; _display:inline; padding:0 8px; line-height:1; border-left:1px solid #557F01; } #ylf-cmnts .spgnav ul li.first { padding-left:0; border-left:none; } #ylf-cmnts .spgnav ul li a, #ylf-cmnts .spgnav ul li span { font:normal 93%/1 arial,sans-serif; } #ylf-cmnts .spgnav ul li a { font-weight:bold; }  #ylf-cmnts .thumbs { margin:15px 0; } #ylf-cmnts .thumbs li cite { margin-bottom:5px; } #ylf-cmnts .thumbs li cite .author { color:#2E4863; font-family:arial,sans-serif; } #ylf-cmnts .thumbs li .abuse { font:77% arial,sans-serif; } #ylf-cmnts .thumbs li blockquote { font-size:100%; margin:5px 0; } #ylf-cmnts .thumbs li blockquote p { margin:5px 0 10px; line-height:1.5; }  
+	#ylf-cmnts { padding-bottom:30px; } #ylf-cmnts h2 { margin-bottom:5px; }  
+	#ylf-cmnts .count { float:left; color:#555; } 
+    #ylf-cmnts .spgnav ul { float:right; _display:inline; } 
+    #ylf-cmnts .spgnav ul li { float:left; _display:inline; padding:0 8px; line-height:1; border-left:1px solid #557F01; } 
+  
+    #ylf-cmnts .spgnav ul li.first { padding-left:0; border-left:none; } 
+    #ylf-cmnts .spgnav ul li a, 
+    #ylf-cmnts .spgnav ul li span { font:normal 93%/1 arial,sans-serif; } 
+    #ylf-cmnts .spgnav ul li a { font-weight:bold; }  
+    #ylf-cmnts .thumbs { margin:15px 0; } 
+    #ylf-cmnts .thumbs li cite { margin-bottom:5px; } 
+    #ylf-cmnts .thumbs li cite .author { color:#2E4863; font-family:arial,sans-serif; } 
+    #ylf-cmnts .thumbs li .abuse { font:77% arial,sans-serif; } 
+    #ylf-cmnts .thumbs li blockquote { font-size:100%; margin:5px 0; } 
+    #ylf-cmnts .thumbs li blockquote p { margin:5px 0 10px; line-height:1.5; }  
 
   /* Blog post navigation styles*/
  
@@ -203,13 +217,19 @@
 #cmt-form p.disclaimer { padding:10px 15px 15px; line-height:138.5%; } 
 #cmt-form a { font-family:arial,sans-serif; } 
 #cmt-form h3 { font:174% georgia,serif; margin:0 15px 15px; padding:15px 0 0; } 
-#cmt-form form #new_remark_attributes { margin:0 15px; width:594px; padding:3px; } 
+#cmt-form form  { margin:0 15px; width:594px; padding:3px; } 
+#cmt-form form #content{margin:0 15px;width:594px;padding:3px;}
 #cmt-form .ft { position:relative; padding:15px 15px 0; } 
 #cmt-form .cid { } 
 #cmt-form .cid .avatar { float:left; _display:inline; } 
 #cmt-form .cid-name .avatar { float:none; } 
 #cmt-form .cid label { display:block; margin-bottom:10px; } 
-#cmt-form button { position:absolute; right:25px; top:15px; background:url(http://l.yimg.com/jn/images/20081208112220/navbg-bk.jpg) repeat-x 0 -2877px; cursor:pointer; overflow:hidden; height:23px; padding:0 15px; border:1px solid #9e9278; font:93% georgia,serif; color:#693e20; } #cmt-form .notice { padding:0 15px 15px; } #cmt-form .notice a { font-weight:bold; } #cmt-form .postconfirm { margin:0 15px 15px; 
+#cmt-form button { position:absolute; right:25px; top:15px; background:url(http://l.yimg.com/jn/images/20081208112220/navbg-bk.jpg) repeat-x 0 -2877px; cursor:pointer; overflow:hidden; height:23px; padding:0 15px; border:1px solid #9e9278; font:93% georgia,serif; color:#693e20; } 
+#cmt-form .notice { padding:0 15px 15px; } 
+#cmt-form .notice a { font-weight:bold; } 
+#cmt-form .postconfirm 
+	{ 
+		margin:0 15px 15px; 
 	} 
 	#cmt-form .postconfirm h4 { font-weight:bold; margin-bottom:5px; } 
 	
