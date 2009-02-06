@@ -53,10 +53,8 @@
 <div id="ylf-ch-idx1" class="posts first">
 	<ul>
 		<% if !@slots.blank? %>
-		  <% for slot in @slots %>
 		    <%= render :partial => "slot_summary", :collection => @slots %>
 			
-		  <% end %>
 		<% else %>
 		  <li>
 		  	no slots listed

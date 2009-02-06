@@ -13,8 +13,8 @@ class SlotsController < ApplicationController
       @doc_class = 'doc'
       ## @slots = site.slots.paginate(slot_options(:order => 'contents.published_at DESC', :select => 'contents.*',
       ##                                                 :page => params[:page], :per_page => params[:per_page]))
-      @slots = Slot.search(params[:search]).paginate  :per_page => 5, :page => params[:page],
-                              :order => 'name'
+      @slots = Slot.search(params[:search]).paginate(:per_page => 5, :page => params[:page])
+      ## @slots = Slot.paginate(:page => params[:page], :per_page => 10)
       #@slots = Slot.paginate  :per_page => 5, :page => params[:page],
       #                        :conditions => ['name_like ?', "%#{params[:search]}%"],
       #                        :order => 'name'
@@ -134,7 +134,7 @@ class SlotsController < ApplicationController
     def manage
       @slots = Slot.search(params[:search]) ## manage_slots_path
     end
-    
+
     private
     
       def prevent_access(e)

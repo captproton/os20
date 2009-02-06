@@ -11,6 +11,13 @@ class Slot < ActiveRecord::Base
   searchable_by :title, :body, :excerpt #last minute crunch  -- gotta figure out why it doesn't work with will_paginate
   ## belongs_to :user
  
+ def self.paginated_search(search,page)
+   
+  paginate :per_page => 2,:page => page,
+            :conditions => ['title like ?', "%#{search}%"],
+            :order => 'title'
+ end
+ 
   def new_remark_attributes=(remark_attributes)
     remark_attributes.each do |attributes| 
       remarks.build(attributes) 
