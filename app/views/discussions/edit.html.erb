@@ -1,0 +1,36 @@
+<h1>Editing discussion</h1>
+
+<% form_for(@discussion) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :remark_id %><br />
+    <%= f.text_field :remark_id %>
+  </p>
+  <p>
+    <%= f.label :remarkable_id %><br />
+    <%= f.text_field :remarkable_id %>
+  </p>
+  <p>
+    <%= f.label :commentator_id %><br />
+    <%= f.text_field :commentator_id %>
+  </p>
+  <p>
+    <%= f.label :commentator_type %><br />
+    <%= f.text_field :commentator_type %>
+  </p>
+  <p>
+    <%= f.label :remarkable_type %><br />
+    <%= f.text_field :remarkable_type %>
+  </p>
+  <p>
+    <%= f.label :context %><br />
+    <%= f.text_field :context %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @discussion %> |
+<%= link_to 'Back', discussions_path %>

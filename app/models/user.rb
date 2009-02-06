@@ -21,10 +21,14 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   include AuthenticatedBase
   has_many :assets, :as => :attachable
-  has_many :articles
+  ## has_many :discussions #this model will be used to group user content to one spot, like backpack
+  has_many :remarks
+
   has_many :slots
   
-
+  
+  
+  
   ## outdated with rails 2.1 composed_of :tz, :class_name => 'TZInfo::Timezone', :mapping => %w( time_zone time_zone )  ## in rails 2.1 this will be updated.
   validates_presence_of     :login, :email
   validates_presence_of     :password,                   :if => :password_required?

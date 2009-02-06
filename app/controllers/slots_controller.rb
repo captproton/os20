@@ -1,31 +1,53 @@
 class SlotsController < ApplicationController
+<<<<<<< HEAD:app/controllers/slots_controller.rb
     @protected_actions = [ :edit, :update, :destroy ]
+=======
+    @protected_actions  = [ :destroy ]
+    @managable_actions     =  [ :index ]
+>>>>>>> Slot:app/controllers/slots_controller.rb
     before_filter :login_required, :except => :feed
+<<<<<<< HEAD:app/controllers/slots_controller.rb
     ## before_filter :check_auth, :only => @protected_actions
+=======
+    before_filter :check_auth, :only => @protected_actions
+    ## before_filter :managed_action, :only => @managable_actions
+>>>>>>> Slot:app/controllers/slots_controller.rb
 
     def index
-      @stylesheets = ['base', 'manage', 'uh-1.1.3']
-      @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js']
+      @body_class="ylf-home"
+      @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
+      
       @doc_id = 'ylf-blog-mgr'
       @doc_class = 'doc'
       ## @slots = site.slots.paginate(slot_options(:order => 'contents.published_at DESC', :select => 'contents.*',
       ##                                                 :page => params[:page], :per_page => params[:per_page]))
-      @slots = Slot.search(params[:search])
+      @slots = Slot.search(params[:search]).paginate(:per_page => 5, :page => params[:page])
+      ## @slots = Slot.paginate(:page => params[:page], :per_page => 10)
+      #@slots = Slot.paginate  :per_page => 5, :page => params[:page],
+      #                        :conditions => ['name_like ?', "%#{params[:search]}%"],
+      #                        :order => 'name'
+      
       ## @comments = @site.unapproved_comments.count :all, :group => :slot, :order => '1 desc'
       ## @sections = site.sections.find(:all)
+      ## @remark = Remark.new
+      
     end
 
     def show
       # this is an autotest
+      
       @side = "show"
       @body_class = 'js'
       @body_id = 'ylf-ch-none'
-      @stylesheets = ['base', 'uh-1.1.3']
+      @method = 'show'
       @javascripts = ['http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js', 'http://us.js2.yimg.com/us.js.yimg.com/lib/rt/rto1_78.js']
       @doc_id = "ylf-blog"
       @doc_class = "doc nobg cls"
       @related = Slot.find(:all, :limit => 5)
       @slot  = Slot.find(params[:id])
+      @remark = Remark.new
+      @remarks = Remark.find_remarks_for_remarkable("Slot", @slot.id)
+
       ## @comments = @slot.comments.collect &:to_liquid
       ## @slot  = @slot.to_liquid(:mode => :single)
 
@@ -33,39 +55,24 @@ class SlotsController < ApplicationController
     end
 
     def new
-        @side = "new"        
-        @body_class = "yui-skin-sam write js"
-        @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
-        @stylesheets = ['base', 'manage', 'uh-1.1.3']
-        @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
-        @page_title = 'Compose a New Slot Entry'
-        @doc_class = "doc nobg cls"
+      @slot = Slot.new
       
-        @slot = current_user.slots.build(:filter => current_user.filter, :published_at => Time.now.utc)
+      ## render(:layout => false) # never use a layout
+      @body_class = "yui-skin-sam write js"
+      @page_title = 'Compose a New Slot Entry'
+      @doc_class = "doc cls"
 
-      respond_to do |format|
-        format.html # new.html.erb
-        format.xml  { render :xml => @slot }
-      end
+      
       
     end
 
     def edit
-      @side = "new"
-      @body_class="yui-skin-sam write js"
-      @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
-      @stylesheets = ['base', 'manage', 'uh-1.1.3']
-      @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
       @page_title = 'Edit a Slot Entry'
-      @doc_class = "doc cls"
       @slot = current_user.slots.find(params[:id])
-      @version   = params[:version] ? @slot.find_version(params[:version]) : @slot or raise(ActiveRecord::RecordNotFound)
-      @published = @version.published?
-      @version.published_at = (@version.published_at || Time.now.utc)
     end
 
     def create
-        @slot = current_user.slots.create params[:slot]
+        @slot = current_user.slots.build(params[:slot])
       respond_to do |format|
         if @slot.save
           format.html do
@@ -99,15 +106,8 @@ class SlotsController < ApplicationController
           end
         rescue ActiveRecord::RecordNotFound => e
           prevent_access(e)
-        ## Mephisto code commented out  
-        ## @slot.attributes = params[:slot].merge(:updater => current_user)
-        ## save_with_revision? ? @slot.save! : @slot.save_without_revision!
-        ## flash[:notice] = "Your slot was updated"
-        ## redirect_to :action => 'edit', :id => params[:id]
-    ## rescue ActiveRecord::RecordInvalid
-      ## load_sections
-      ##render :action => 'edit'
     end
+
 
     def destroy
       @slot = current_user.slots.find(params[:id])
@@ -120,6 +120,29 @@ class SlotsController < ApplicationController
       
     end
     
+    def remark
+      @slot = current_user.slots.find([:id])
+      #@slot = Slot.find(params[:id]) 
+      ##@remark = current_user.new_remark_attributes.build(params[:new_remark_attributes])
+      
+      ## @remark = params[:slot:new_remark_attributes]
+      ## Format: article.users.create!(:name => "dave")
+      ## @slot.remarks.create!(@remarks)
+      ## @slot.remarks << @remark
+      if @slot.update_attributes(params[:slot])
+        flash[:notice] = "Successfully added comment." 
+        redirect_to slot_path(@slot) 
+      else 
+        flash[:notice] = "You lose." 
+        
+        redirect_to users_path
+      end 
+    end
+      
+    def manage
+      @slots = Slot.search(params[:search]) ## manage_slots_path
+    end
+
     private
     
       def prevent_access(e)
@@ -129,14 +152,27 @@ class SlotsController < ApplicationController
           format.xml  { render :text => "error" }
         end
       end
+      
+      
+      def managed_action
+        # changes layout for new, edit, and search
+        render  :layout  => "manage"
+        @side = "new"
+        @body_class="yui-skin-sam write js"
+        @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
+        @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
+        
+      end
     
     protected
 
       # This is implemented on a per-polymorph basis because the asset.attachable may be
       # an object that is *indirectly* tied to the current user.
       def check_auth
-        @slot.user == current_user or raise AccessDenied
+        @slot.user == (current_user ) or raise AccessDenied
       end
+      
+      
 
 
 end

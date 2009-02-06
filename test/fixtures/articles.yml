@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  title: MyString
+  permalink: MyString
+  excerpt: MyText
+  body: MyText
+  excerpt: 
+  body: 
+  published_at: 2009-01-22 19:05:15
+  comment_age: 1
+  filter: MyString
+  user_agent: MyString
+  referrer: MyString
+  assets_count: 1
+
+two:
+  user_id: 1
+  title: MyString
+  permalink: MyString
+  excerpt: MyText
+  body: MyText
+  excerpt: 
+  body: 
+  published_at: 2009-01-22 19:05:15
+  comment_age: 1
+  filter: MyString
+  user_agent: MyString
+  referrer: MyString
+  assets_count: 1

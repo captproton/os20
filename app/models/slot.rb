@@ -1,59 +1,31 @@
-class Slot < Content
-  class CommentNotAllowed < StandardError; end
-    
+class Slot < ActiveRecord::Base
+  
+  acts_as_taggable_on :tags, :categories, :channels, :topics
+  
+  ##has_many :discussions, :as => :publication
+  has_many :remarks
+  belongs_to :user
+  
+  
   validates_presence_of :title, :user_id
-  searchable_by :title, :body, :excerpt
+  searchable_by :title, :body, :excerpt #last minute crunch  -- gotta figure out why it doesn't work with will_paginate
+  ## belongs_to :user
+ 
+ def self.paginated_search(search,page)
+   
+  paginate :per_page => 2,:page => page,
+            :conditions => ['title like ?', "%#{search}%"],
+            :order => 'title'
+ end
+ 
+  def new_remark_attributes=(remark_attributes)
+    remark_attributes.each do |attributes| 
+      remarks.build(attributes) 
+    end 
 
-  def published?
-    !new_record? && !published_at.nil?
+  end 
+
+  def find_remarks(slot_id)
+    Remark.find_remarks_for_remarkable("Slot", slot_id)
   end
-
-  def pending?
-    !published? || Time.now.utc < published_at
-  end
-  
-  def status
-    pending? ? :pending : :published
-  end
-
-  def self(search)
-    if search
-      search("#{search}")
-    else
-      find(:all)
-    end
-  end
-  
-  class << self
-
-    def with_published(&block)
-      with_scope({:find => { :conditions => ['contents.published_at <= ? AND contents.published_at IS NOT NULL', Time.now.utc] } }, &block)
-    end
-
-    def find_by_date(options = {})
-      with_published do
-        find :all, {:order => 'contents.published_at desc'}.update(options)
-      end
-    end
-    
-    def find_all_in_month(year, month, options = {})
-      find(:all, options.merge(:order => 'contents.published_at DESC', :conditions => ["contents.published_at <= ? AND contents.published_at BETWEEN ? AND ?", 
-        Time.now.utc, *Time.delta(year.to_i, month.to_i)]))
-    end
-    
-    def find_all_by_tags(tag_names, limit = 15)
-      find(:all, :order => 'contents.published_at DESC', :include => [:tags, :user], :limit => limit,
-        :conditions => ['(contents.published_at <= ? AND contents.published_at IS NOT NULL) AND tags.name IN (?)', Time.now.utc, tag_names])
-    end
-    
-    def permalink_for(str)
-      PermalinkFu.escape(str)
-    end
-  end
-  
-  protected
-    def convert_to_utc
-      self.published_at = published_at.utc if published_at
-    end
-
 end

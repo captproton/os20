@@ -1,0 +1,8 @@
+<% if !@slots.blank? %>
+	<%= render :partial => "slot", :collection => @slots %>
+<% else %>
+	<li class="post"">
+		No items for this topic
+	</li>
+<% end %>
+		

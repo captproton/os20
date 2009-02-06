@@ -1,16 +1,16 @@
 
-		<div id="ylf-blog-head" class="cls inline-edit">
-	<div class="hd">
-		<ul class="links cls">
-			<li class="first">  <%= link_to 'Write a New Slot', new_slot_path %> </li>
-			<li><%= link_to 'View All Slots', slots_path %></li>
-			<li class="my"><a href="/my/">Go to My Stuff</a></li>
-		</ul>
-	</div>
-	<div class="bd">
-		<h1 class="" >Volunteer Slots</h1>
-	</div>
+		<div class="main idx">
+			
+<div id="ylf-hdrbar" class="cls">
+
+	<h1>Shine Opportunities</h1>
+	
+	<p><%= d = Date.today;d.strftime("%A, %B %d, %Y" ) %></p>
+	
+	<%# <ul class="feeds cls"><li class="first"><a href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Fshine.yahoo.com%2Frss%2Fblog%2Fchannel%2Fbeauty%2F" class="myyahoo" title="My Yahoo!"><span><!-- --></span>Add to My Yahoo!</a></li><li><a href="http://shine.yahoo.com/rss/blog/channel/beauty/" class="rss" title="RSS"><span><!-- --></span>RSS</a></li></ul> # enable after content concept worked out %>
+
 </div>
+<<<<<<< HEAD:app/views/slots/index.html.erb
 		<div class="mod">
 	<h2>Manage Slot Descriptions</h2>
 	<table id="posts">
@@ -20,5 +20,67 @@
 	      
 		</tbody>
 	</table>
+=======
+
+<!-- editor's pics backend needs work 
+	<div id="ylf-all-filter">editor’s picks | <a href="/channel/beauty/all/">raw feed</a></div>
+
+			
+<div class="mod feature cls">
+	<ul class="cols col3">
+			<li>
+		<a href="/channel/beauty/red-carpet-fashion-the-best-worst-and-everything-in-between-at-the-sag-awards-358234/#photoViewer=1" class="img"><img src="http://l.yimg.com/jn/util/anysize/203*151c-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2FbBk3LyU7YwSI%2Fphotos%2Fc2a1049984c38105e81109b39e9ab42c%2Fmr_4bf13bf99a4740.jpg%3Fug_____DhLFHvZ7N" alt="The SAG Awards: Some good, some crap" height="151" width="203"></a>
+		<div class="attr">
+			
+			<h2><a href="/channel/beauty/red-carpet-fashion-the-best-worst-and-everything-in-between-at-the-sag-awards-358234/#photoViewer=1" class="lnk">The SAG Awards: Some good, some crap</a></h2>
+			<cite> </cite>
+			<p>We watched the whole (kind of boring) show and rounded up the thespians who looked amazing and those who, well, not so much. <a href="/channel/beauty/red-carpet-fashion-the-best-worst-and-everything-in-between-at-the-sag-awards-358234/#photoViewer=1" class="more">Read More »</a></p>
+		</div>
+	</li>
+		<li>
+		<a href="/channel/beauty/have-you-tried-the-21-best-body-washes-ever-made-yet-356246/#photoViewer=1" class="img"><img src="http://l.yimg.com/jn/util/anysize/203*151c-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2FbBk3LyU7YwSI%2Fphotos%2Ff0c6af1fd99c3b35b22969acf75c57f7%2Fmr_6866f476664d0c.jpg%3Fug_____DzDCwHFnB" alt="The best body washes ever" height="151" width="203"></a>
+		<div class="attr">
+			
+			<h2><a href="/channel/beauty/have-you-tried-the-21-best-body-washes-ever-made-yet-356246/#photoViewer=1" class="lnk">The best body washes ever</a></h2>
+			<cite> </cite>
+			<p>The women of Total Beauty asked consumers: Which bath products do you really like? Here's where they tell us the results and give recommendations for an array of budgets. <a href="/channel/beauty/have-you-tried-the-21-best-body-washes-ever-made-yet-356246/#photoViewer=1" class="more">Read More »</a></p>
+		</div>
+	</li>
+		<li class="last">
+		<a href="/channel/beauty/user-post-please-help-me-with-my-skin-355945/" class="img"><img src="http://l.yimg.com/jn/util/anysize/203*151c-86400,http%3A%2F%2Fl.yimg.com%2Fa%2Fi%2Fus%2Fshine%2Fhp2%2Fc1.ten_years_younger.jpg" alt="User post: Help me with my skin!" height="151" width="203"></a>
+		<div class="attr">
+			
+			<h2><a href="/channel/beauty/user-post-please-help-me-with-my-skin-355945/" class="lnk">User post: Help me with my skin!</a></h2>
+			<cite> </cite>
+			<p>A reader keeps getting suckered into buying expensive beauty products that do nothing. She asks you: What do you use on your face that actually works? <a href="/channel/beauty/user-post-please-help-me-with-my-skin-355945/" class="more">Read More »</a></p>
+		</div>
+	</li>
+	
+	</ul>
+>>>>>>> Slot:app/views/slots/index.html.erb
 </div>
-<script type="text/javascript" charset="UTF-8">YAHOO.Lifestyles.DeletePost.init("zLTiXcHmAFk")</script>
+-->
+
+			
+<div id="ylf-ch-idx1" class="posts first">
+	<ul>
+		<% if !@slots.blank? %>
+		    <%= render :partial => "slot_summary", :collection => @slots %>
+			
+		<% else %>
+		  <li>
+		  	no slots listed
+		  </li>
+		<% end %>
+		
+
+	</ul>
+</div>
+
+<script type="text/javascript" charset="UTF-8">YAHOO.Lifestyles.ImageLoader.delayByView({el:"ylf-ch-idx2", cl:"lz", imgs:["http://f3.yahoofs.com/coreid/47e1522ai13bazul2sp1/rKce3DUifqq4dPuYYxR9/1/tn32.jpg?ciAkbsJBjwCQcOL0","http://www.lauramercier.com/images/products/sm/product_72_laura_mercier_multi_vitamin_serum.jpg","http://f5.yahoofs.com/coreid/487f85e4i17cazul2re3/bPxAJcAierRsHEICLyKEnBxS7A--/1/tn32.jpg?ciAkbsJBF8FZggfG","http://l.yimg.com/jn/util/anysize/203*330l-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2FLi5zE0NkDCic%2Fphotos%2Fd2c0760fa46086a770b4f76a3aa715fa%2Fori_10768527aca1ac.jpg%3Fug_____DkNlA8Wz0","http://l.yimg.com/jn/util/anysize/75*75l-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2FLi5zE0NkDCic%2Fphotos%2Fe6703da4f53b121b0c7c389510c9ec5c%2Ftn_d35cabbe313acd.jpg%3Fug_____DuBE14s_h","http://l.yimg.com/jn/util/anysize/75*75l-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2FLi5zE0NkDCic%2Fphotos%2Fa7be20dd77e756c8727a0bc5dcfa3e5d%2Ftn_107648fe18fbe5.jpg%3Fug_____D6jIL9VPl","http://l.yimg.com/jn/util/anysize/75*75l-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2FLi5zE0NkDCic%2Fphotos%2F8eb8cbdab886de1593baa030643604ab%2Ftn_107639c67e8475.jpg%3Fug_____DGu4cjVFp","http://l.yimg.com/jn/util/anysize/75*75l-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2FLi5zE0NkDCic%2Fphotos%2Ff094db434c880bbd088ac759c919fefa%2Ftn_1076dade327aa7.jpg%3Fug_____DBM3EPbYZ","http://f5.yahoofs.com/coreid/487f85e4i17cazul2re3/bPxAJcAierRsHEICLyKEnBxS7A--/1/tn32.jpg?ciAkbsJBF8FZggfG","http://f5.yahoofs.com/coreid/48fe393fieb7zul2re3/sduVJpUjfqey4BTEPMLB7Ks0LtcI0g--/3/tn32.jpg?ciAkbsJBx7hJFPaq","http://img.timeinc.net/realsimple/i/p/books/weddings/weddings_attire_3_180.jpg","http://f5.yahoofs.com/coreid/47d6a11bie41zul3re3/dQGPM2cjdKvRRMnbnwvmK3g-/1/tn32.jpg?ciAkbsJBCDC8EeJB","http://luckymag.typepad.com/photos/uncategorized/2009/01/23/picture_13.png","http://f5.yahoofs.com/coreid/47d69451i1757zul1re3/liJMouw9bqWBpCNV_.BRjC4yxQSzPpI-/1/tn32.jpg?ciAkbsJBDrhQ5UV9","http://s7d2.scene7.com/is/image/Drugstore/141441?wid=250&amp;hei=250&amp;op_sharpen=1","http://f3.yahoofs.com/coreid/47e1a317i16d7zul3sp1/LfaaNHoic6.0dP1izxnD1nrp6BWkwHKb6iiVzQW7/1/tn32.jpg?ciAkbsJBqk.iDmkp","http://l.yimg.com/jn/util/anysize/460*330l-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2F2TcOSrpMDyc7%2Fphotos%2Ff598346a612f6244fe57fbf4f819fdfe%2Fori_762b0017b95dd9.jpg%3Fug_____DF0aiWait","http://l.yimg.com/jn/util/anysize/75*75l-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2FP5PcZCHwmGsz%2Fphotos%2F90ff014b91c4822f3cf4ca322a63cfd0%2Ftn_d55a3bf99a4740.jpg%3Fug_____D7eyNkIUE","http://l.yimg.com/jn/util/anysize/75*75l-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2F2TcOSrpMDyc7%2Fphotos%2Ff6110137b0fcabe784a50e53c8d56f0e%2Ftn_2258dbb28dfdad.jpg%3Fug_____DGuAsv8em","http://l.yimg.com/jn/util/anysize/75*75l-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2F2TcOSrpMDyc7%2Fphotos%2F5895be9f03501299d5ae11835c5d2a75%2Ftn_890227a49964b0.jpg%3Fug_____DydWneTXG","http://l.yimg.com/jn/util/anysize/75*75l-86400,http%3A%2F%2Fa323.yahoofs.com%2Fphugc%2FP5PcZCHwmGsz%2Fphotos%2F20ef04536156d4f27291d96c2c91a97e%2Ftn_4ea6fbe2079660.jpg%3Fug_____Dtu6tEyZt"]});</script>
+<div class="pgnav cls">
+	<%= will_paginate @slots %>
+</div>
+<!--		<div class="pgnav cls"><span class="prev"><b>◄</b> prev</span><span>1</span><a href="/channel/beauty/?pg=2">2</a><a href="/channel/beauty/?pg=3">3</a><a href="/channel/beauty/?pg=4">4</a><a href="/channel/beauty/?pg=5">5</a><a href="/channel/beauty/?pg=6">6</a><a href="/channel/beauty/?pg=7">7</a><a href="/channel/beauty/?pg=8">8</a><a href="/channel/beauty/?pg=9" class="last">9</a><span class="next"><a href="/channel/beauty/?pg=2">next <b>►</b></a></span></div> -->
+</div>
+

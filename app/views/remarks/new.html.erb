@@ -1,0 +1,89 @@
+<div id="ylf-cmnts" class="mod line">
+      	<h2 id="comments">From the Community&hellip;</h2>    	<div class="spgnav cls">
+    		<div class="count">Comments 1-10 of 37 </div>
+
+    		<ul>
+	
+				<li class="first"><span>First</span></li>
+				<li class="prev"><span>&laquo; Prev</span></li>
+				<li class="next">
+					<a href="/channel/beauty/are-these-women-quot-hot-quot-361074/;_ylt=AgYigPalN.lQa6W7hvXIUCJpbqU5?pg=2#comments" >Next &raquo;</a></li>
+				<li class="last">
+					<a href="/channel/beauty/are-these-women-quot-hot-quot-361074/;_ylt=Aj9VZJWplTmsHbasN2fpzoJpbqU5?pg=4#comments" >Last</a>
+				</li>
+			</ul>
+    	</div>
+		<ul class="thumbs">      		
+			<% for remark in @remarks %>
+  		
+			<li>
+      			<a href="/blog/aQoqC39iqcZBYkuY_tuqvNaAoI.KSJG47jsdn/;_ylt=Apz7EhSWpTJGD1NMsssBuQRpbqU5" class="img"><img width="32" height="32" src="http://l.yimg.com/jn/images/20090129191543/lz.png" alt="<%= remark.user.login %>'s Avatar" class="lz" /></a>
+
+      			<div class="txt">
+      				<cite>Posted by <%= link_to remark.user.login, user_path(remark.user.login) %>   <%= d = Date.today;d.strftime("%A, %B %d, %Y" ) %></cite>
+      				<blockquote>
+						<%=  simple_format(h remark.body) %>
+      				</blockquote>
+      				<%# Uncomment after plugin is installed: <a href="http://us.lrd.yahoo.com/_ylt=Al01njZzYCsOMI.lJcwY0OVpbqU5/SIG=13mo7iljp/**http%3A//help.yahoo.com/l/us/yahoo/shine/abuse.html%3Feaci=aQoqC39iqcZBYkuY_tuqvNaAoI.KSJG47jsdn%26commentid=943513" class="abuse">Report Abuse</a> %>
+      			</div>
+      		</li> 
+     		<% end %>
+
+</ul>    	<div class="spgnav cls">
+    		<div class="count">Comments 1-10 of 37 </div>
+    		<ul>
+				<li class="first"><span>First</span></li><li class="prev"><span>&laquo; Prev</span></li>
+				<li class="next"><a href="/channel/beauty/are-these-women-quot-hot-quot-361074/;_ylt=Aq6_gmmPxF0nvtVJ5n55TDFpbqU5?pg=2#comments" >Next &raquo;</a></li>
+				<li class="last"><a href="/channel/beauty/are-these-women-quot-hot-quot-361074/;_ylt=AsvAIknsTuI933PpFOU54zZpbqU5?pg=4#comments" >Last</a></li>
+			</ul>
+
+    	</div></div> 
+			<div id="cmt-form" class="cls">
+	<h3 id="postcomment">leave your comment</h3>
+	<% form_for [@remarkable, @remark] do |f| %>
+
+	    <%= f.text_area :body, :rows => 7, :id => "content" %>
+		<div class="ft">
+
+						<div class="cid cid-name">
+			<p>You will be seen as: <img id="avatar" class="avatar" src="/images/userIconBig.gif" alt="Your avatar" height="24" width="24"/> <strong id="nickName"><%= current_user.login %></strong></p>
+		</div>
+
+			<button type="submit">Post Comment</button>
+		</div>
+	<%# </form> %>
+	<% end %>
+	
+		
+		<p class="disclaimer">The information you provide on this page will be displayed publicly along with your display image and nickname.</p>
+</div>
+
+
+
+		<% content_for(:sidebar) do %>
+		<div class="side">
+			<div class="mod" id="ylf-you">
+					<div class="hd cls">
+								<a class="avatar" href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><%= link_to image_tag("userIconBig.gif", :width => "48", :height => "48", :alt => "avatar"), user_path(current_user), :class => "avatar" %>
+								
+					<div class="greets boxed">
+						<h3>hello, CaptProton</h3>
+						<a class="first" href="http://login.yahoo.com/config/login?.src=shine&amp;logout=1&amp;.done=http%3A%2F%2Fwww.yahoo.com%2F&amp;.direct=2">Sign Out</a>
+					</div>
+					</div>
+					<div class="bd">
+						<ul class="cls">
+							<li class="email new"><a href="http://mail.yahoo.com/">Mail <span>254 New</span></a></li>
+							<li title="Partly Cloudy" class="weath sep"><a style="background: rgb(255, 255, 255) url(http://l.yimg.com/jn/util/anysize/26*26c-86400,http%3A%2F%2Fl.yimg.com%2Fa%2Fi%2Fus%2Fwe%2F52%2F30.gif) no-repeat scroll 5px 0pt; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" href="http://us.rd.yahoo.com/dailynews/rss/weather/Pacifica__CA/*http://weather.yahoo.com/forecast/94044_f.html">50° F</a></li>
+							<li class="horo sep"><a href="/astrology/">Horoscopes</a></li>
+						</ul>
+									<p>Let’s talk:
+							<a class="nobg" href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/">My Blog</a>
+							<a href="/manage/">Manage</a>
+							<a href="/my/">My Stuff</a>
+							<a href="/write/">Write a Post</a>
+						</p>
+					</div>
+				</div>
+		</div>
+<% end %>

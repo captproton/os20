@@ -1,0 +1,25 @@
+
+		<div id="ylf-blog-head" class="cls inline-edit">
+	<div class="hd">
+		<ul class="links cls">
+			<%if @current_user.admin %>
+				<li class="first">  <%= link_to 'Write a New Slot', new_slot_path %> </li>
+			<% end %>
+			<li><%= link_to 'View All Slots', slots_path %></li>
+			<li class="my"><!-- <a href="/my/">Go to My Stuff</a> --></li>
+		</ul>
+	</div>
+	<div class="bd">
+		<h1 class="" >Volunteer Slots</h1>
+	</div>
+</div>
+		<div class="mod">
+	<h2>Manage Slot Descriptons</h2>
+	<table id="posts">
+		<thead><tr><th>Last Updated</th><th>Title</th><th>Status</th><th>Channel</th><th>Comments</th><th>Action</th></tr></thead>
+		<tbody>
+			<%= render :partial => 'slot', :collection => @slots %>
+	      
+		</tbody>
+	</table>
+</div>

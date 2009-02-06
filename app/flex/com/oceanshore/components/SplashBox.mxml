@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:oss="com.oceanshore.components.*" 
+    horizontalAlign="center" verticalAlign="top" 
+    width="100%" height="100%">
+	<mx:Metadata> 
+    [Event(name="accountCreate", 
+           type="com.oceanshore.events.AccountCreateEvent")] 
+    [Event(name="login", type="com.oceanshore.events.LoginEvent")] 
+</mx:Metadata> 
+<mx:Script> 
+<![CDATA[ 
+    import com.oceanshore.events.AccountCreateEvent; 
+    import com.oceanshore.events.LoginEvent; 
+    [Bindable] 
+    private var _reviews:String = 
+        '"OSSPTO Recorder, the hot new RIA by 38noises, is taking ' + 
+        'over Web 2.0." --Michael Arrington*\n"I wish I\'d ' + 
+        'invested in 38noises instead of that other company."' + 
+        ' --Jeff Bezos*\n"38noises closed angel funding at a ' + 
+        'party in my bathroom last night." --Om Malik*'; 
+]]> 
+</mx:Script> 
+    <mx:VBox width="600" horizontalAlign="center"> 
+        <mx:Image source="com/oceanshore/assets/main-banner.jpg" /> 
+        <mx:Label 
+           text="The simple, GTD-style TODO list application."/> 
+        <mx:Spacer height="10"/> 
+        <mx:Text width="100%" text="{_reviews}"/> 
+        <mx:Spacer height="10"/> 
+        <mx:Accordion width="400" height="300"> 
+            <oss:AccountCreateBox/> 
+            <oss:LoginBox/> 
+        </mx:Accordion> 
+        <mx:Label text="*did not say this, but might someday!"/> 
+	</mx:VBox>
+</mx:VBox>

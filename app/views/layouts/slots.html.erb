@@ -5,41 +5,74 @@
 		<title>
 			<%= page_title %> - OSSPTO
 		</title>
+		<meta name="keywords" lang="en" content="diet, nutrition, fitness, wellness, aging, Array, Array">
+		<meta name="description" lang="en" content="A blog and online community that offers women tips and advice on living a healthier life, eating better, exercise, staying well, and keeping their families healthy.">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<!-- stylesheet order: skin, base, manage, uh-1.1.3 -->
-		<%= stylesheet_link_tag(*@remote_yui) if @remote_yui %>		
-		<%= stylesheet_link_tag(*@skin) if @skin %>		
+		<% palooza_style %>
 		<%= stylesheet_link_tag(*@stylesheets) if @stylesheets %>
 		<%= javascript_include_tag(*@javascripts) if @javascripts %>
-	   
-		
+		<link rel="alternate" type="application/rss+xml" title="Healthy Living | on Shine" href="http://shine.yahoo.com/rss/blog/channel/health/">
+		<!-- link type="text/css" rel="stylesheet" href="http://l.yimg.com/a/lib/uh/css/uh-1.1.3.css" -->
 		<style type="text/css">
-#ygma .sprite_bg{background-image:url(http://l.yimg.com/a/i/us/uh/bt2/shine_sprite_v1.gif);}#ygma .bd{background:none;}#ygma{background:none;}#ygma .srch{border-bottom:1px solid #D1D1D1;border-top:1px solid #D1D1D1;}#ygma .srch .srchinner{border-left:1px solid #D1D1D1;border-right:1px solid #D1D1D1;background-position:-0px -173px;background-repeat:repeat-x;}#ygma #ygmatop #ygmauseroptions{background:#FCFCFC;color:#000;}#ygma #ygmatop #ygmauseroptions li{background:#fff;color:#000;border-right:1px solid #B9B9B9;}#ygma #ygmatop #ygmauseroptions li.last-child{background:#ECECEC;color:#666;border-bottom:1px solid #B9B9B9;border-top:1px dotted #D4D4D6;}#ygma #ygmabot{font-family:verdana, sans-serif;font-size:1em;}#ygma #ygmabot label {font-weight: normal;}#ygma #ygmabot input {font-size: 78%;}#ygma a {font-family: verdana, sans-serif;}
+#ygma .sprite_bg{background-image:url(http://l.yimg.com/a/i/us/uh/bt2/shine_sprite_v1.gif);}#ygma .bd{background:none;}#ygma{background:none;}#ygma .srch{border-bottom:1px solid #D1D1D1;border-top:1px solid #D1D1D1;}#ygma .srch .srchinner{border-left:1px solid #D1D1D1;border-right:1px solid #D1D1D1;background-position:-0px -173px;background-repeat:repeat-x;}#ygma #ygmatop #ygmauseroptions{background:#FCFCFC;color:#000;}#ygma #ygmatop #ygmauseroptions li{background:#fff;color:#000;border-right:1px solid #B9B9B9;}#ygma #ygmatop #ygmauseroptions li.last-child
+		{
+			background:#ECECEC;color:#666;border-bottom:1px solid #B9B9B9;border-top:1px dotted #D4D4D6;
+		}
+		#ygma #ygmabot
+		{
+			font-family:verdana, sans-serif;font-size:1em;
+		}
+		#ygma #ygmabot label 
+		{
+			font-weight: normal;
+		}
+		#ygma #ygmabot input {font-size: 78%;}#ygma a {font-family: verdana, sans-serif;}
 		</style>
 	</head>
 	<body <%= body_class_and_id %>>
+		<!-- no eyebrow content -->
 		<script type="text/javascript" charset="utf-8">
-(function(){var B={};var A=function(){B=YAHOO.one.uh.hotlistInfo={rd:"http://us.ard.yahoo.com",space:"/SIG=153ejeano/M=650008.12746706.13301487.12041688/D=yliving/S=967143184:HEAD/Y=YAHOO/EXP=1229738362/L=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI/B=TOlBg9GDJHo-/J=1229731162223708/A=5509525/R=0",adid:"5509525",prop:"yliving",protocol:"http",host:"shine.yahoo.com",url:"%2fwrite",aliasid:"rocketeer_capt.proton",shortaliasid:"rocketeer_capt.pr...",pvid:"Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI",shortfname:"Carl B"};YAHOO.one.uh.translate=function(C){var D={yahoo_homepage:"http://www.yahoo.com",hp_detect_script:"http://www.yahoo.com/includes/hdhpdetect.php",set_hp_script:"http://us.ard.yahoo.com/SIG=153ejeano/M=650008.12746706.13301487.12041688/D=yliving/S=967143184:HEAD/Y=YAHOO/EXP=1229738362/L=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI/B=TOlBg9GDJHo-/J=1229731162223708/A=5509525/R=1/SIG=11te3u6o2/*http://www.yahoo.com/bin/set",set_hp_firefox_instructions:['Drag the "Y!" and drop it onto the "Home" icon.','Select "Yes" from the pop up window.',"Nothing, you're done."],close_this_window:"Close this window",set_hp_alternative_instructions1:"If this didn't work for you see ",detailed_set_hp_instructions:"detailed instructions",set_hp_alternative_instructions2:""};return D[C]};YAHOO.one.uh.accountOptions=[["Profile","http://us.ard.yahoo.com/SIG=153ejeano/M=650008.12746706.13301487.12041688/D=yliving/S=967143184:HEAD/Y=YAHOO/EXP=1229738362/L=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI/B=TOlBg9GDJHo-/J=1229731162223708/A=5509525/R=2/SIG=000000000/*http://profiles.yahoo.com/u/"+B.pvid],["Contacts","http://us.ard.yahoo.com/SIG=153ejeano/M=650008.12746706.13301487.12041688/D=yliving/S=967143184:HEAD/Y=YAHOO/EXP=1229738362/L=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI/B=TOlBg9GDJHo-/J=1229731162223708/A=5509525/R=3/*http://profiles.yahoo.com/contacts.php"],["Applications","http://us.ard.yahoo.com/SIG=153ejeano/M=650008.12746706.13301487.12041688/D=yliving/S=967143184:HEAD/Y=YAHOO/EXP=1229738362/L=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI/B=TOlBg9GDJHo-/J=1229731162223708/A=5509525/R=4/*http://apps.yahoo.com/myapps"],["Account Info","http://us.ard.yahoo.com/SIG=153ejeano/M=650008.12746706.13301487.12041688/D=yliving/S=967143184:HEAD/Y=YAHOO/EXP=1229738362/L=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI/B=TOlBg9GDJHo-/J=1229731162223708/A=5509525/R=5/SIG=11juka5l7/*https://edit.yahoo.com/config/eval_profile?.done="+B.protocol+"://"+B.host+B.url+"&.src=shine&.intl=us"],["You are signed in as: <span class='yid' title='"+B.aliasid+"'>"+B.shortaliasid+"<\/span>",B.aliasid]];YAHOO.one.uh.yahooServices=[["News","http://us.ard.yahoo.com/SIG=153ejeano/M=650008.12746706.13301487.12041688/D=yliving/S=967143184:HEAD/Y=YAHOO/EXP=1229738362/L=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI/B=TOlBg9GDJHo-/J=1229731162223708/A=5509525/R=6/SIG=000000000/*http://news.yahoo.com"],["Sports","http://us.ard.yahoo.com/SIG=153ejeano/M=650008.12746706.13301487.12041688/D=yliving/S=967143184:HEAD/Y=YAHOO/EXP=1229738362/L=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI/B=TOlBg9GDJHo-/J=1229731162223708/A=5509525/R=7/*http://sports.yahoo.com"],["Finance","http://us.ard.yahoo.com/SIG=153ejeano/M=650008.12746706.13301487.12041688/D=yliving/S=967143184:HEAD/Y=YAHOO/EXP=1229738362/L=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI/B=TOlBg9GDJHo-/J=1229731162223708/A=5509525/R=8/*http://finance.yahoo.com"],["Entertainment","http://us.ard.yahoo.com/SIG=153ejeano/M=650008.12746706.13301487.12041688/D=yliving/S=967143184:HEAD/Y=YAHOO/EXP=1229738362/L=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI/B=TOlBg9GDJHo-/J=1229731162223708/A=5509525/R=9/*http://entertainment.yahoo.com"]]};if("undefined"!==typeof YAHOO&&"undefined"!==typeof YAHOO.one&&"undefined"!==typeof YAHOO.one.uh){A()}else{setTimeout(arguments.callee,500)}})();
+(function()
+		{var B={};var A=function(){B=YAHOO.one.uh.hotlistInfo={rd:"http://us.ard.yahoo.com",space:"/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=0",adid:"5509525",prop:"yliving",protocol:"http",host:"shine.yahoo.com",url:"%2fchannel%2fhealth%2f",aliasid:"rocketeer_capt.proton",shortaliasid:"rocketeer_capt.pr...",pvid:"oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx",shortfname:"Carl B"};YAHOO.one.uh.translate=function(C)
+		{var D={yahoo_homepage:"http://www.yahoo.com",hp_detect_script:"http://www.yahoo.com/includes/hdhpdetect.php",set_hp_script:"http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=1/SIG=11te3u6o2/*http://www.yahoo.com/bin/set",set_hp_firefox_instructions:['Drag the "Y!" and drop it onto the "Home" icon.','Select "Yes" from the pop up window.',"Nothing, you're done."],close_this_window:"Close this window",set_hp_alternative_instructions1:"If this didn't work for you see ",detailed_set_hp_instructions:"detailed instructions",set_hp_alternative_instructions2:""};return D[C]};YAHOO.one.uh.accountOptions=[["Profile","http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=2/SIG=000000000/*http://profiles.yahoo.com/u/"+B.pvid],["Contacts","http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=3/*http://profiles.yahoo.com/contacts.php"],["Applications","http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=4/*http://apps.yahoo.com/myapps"],["Account Info","http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=5/SIG=11juka5l7/*https://edit.yahoo.com/config/eval_profile?.done="+B.protocol+"://"+B.host+B.url+"&.src=shine&.intl=us"],["You are signed in as: <span class='yid' title='"+B.aliasid+"'>"+B.shortaliasid+"<\/span>",B.aliasid]];YAHOO.one.uh.yahooServices=[["News","http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=6/SIG=000000000/*http://news.yahoo.com"],["Sports","http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=7/*http://sports.yahoo.com"],["Finance","http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=8/*http://finance.yahoo.com"],["Entertainment","http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=9/*http://entertainment.yahoo.com"]]};if("undefined"!==typeof YAHOO&&"undefined"!==typeof YAHOO.one&&"undefined"!==typeof YAHOO.one.uh){A()}else{setTimeout(arguments.callee,500)}})();
 		</script>
 		<div id="ygma">
 			<div id="ygmaheader">
 				<div class="bd sprite_bg">
-					<div id="ygmatop" class="sprite_bg">
+<%# replace with customized					<div id="ygmatop" class="sprite_bg">
+						<ul id="ygmanav">
+							<li class="sprite_bg delim">
+								<a href="http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=10/SIG=10np9vmbm/*http://www.yahoo.com/" target="_top">Yahoo!</a>
+							</li>
+							<li class="sprite_bg delim">
+								<a href="http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=11/SIG=10m97m5i1/*http://my.yahoo.com/" target="_top">My Yahoo!</a>
+							</li>
+							<li class="sprite_bg delim">
+								<a href="http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=12/SIG=10od5rqfs/*http://mail.yahoo.com/" target="_top">Mail</a>
+							</li>
+							<li class="last-child">
+								<a href="http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=13/SIG=119rld6dj/*http://docs.yahoo.com/docs/family/more/" class="stop_key_nav" id="ygmamore" target="_top" name="ygmamore">More <span class="offscrn">Yahoo! Services</span></a>
+							</li>
+						</ul>
 						<div id="ygmapromo">
-							<a href="" id="ygmamyyhp" class="stop_nav" target="_top" name="ygmamyyhp">Make <abbr class="stop_nav" title="Yahoo!">Ocean Shore</abbr> My Homepage</a>
+							<a href="http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=14/SIG=10uacnjgh/*http://www.yahoo.com/bin/set" id="ygmamyyhp" class="stop_nav" target="_top" name="ygmamyyhp">Make <abbr class="stop_nav" title="Yahoo!">Y!</abbr> My Homepage</a><a href="http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=15/SIG=117bakia1/*http://toolbar.yahoo.com/?.cpdl=ushdl" id="ygmatoolbar" class="hidden" target="_top" name="ygmatoolbar">Get Yahoo! Toolbar</a>
 						</div><script type="text/javascript" charset="utf-8">
 (function(){var C=document.getElementById("ygmamore");var A=document.getElementById("ygmamyyhp");var B=document.getElementById("ygmatoolbar");C.className+=((""==C.className)?"":" ")+"sprite_bg lst yltasis";A.className+=((""==A.className)?"":" ")+"yltasis yltiefix";B.className+=((""==A.className)?"":" ")+"yltasis yltiefix";if(document.cookie.indexOf("HP=")>-1){A.style.display="none";B.style.display="block"}else{B.style.display="none"}if(document.cookie.indexOf("CP=")>-1){B.style.display="none"}})();
 						</script>
 						<div id="ygmauserinfo">
 							<h2 class="offscrn">
 								Account Options
-							</h2><span class="sprite_bg delim"><em>Hi, <a href="/" class="stop_key_nav" id="ygmausername" title="Carl B" target="_top" name="ygmausername">Carl B</a></em></span><a href="/" class="sprite_bg delim" target="_top">Sign Out</a><a href="/help" id="ygmahelp" target="_top" title="OSSPTO Help Central" name="ygmahelp">Help</a>
+							</h2><span class="sprite_bg delim"><em>Hi, <a href="http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=16/SIG=126c0e9kc/*http://profiles.yahoo.com/u/oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx" class="stop_key_nav" id="ygmausername" title="Carl B" target="_top" name="ygmausername">Carl B</a></em></span><a href="http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=17/SIG=138e3q7ru/*https://login.yahoo.com/config/login?logout=1&amp;.direct=2&amp;.done=http://www.yahoo.com&amp;.src=shine&amp;.intl=us" class="sprite_bg delim" target="_top">Sign Out</a><a href="http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=18/SIG=119gftd94/*http://help.yahoo.com/l/us/yahoo/shine/" id="ygmahelp" target="_top" title="Yahoo! Help Central" name="ygmahelp">Help</a>
 						</div><script type="text/javascript" charset="utf-8">
 (function(){var A=document.getElementById("ygmausername");A.className+=((""==A.className)?"":" ")+"sprite_bg lst"})();
 						</script>
 					</div>
 					<div id="ygmabot" class="sprite_bg">
+<<<<<<< HEAD:app/views/layouts/slots.html.erb
 						<a href="http://us.ard.yahoo.com/SIG=153ejeano/M=650008.12746706.13301487.12041688/D=yliving/S=967143184:HEAD/Y=YAHOO/EXP=1229738362/L=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI/B=TOlBg9GDJHo-/J=1229731162223708/A=5509525/R=19/SIG=10oifeke6;_ylt=AiymVEJHhni2ZgDmSPs02VAQb6U5/*http://shine.yahoo.com" id="ygmalogo" target="_top" name="ygmalogo"><img width="263" height="58" src="http://members.oceanshoreschool.org/images/main-banner.jpg" alt="Ocean Shore School"></a>
+=======
+						<a href="http://us.ard.yahoo.com/SIG=153qbo1o1/M=650008.12746706.13301487.12041688/D=yliving/S=967143018:HEAD/Y=YAHOO/EXP=1232352127/L=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx/B=LuufTNj8ek4-/J=1232344927852031/A=5509525/R=19/SIG=10oifeke6/*http://shine.yahoo.com" id="ygmalogo" target="_top" name="ygmalogo"><img width="263" height="58" src="http://l.yimg.com/a/i/us/shine/gr/uh_logo_y.gif" alt="Yahoo! Shine"></a>
+>>>>>>> Slot:app/views/layouts/slots.html.erb
 						<div class="srch sprite_bg">
 							<form name="ygmasrchfrm" id="ygmasrchfrm" action="http://srd.yahoo.com/loc=head&amp;st=yahoo/*http://search.yahoo.com/search" method="get">
 								<div class="fieldset">
@@ -48,11 +81,12 @@
 							</form>
 						</div>
 					</div>
-				</div>
+ %>				</div>
 			</div>
 		</div><script charset="utf-8" type="text/javascript" src="http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js">
 </script><script language="javascript" type="text/javascript">
 if(window.yzq_d==null)window.yzq_d=new Object();
+<<<<<<< HEAD:app/views/layouts/slots.html.erb
 		window.yzq_d['TOlBg9GDJHo-']='&U=13g0c31h8%2fN%3dTOlBg9GDJHo-%2fC%3d650008.12746706.13301487.12041688%2fD%3dHEAD%2fB%3d5509525%2fV%3d1';
 		</script><noscript><img width="1" height="1" alt="" src="http://us.bc.yahoo.com/b?P=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI&amp;T=142kuf9jg%2fX%3d1229731162%2fE%3d967143184%2fR%3dyliving%2fK%3d5%2fV%3d2.1%2fW%3dH%2fY%3dYAHOO%2fF%3d4023972440%2fQ%3d-1%2fS%3d1%2fJ%3dC7ABA342&amp;U=13g0c31h8%2fN%3dTOlBg9GDJHo-%2fC%3d650008.12746706.13301487.12041688%2fD%3dHEAD%2fB%3d5509525%2fV%3d1"></noscript>
 		<div id="ylf-nav" class="nav">
@@ -72,11 +106,17 @@ if(window.yzq_d==null)window.yzq_d=new Object();
 			<% end %>
 			</form>
 		</div>
+=======
+		window.yzq_d['LuufTNj8ek4-']='&U=13gc3dsk6%2fN%3dLuufTNj8ek4-%2fC%3d650008.12746706.13301487.12041688%2fD%3dHEAD%2fB%3d5509525%2fV%3d1';
+
+		</script><noscript><img width="1" height="1" alt="" src="http://us.bc.yahoo.com/b?P=oDyezGKIKqhcbnXdSUWfngtDTO0De0l0F18ADIjx&amp;T=142op12k0%2fX%3d1232344927%2fE%3d967143018%2fR%3dyliving%2fK%3d5%2fV%3d2.1%2fW%3dH%2fY%3dYAHOO%2fF%3d1799659151%2fQ%3d-1%2fS%3d1%2fJ%3dC8ABA342&amp;U=13gc3dsk6%2fN%3dLuufTNj8ek4-%2fC%3d650008.12746706.13301487.12041688%2fD%3dHEAD%2fB%3d5509525%2fV%3d1"></noscript><%= render :partial => "/shared/nav_and_subnav" %><%= render :partial => '/shared/searchbar' %>
+>>>>>>> Slot:app/views/layouts/slots.html.erb
 		<div <%= on_stage %>>
-				<%= yield %>
-			
-			<%= sidebar %>
+			<%= yield :layout %>
+			<%# Render shared/sidebar if content_for_sidebar is not defined in action sidebar, unless action is manage, then render nothing. %>
+			<%= (sidebar = yield :sidebar) ? sidebar : render(:partial => 'shared/sidebar') unless controller.action_name  == "manage" %>
 		</div>
+<<<<<<< HEAD:app/views/layouts/slots.html.erb
 		<div id="ylf-foot">
 			<div class="doc">
 				<h3 >
@@ -147,5 +187,11 @@ if(window.yzq_p==null)document.write("<scr"+"ipt language=javascript src=http://
 if(window.yzq_p)yzq_p('P=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI&T=13s01p0sk%2fX%3d1229731162%2fE%3d967143184%2fR%3dyliving%2fK%3d5%2fV%3d1.1%2fW%3dJ%2fY%3dYAHOO%2fF%3d697801092%2fS%3d1%2fJ%3dC7ABA342');
 		if(window.yzq_s)yzq_s();
 		</script><noscript><img width="1" height="1" alt="" src="http://us.bc.yahoo.com/b?P=Obm95mKIKqj4CTDGSUXzuxxQTPzY.ElMNVoAAyWI&amp;T=142t728gp%2fX%3d1229731162%2fE%3d967143184%2fR%3dyliving%2fK%3d5%2fV%3d3.1%2fW%3dJ%2fY%3dYAHOO%2fF%3d4131467484%2fQ%3d-1%2fS%3d1%2fJ%3dC7ABA342"></noscript>
+=======
+		<%# render :partial => "super_footer" main_column_class_id = 'class="doc cls"'  if controller.action_name  == "index" ||  controller.action_name  == "show"   rendered after content channels are figured out with more content %>
+		foot goes here <%= render :partial => "shared/foot" %>
+		<%= yield :javascript_tail %>
+	    
+>>>>>>> Slot:app/views/layouts/slots.html.erb
 	</body>
 </html>
