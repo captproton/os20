@@ -1,64 +1,4 @@
 		<div class="main" id="ylf-blog-main">
-<<<<<<< HEAD:app/views/slots/show.html.erb
-		
-			
-<div id="ylf-hdrbar" class="cls">
-
-	
-	
-	<p><%= Time.now.strftime("%B %d, %Y") %> 
-	</p>
-	
-	<ul class="feeds cls"><li class="first"><a href="/subscriptions/add?yuid=anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg&amp;display_name=CaptProton%26rsquo%3Bs" class="subscribe"><span><!-- --></span>Subscribe to This Blog</a></li><li><a href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Fshine.yahoo.com%2Frss%2Fblog%2Fchannel%2Fnone%2F" class="myyahoo" title="My Yahoo!"><span><!-- --></span>Add to My Yahoo!</a></li><li><a href="http://shine.yahoo.com/rss/blog/channel/none/" class="rss" title="RSS"><span><!-- --></span>RSS</a></li></ul>
-
-</div>
-
-
-			
-			
-
-			
-<div id="ylf-blogpost" class="cls">
-	
-
-	<div class="post-hdr cls">
-		<div class="post-title cls">
-			<h1><%=h @slot.title %></h1>
-			
-		</div>
-		<div class="attr cls readmore">
-			<a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><img src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn32.jpg?ciAwiiJBD7xNDS7c" height="32" width="32"></a>
-			<ul>
-				<li>updated by <a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><span class="author alias"><%= @slot.user.login %></span></a>, <span class="rel-time" title="<%= @slot.updated_at %>"><%= time_ago_in_words(@slot.updated_at) %> ago</span></li>
-				<li class="last">
-					<%= link_to "Read More from This Author »", user_path(@slot.user) %>
-				</li>
-			</ul>
-			<ul>
-				
-				<li><a href="#postcomment" class="cmt-lnk">Post a Comment</a></li>
-				<li class="last"><a href="/">Report Abuse</a></li>
-			</ul>
-		</div>
-	</div>
-
-  	
-  
-	<div class="post-body cls">
-<%= @slot.body %>
-	</div>
-
-	
-
-	<p class="related"><strong>Related:</strong> <a href="/topic/song/">tags</a>, <a href="/topic/christmas/">go</a>, <a href="/topic/chorus/">here</a></p>
-
-</div>
-
-
-	
-			<div class="tools"><ul class="cls"><li class="cmts"><span class="icon"><!-- --></span><span>Let’s talk:</span> <a href="#comments" class="cmt-lnk">Comment (0)</a> | <%= link_to "Slot Publisher", user_path(current_user) %></li><li class="email"><span class="icon"><!-- --></span><a href="/email-to-friend?id=335584&amp;title=The+goose+is+getting+fat.&amp;channel=none&amp;event=">Email to a Friend</a></li><li class="print"><span class="icon"><!-- --></span><%= link_to "Print this Page", slot_path(@slot) %></li></ul></div>
-			<div class="line"><!-- --></div>
-=======
 			<div id="ylf-hdrbar" class="cls">
 				<p>
 					<%= Time.now.strftime("%B %d, %Y") %>
@@ -79,7 +19,6 @@
 					</div>
 					<div class="attr cls readmore">
 						<%= link_to image_tag("userIconBig.gif", :width => "48", :height => "48", :alt => "avatar"), user_path(current_user), :class => "avatar" %>
->>>>>>> Slot:app/views/slots/show.html.erb
 						
 						<ul>
 							<li>Last updated by <%= link_to current_user.login, user_path(current_user) %>, <span class="rel-time" title="<%= @slot.updated_at %>"><%= time_ago_in_words(@slot.updated_at) %> ago</span>
