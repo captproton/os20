@@ -18,7 +18,8 @@
 						</h1>
 					</div>
 					<div class="attr cls readmore">
-						<a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/"><img src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn32.jpg?ciAwiiJBD7xNDS7c" height="32" width="32"></a>
+						<%= link_to image_tag("userIconBig.gif", :width => "48", :height => "48", :alt => "avatar"), user_path(current_user), :class => "avatar" %>
+						
 						<ul>
 							<li>Last updated by <%= link_to current_user.login, user_path(current_user) %>, <span class="rel-time" title="<%= @slot.updated_at %>"><%= time_ago_in_words(@slot.updated_at) %> ago</span>
 							</li>

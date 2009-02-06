@@ -114,8 +114,9 @@
 </div>
 <script text="type/javascript" charset="UTF-8">YAHOO.Lifestyles.ImagePicker.init("ylf-picker","propname=Yahoo%21%20Shine&propcode=wisteria&myAlias=rocketeer_capt.proton","tn24");</script>
 								<div class="cid cid-name">
-				<p>You will be seen as: <img id="avatar" class="avatar" src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn24.jpg?ciAkbsJBW8WlRH_P" longdesc="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn48.jpg?ciAkbsJBSzzD48hq" alt="Your avatar" height="24" width="24"/> <strong id="nickName">CaptProton</strong></p>
-				<p class="links"><a target="_blank" href="http://profiles.yahoo.com/?.done=http%3A%2F%2Fshine.yahoo.com%2F">Edit Name</a> | <a id="ylf-picker" href="/my/?change_image">Change Image</a></p>
+				<p>You will be seen as: 					<%= image_tag("userIconBig.gif", :width => "24", :height => "24", :alt => "Your avatar",  :class => "avatar") %>
+				 <strong id="nickName">CaptProton</strong></p>
+				<%# <p class="links"><a target="_blank" href="http://profiles.yahoo.com/?.done=http%3A%2F%2Fshine.yahoo.com%2F">Edit Name</a> | <a id="ylf-picker" href="/my/?change_image">Change Image</a></p> #Enable after user preferences improved %>
 				<input id="userAlias" name="alias" type="hidden" value="rocketeer_capt.proton"/>
 			</div>
 				</div>
@@ -156,6 +157,6 @@
 					<input type="submit" name="action" class="post" value="Save As Draft">
 					<input type="submit" name="action" class="post" value="Post This Entry">
 				</div>
-				<p class="blogInstructions">Your blog post will be displayed publicly along with your display image and nickname. You may edit or delete your post by visiting &ldquo;Manage My Blog&rdquo;.</p>
+				<p class="blogInstructions">Your slot post will be displayed publicly along with your display image and nickname. You may edit or delete your post by visiting &ldquo;Manage My Slots&rdquo;.</p>
 				<p class="blogInstructions">Your post may take up to five minutes to display.</p>
 
