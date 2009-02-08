@@ -14,8 +14,8 @@ class CreateDiscussions < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :discussions, :remark_id
-    add_index :discussions, [:remarkable_id, :remarkable_type, :context]
+    ## add_index :discussions, :remark_id
+    ## add_index :discussions, [:remarkable_id, :remarkable_type, :context]
     
   end
 

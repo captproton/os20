@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml"
+	layout="vertical" 
+	x="318" 
+	y="10"
+	paddingLeft="5"
+	paddingRight="5"
+	paddingTop="5"
+	paddingBottom="5"    
+	title="Family Details 75.5/100"  >
+	<mx:Script>
+	<![CDATA[
+		import mx.containers.FormItem;
+		import mx.validators.Validator;
+		import mx.validators.ZipCodeValidatorDomainType;
+		import mx.events.ValidationResultEvent;
+		import mx.controls.Alert;
+		
+		private function validateAndSubmit():void           
+	    {
+			var validators:Array = [lastNameValidator, emailValidator, phoneValidator, zipCodeValidator];
+			var errors:Array = Validator.validateAll(validators);
+			var errorMessages:Array = [];
+			
+			if(errors.length > 0)
+			{
+		
+				for each (var error:ValidationResultEvent in errors) 
+				{
+					var errorField:String = FormItem(error.currentTarget.source.parent).label;
+					errorMessages.push(errorField + ": " + error.message);
+				}
+				
+				Alert.show(errorMessages.join("\n\n"), "There were problems with your form.");
+		 	}
+			        
+		        //Here we could invoke other validators, or submit to a server
+		} 
+		
+		private function calculateAge(birthDate:Date):Number
+		{
+			var today:Date = new Date();
+			var ageDate:Date = new Date(today.time - birthDate.time);
+			var age:Number = ageDate.fullYear - 1970;
+			return age;
+		}
+		
+		private function getDate(value:String):Date
+		{
+			if(!value) return null;
+			
+			var date:Date = new Date();
+			
+			date.time = Date.parse(value);
+			
+			return date;
+		} 
+	]]>
+</mx:Script>
+
+	<!-- Component View States -->
+	<mx:states>
+		<mx:State name="edit">
+			<mx:RemoveChild target="{zipLabel}"/>
+			<mx:RemoveChild target="{addressText}"/>
+			<mx:RemoveChild target="{phoneLabel}"/>
+			<mx:RemoveChild target="{emailLabel}"/>
+			<mx:RemoveChild target="{nameLabel}"/>
+			<mx:RemoveChild target="{canvas1}"/>
+			<mx:RemoveChild target="{hbox1}"/>
+			
+			<mx:AddChild position="lastChild">
+				<mx:Form id="contactEditor">
+					
+					<mx:FormItem 
+						label="Family Name">
+						<mx:TextInput id="lastNameTextInput" 
+							restrict="a-z A-Z ' \-" 
+							text="{contact.lastName}"/>
+					</mx:FormItem>
+					
+					<mx:HRule 
+						height="22" 
+						width="100%"/>
+						
+					<mx:FormItem 
+						label="Email" 
+						required="true">
+						<mx:TextInput id="emailTextInput" 
+							text="{contact.email}"/>
+					</mx:FormItem>
+					
+					<mx:FormItem 
+						label="Phone">
+						<mx:TextInput id="phoneTextInput"
+							text="{phoneFormatter.format(contact.phone)}"/>
+					
+						<mx:RadioButtonGroup id="phoneRadioButtonGroup" 
+							selectedValue="{contact.phoneType}" />
+							
+						<mx:HBox>
+							<mx:RadioButton 
+								label="mobile" 
+								groupName="phoneRadioButtonGroup" 
+								selected="true"/>
+							<mx:RadioButton 
+								label="home" 
+								groupName="phoneRadioButtonGroup"/>
+							<mx:RadioButton 
+								label="other" 
+								groupName="phoneRadioButtonGroup"/>
+							
+						</mx:HBox>
+					</mx:FormItem>
+					
+					<mx:FormItem 
+						label="Address">
+						<mx:TextArea id="addressTextArea" 
+							text="{contact.address}"/>
+					</mx:FormItem>
+					
+					<mx:FormItem 
+						label="Zip">
+						<mx:TextInput id="zipCodeTextInput" 
+							text="{contact.zip}"/>
+					</mx:FormItem>
+					
+					<mx:HRule 
+						height="22" 
+						width="100%"/>
+						
+
+					<mx:FormItem>
+						<mx:CheckBox id="leftProgramCheckBox" 
+							label="Left Program" 
+							selected="{contact.company.contains('true')}"  />
+					</mx:FormItem>
+
+					<mx:FormItem>
+						<mx:ComboBox id="teacherComboBox"
+            				rowCount="4"
+            				width="200"
+            				textIndent="5"
+            				selectedIndex="-1"
+            				prompt="Oldest's Teacher...">
+        					<mx:dataProvider>
+            					<mx:Array>
+                					<mx:Object label="Katy"  />
+                					<mx:Object label="Jonathan"  />
+                					<mx:Object label="Lisa" />
+                					<mx:Object label="Ralph" />
+                					<mx:Object label="Mary" />
+                					<mx:Object label="Sandra"  />
+                					<mx:Object label="Linus"  />
+            					</mx:Array>
+        					</mx:dataProvider>
+    					</mx:ComboBox>
+    
+					</mx:FormItem>
+
+					<mx:HRule 
+						height="22" 
+						width="100%"/>
+					   <mx:Script>
+        <![CDATA[
+            [Bindable]
+            public var selectedItem:Object;
+       ]]>
+    </mx:Script>
+
+
+				</mx:Form>
+			</mx:AddChild>
+			
+			<mx:SetProperty 
+				name="title" 
+				value="Family Editor 75.5/100"/>
+				
+			<mx:SetProperty 
+				target="{editAndSaveButton}" 
+				name="label" 
+				value="Save"/>
+			
+			<mx:SetEventHandler 
+				target="{editAndSaveButton}" 
+				name="click" 
+				handler="currentState=''"/>
+			
+		</mx:State>
+	</mx:states>
+	
+	
+	<!--<mx:transitions>
+		<mx:Transition>
+		<mx:Sequence>
+			
+			<mx:Resize target="{this}"/>
+			<mx:Dissolve target="{contactEditor}"/>
+		</mx:Sequence>
+		</mx:Transition>
+	</mx:transitions>-->
+	
+	
+	<!-- The contact property -->
+	<mx:Object id="contact"/>
+	
+	<!-- Validators -->
+	  
+	<mx:StringValidator id="lastNameValidator"
+		source="{lastNameTextInput}" 
+		property="text"  
+		required="false" 
+		minLength="2" 
+		tooShortError="What kind of last name is that?"/>
+		
+	<mx:EmailValidator id="emailValidator" 
+	    source="{emailTextInput}" 
+	    property="text"
+	    requiredFieldError="Please enter your email.&#13;I promise not to send spam."/>
+	
+	<mx:PhoneNumberValidator id="phoneValidator" 
+		source="{phoneTextInput}"
+		property="text"
+		required="false" />
+		
+	<mx:ZipCodeValidator id="zipCodeValidator"
+		source="{zipCodeTextInput}"
+		property="text" 
+		domain="{ZipCodeValidatorDomainType.US_OR_CANADA}"
+		required="false"/>
+		
+	
+	<!-- Formatters -->
+	<mx:PhoneFormatter id="phoneFormatter"/>
+	
+	<mx:DateFormatter id="dateFormatter"/>
+	
+	<mx:NumberFormatter id="numberFormatter"
+		rounding="down"/>
+	
+	
+	<!-- The UI -->
+	<mx:HBox id="hbox1"
+		borderColor="#4E94C6" >
+		<mx:Label id="nameLabel" 
+			text="{contact.firstName} {contact.lastName}" 
+			fontWeight="bold" 
+			fontSize="14"/>	
+	</mx:HBox>
+	
+
+	<mx:Label id="emailLabel"
+		text="Email: {contact.email}"/>
+	
+	<mx:Label id="phoneLabel" 
+		text="{contact.phoneType}: {phoneFormatter.format(contact.phone)}"
+		visible="{contact.phone}"
+		includeInLayout="{contact.phone}"/> 
+		
+	<mx:Text id="addressText"
+		text="Address: {contact.address}" />
+		
+	<mx:Label id="zipLabel"
+		text="Zip Code: {contact.zip}" />
+		
+	<mx:Canvas id="canvas1"
+		width="60" 
+		height="60" 
+		backgroundColor="{contact.color}"
+		visible="{contact.color}" />
+		
+		<mx:ControlBar id="controlbar1">
+				<mx:Button id="editAndSaveButton" 
+					label="Edit" 
+					click="currentState='edit'"/>
+		</mx:ControlBar>
+
+</mx:Panel>

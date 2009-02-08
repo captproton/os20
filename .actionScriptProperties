@@ -10,6 +10,8 @@
 </compiler>
 <applications>
 <application path="OS20.mxml"/>
+<application path="mypage.mxml"/>
+<application path="HoursRecorder.mxml"/>
 </applications>
 <modules/>
 <buildCSSFiles/>

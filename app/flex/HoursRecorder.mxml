@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!-- containers\layouts\AppCBarSimple.mxml -->
+<!-- menbar: http://livedocs.adobe.com/flex/3/html/help.html?content=layouts_06.html -->
+<!-- initial layout and style from "Learning Flex 3" by Alaric Cole -->
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:view="com.oceanshore.components.hoursRecorder.*" 
+	layout="absolute"  
+	applicationComplete="contactsService.send()"  viewSourceURL="srcview/index.html">
+
+    <mx:Script>
+        <![CDATA[
+            import mx.controls.Alert;
+        ]]>
+    </mx:Script>
+
+    <mx:XMLList id="menuXML">
+         <menuitem label="File">
+            <menuitem label="Benchmarks" data="Copy"/>
+            <menuitem label="Recorder Information" data="Cut"/>
+            <menuitem label="Preferences" data="Cut"/>
+            <menuitem label="Quit" data="Cut"/>
+        </menuitem>
+         <menuitem label="Edit">
+            <menuitem label="Copy" data="Cut"/>
+            <menuitem label="Cut" data="Cut"/>
+            <menuitem label="Paste" data="Paste"/>
+        </menuitem>
+       <menuitem label="Databases">
+            <menuitem label="Current" data="Current"/>
+            <menuitem label="Y-1" data="Last Academic Year"/>
+            <menuitem label="Y-2" data="Year Before Last"/>
+            <menuitem label="Y-3" data="Exit"/>
+        </menuitem>
+        <menuitem label="Activities">
+            <menuitem label="New" data="Cut"/>
+            <menuitem label="Edit" data="Cut"/>
+            <menuitem label="Delete" data="Cut"/>
+            <menuitem label="Transfer" data="Copy"/>
+            <menuitem label="Update Admin Jobs" data="Paste"/>
+            <menuitem label="Import" data="Cut"/>
+        </menuitem>
+        <menuitem label="Lists">
+            <menuitem label="Administrative Jobs" data="Cut"/>
+            <menuitem label="Categories" data="Cut"/>
+            <menuitem label="Families" data="Cut"/>
+            <menuitem label="Teachers" data="Paste"/>
+        </menuitem>
+        <menuitem label="Reports">
+            <menuitem label="Category" data="Cut"/>
+            <menuitem label="Delinquent Families" data="Cut"/>
+            <menuitem label="Family Detail" data="Cut"/>
+            <menuitem label="Hours Allocation" data="Copy"/>
+            <menuitem label="Summary" data="Paste"/>
+        </menuitem>
+    </mx:XMLList>
+
+    <mx:Array id="cmbDP">
+        <mx:String>Administrative Jobs</mx:String>
+        <mx:String>Categories</mx:String>
+        <mx:String>Families</mx:String>
+        <mx:String>Teachers</mx:String>
+    </mx:Array>
+
+    <mx:ApplicationControlBar id="dockedBar" 
+        dock="true">
+        <mx:MenuBar height="100%" 
+            dataProvider="{menuXML}" 
+            labelField="@label" 
+            showRoot="true"/>
+        <mx:HBox paddingBottom="5" 
+            paddingTop="5">
+            <mx:ComboBox dataProvider="{cmbDP}"/>
+            <mx:Spacer width="100%"/>
+            <mx:TextInput id="myTI" text=""/>
+            <mx:Button id="srch1" 
+                label="Search" 
+                click="Alert.show('Searching')"/>
+        </mx:HBox>
+    </mx:ApplicationControlBar>
+    
+    <mx:TextArea width="300" height="200"/>
+    
+    <!-- A new .css file is included here, which controls the 
+	 look and feel of most of the application.
+-->		
+	<mx:Style source="styles.css"/>
+	
+	<mx:HTTPService id="contactsService" 
+		resultFormat="e4x" 
+		url="http://greenlike.com/flex/learning/projects/contactmanager/contacts.xml" />
+	
+	<mx:Parallel id="fadeAndResize">
+		<mx:Dissolve id="dissolve"/>
+		<mx:Resize id="fastResize" duration="300"/>
+	</mx:Parallel>
+	
+	<mx:DataGrid id="contactsDataGrid"  
+		dataProvider="{contactsService.lastResult.contact}"
+		selectedIndex="0" 
+		left="10" 
+		top="10" 
+		bottom="10" 
+		width="500"
+		change="contactViewer.currentState = ''">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Date" dataField="firstName" width="100"/>
+			<mx:DataGridColumn headerText="Hours" dataField="lastName" width="50"/>
+			<mx:DataGridColumn headerText="Cat" dataField="firstName" width="50"/>
+			<mx:DataGridColumn headerText="Detail" dataField="description" />
+			<mx:DataGridColumn headerText="Class" dataField="class_teacher" width="50"/>
+		</mx:columns>
+	</mx:DataGrid>
+	
+	
+	<view:ContactViewer id="contactViewer"
+		contact="{contactsDataGrid.selectedItem}"
+		x="518" 
+		y="10"
+		resizeEffect="{fadeAndResize}"
+		horizontalScrollPolicy="off"
+		verticalScrollPolicy="off">
+	</view:ContactViewer>
+
+</mx:Application>
+

@@ -24,7 +24,7 @@
     <mx:VBox width="600" horizontalAlign="center"> 
         <mx:Image source="com/oceanshore/assets/main-banner.jpg" /> 
         <mx:Label 
-           text="The simple, GTD-style TODO list application."/> 
+           text="The simple,  hours recording application."/> 
         <mx:Spacer height="10"/> 
         <mx:Text width="100%" text="{_reviews}"/> 
         <mx:Spacer height="10"/> 

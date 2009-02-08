@@ -1,0 +1,108 @@
+/* 
+//------------------------------------------------------
+//  This style sheet is a light blue theme that 
+//  contains type selectors for a few common components
+//------------------------------------------------------
+*/
+
+/* 
+//------------------------------
+//  Global style declaration
+//------------------------------
+*/
+global
+{
+	backgroundAlpha: .7; 
+	fontSize: 14;
+	
+}
+
+/*
+//------------------------------
+//  Application type selector
+//------------------------------
+*/
+Application
+{
+	backgroundColor: haloSilver;
+	themeColor: #69a6fa;
+}
+
+/* 
+//------------------------------
+//  DataGrid type selector
+//------------------------------
+*/
+DataGrid
+{
+	alternatingItemColors: #F7F7F7, #E2E8F4;
+	backgroundDisabledColor: #C4DFF4;
+	dropShadowEnabled: true;
+	headerColors: #96BEF4, #C7DCF9;
+	headerStyleName: dataGridHeader;
+	horizontalGridLines: false;
+	verticalGridLines: false;
+}
+
+/*
+//------------------------------
+//  headerStyleName for DataGrid
+//------------------------------
+*/
+.dataGridHeader
+{
+	fontSize: 12;
+	color: #474545;
+}
+
+/*
+//------------------------------
+//  Panel type selector
+//------------------------------
+*/
+Panel
+{
+	backgroundAlpha: 1.0; /* controls the alpha of the panel content area. */
+	backgroundColor: #6B9BC8;
+	borderAlpha: 1.0; /* controls the alpha of the panel top, bottom and sides. */
+	borderColor: #6B9BC8;
+	controlBarStyleName: panelControlBar;
+	cornerRadius: 3;
+	dropShadowEnabled: true;
+	titleStyleName: panelTitle;
+}
+
+/*
+//------------------------------
+//  controlBarStyleName for Panel
+//------------------------------
+*/
+.panelControlBar
+{
+	horizontalAlign: right;
+}
+
+/*
+//------------------------------
+//  titleStyleName for Panel
+//------------------------------
+*/
+.panelTitle
+{
+	color: #FFFFFF;
+	fontWeight: bold;
+	fontSize: 18;
+}
+
+
+/*
+//------------------------------
+//  TextInput type selector
+//------------------------------
+*/
+TextInput
+{
+	cornerRadius: 7;
+	borderStyle: solid;
+	backgroundAlpha: 0.8;
+}

@@ -8,7 +8,7 @@ class Slot < ActiveRecord::Base
   
   
   validates_presence_of :title, :user_id
-  searchable_by :title, :body, :excerpt #last minute crunch  -- gotta figure out why it doesn't work with will_paginate
+  searchable_by :title, :body, :excerpt 
   ## belongs_to :user
  
  def self.paginated_search(search,page)
