@@ -1,17 +1,10 @@
 class SlotsController < ApplicationController
-<<<<<<< HEAD:app/controllers/slots_controller.rb
-    @protected_actions = [ :edit, :update, :destroy ]
-=======
     @protected_actions  = [ :destroy ]
     @managable_actions     =  [ :index ]
->>>>>>> Slot:app/controllers/slots_controller.rb
     before_filter :login_required, :except => :feed
-<<<<<<< HEAD:app/controllers/slots_controller.rb
     ## before_filter :check_auth, :only => @protected_actions
-=======
     before_filter :check_auth, :only => @protected_actions
     ## before_filter :managed_action, :only => @managable_actions
->>>>>>> Slot:app/controllers/slots_controller.rb
 
     def index
       @body_class="ylf-home"

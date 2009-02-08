@@ -21,14 +21,15 @@
 		<div id="slideShowTool">
 			<div class="bd">
 				<div id="ylf-slideshow">
-<<<<<<< HEAD:app/views/slots/_form.html.erb
+
 					<div class="uploaded-content content"><p>A gallery can have a <em>maximum of 20</em> photos.</p></div>
 					<div class="detail-content content"><p>Add titles, descriptions and credits to your photos. This step is optional.</p></div>
 					<div class="sort-content content"><p><em>How to sort photos:</em></p><p>Drag the photo up or down. Release the mouse where you want to place the photo.<br>Or, click the 'up' and 'down' arrow on the left.</p><p>Photo #1 below will represent your gallery in the slot roll</p></div>
 					<div id="ylf-files"></div>
 					<div class="intro-content content"><p class="select">Click the button below to select and upload your gallery photos</p><p>A gallery can have a <em>maximum of 20</em> photos.</p><button type="button" id="uploadPhotosSS">Select and Upload Photos</button><p class="uploadDetails">*You can select multiple photos when you hold down CTRL<br />*We accept JPG and GIF file formats.</p></div>
 					<div class="finish-content content"><p><em>You are finished creating your gallery!</em></p><p>Choose where to display your gallery in the post:</p>			<p><input type='radio' value='1' name='SSTop' checked="checked" id='sstop' /> <label for="sstop">gallery will appear above the text</label></p><p><input type='radio' value='0' name='SSTop'  id='ssbottom' /> <label for="ssbottom">gallery will appear below the text</label></p><button type="button" id="addSS">Add gallery to My Post</button></div>
-=======
+
+
 					<div id="ylf-flashwrap">
 						<div class="uploaded-content content"><p>A gallery can have a <em>maximum of 20</em> photos.</p></div>
 						<div class="detail-content content"><p>Add titles, descriptions and credits to your photos. This step is optional.</p></div>
@@ -39,7 +40,6 @@
 						<div id="uploaderOverlay"></div>
 					</div>
 					
->>>>>>> Slot:app/views/slots/_form.html.erb
 				</div>
 				<div id="ylf-thumb-start"><!--!<img src="http://l.yimg.com/us.yimg.com/i/us/avtr/site/default/avatar_medium.png" height="48" width="48" class="placeholder">!--></div>
 				<div id="ylf-thumb-progress"><!--!<img src="http://l.yimg.com/jn/images/20090128045025/lz.png" height="45" width="45" class="loading">!--></div>
@@ -68,13 +68,13 @@
 	</div>
 	<div class="channel sel cls">
 		<label for="channel"><span class="required">*</span> Submit my post to:</label>
-<<<<<<< HEAD:app/views/slots/_form.html.erb
+
 		<span class="sel-wrap" id="channel-wrap">
 			<select name="channel" id="channel"><option value="">Choose a Category</option><option  selected="selected" value="none">Only My Slots</option><option  value="admin">Administrative</option><option  value="classroom">Classroom</option><option  value="logistics">Logistics</option><option  value="home">At Home</option></select>
-=======
+
 		<span class="sel-wrap " id="channel-wrap">
-			<select name="channel" id="channel"><option  selected="selected" value="none">* Only My Blog</option><option  value="beauty">Fashion + Beauty</option><option  value="health">Healthy Living</option><option  value="entertainment">Entertainment</option><option  value="parenting">Parenting</option><option  value="sex">Love + Sex</option><option  value="money">Work + Money</option><option  value="food">Food</option><option  value="home">At Home</option></select>
->>>>>>> Slot:app/views/slots/_form.html.erb
+			<select name="channel" id="channel"><option  selected="selected" value="none">* Only My Slots</option><option  value="beauty">Fashion + Beauty</option><option  value="health">Healthy Living</option><option  value="entertainment">Entertainment</option><option  value="parenting">Parenting</option><option  value="sex">Love + Sex</option><option  value="money">Work + Money</option><option  value="food">Food</option><option  value="home">At Home</option></select>
+
 		</span>
 	</div>
 	
@@ -85,14 +85,13 @@
 <!--		<label for="tags">Tags</label>
 		<%# form.text_field :tags, :size => 78, :maxlength => 254 %>
 		<p>To enter multiple tags, separate them with commas.</p>
-<<<<<<< HEAD:app/views/slots/_form.html.erb
 	</div>
 -->		
 	
 	
-=======
+
 -->	</div>
->>>>>>> Slot:app/views/slots/_form.html.erb
+
 	<a href="#adv_opt_dis" id="adv_opt">Show More Options &raquo;</a>
 	<div id="adv_opt_dis">
 		
@@ -134,21 +133,19 @@
 
 </div>
 <script text="type/javascript" charset="UTF-8">YAHOO.Lifestyles.ImagePicker.init("ylf-picker","propname=Yahoo%21%20Shine&propcode=wisteria&myAlias=rocketeer_capt.proton","tn24");</script>
-<<<<<<< HEAD:app/views/slots/_form.html.erb
 
 		<div class="cid cid-name">
 			<p style="visibility:hidden">You will be seen as: <img id="avatar" class="avatar" src="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn24.jpg?ciAwiiJBCGJhRH_P" longdesc="http://f3.yahoofs.com/coreid/48081d11i5fbzul2sp1/RZiYObMjdKWKE.pfuJaRG6G3tXfJU5p20RiecdA-/1/tn48.jpg?ciAwiiJBUS2R48hq" alt="Your avatar" height="24" width="24"/> <strong id="nickName">CaptProton</strong></p>
 			<p class="links" style="visibility:hidden"><a target="_blank" href="http://manage.community.yahoo.com/basicinfo/?.done=http%3A%2F%2Fshine.yahoo.com%2F">Edit Name</a> | <a id="ylf-picker" href="/my/?change_image">Change Image</a></p>
 			<input id="userAlias" name="alias" type="hidden" value="rocketeer_capt.proton"/>
 		</div>
-=======
+
 								<div class="cid cid-name">
 				<p>You will be seen as: 					<%= image_tag("userIconBig.gif", :width => "24", :height => "24", :alt => "Your avatar",  :class => "avatar") %>
 				 <strong id="nickName">CaptProton</strong></p>
 				<%# <p class="links"><a target="_blank" href="http://profiles.yahoo.com/?.done=http%3A%2F%2Fshine.yahoo.com%2F">Edit Name</a> | <a id="ylf-picker" href="/my/?change_image">Change Image</a></p> #Enable after user preferences improved %>
 				<input id="userAlias" name="alias" type="hidden" value="rocketeer_capt.proton"/>
 			</div>
->>>>>>> Slot:app/views/slots/_form.html.erb
 				</div>
 				<div id="previewBlog">
 					<h1>Preview Your Entry</h1>
