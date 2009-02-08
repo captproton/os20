@@ -1,15 +1,6 @@
-	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css">
-	<link rel="stylesheet" type="text/css" charset="UTF-8" href="http://l.yimg.com/jn/css/20090128045025/base.css">
-	<link rel="stylesheet" type="text/css" charset="UTF-8" href="http://l.yimg.com/jn/css/20090128045025/manage.css"/>
-
-	<script type="text/javascript" charset="UTF-8" src="http://l.yimg.com/jn/js/20090128045025/ylf_core.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="http://l.yimg.com/jn/js/20090128045025/manage.js"></script>
-
-	
-	
 	<div class="doc cls">
 		<div class="main" id="ylf-write">
-			<%# form_for :slot, :url => slot_path(@slot), :html => { :id => "blogForm" }  do |f| -%>
+
 			<% form_for :slot, :url => slot_path(@slot), :html => { :method => :put }  do |f| -%>
 			
 			<%= render :partial => "form", :object => f %>

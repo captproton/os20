@@ -4,7 +4,6 @@ class SlotsController < ApplicationController
     before_filter :login_required, :except => :feed
     ## before_filter :check_auth, :only => @protected_actions
     before_filter :check_auth, :only => @protected_actions
-    ## before_filter :managed_action, :only => @managable_actions
 
     def index
       @body_class="ylf-home"
@@ -12,13 +11,7 @@ class SlotsController < ApplicationController
       
       @doc_id = 'ylf-blog-mgr'
       @doc_class = 'doc'
-      ## @slots = site.slots.paginate(slot_options(:order => 'contents.published_at DESC', :select => 'contents.*',
-      ##                                                 :page => params[:page], :per_page => params[:per_page]))
       @slots = Slot.search(params[:search]).paginate(:per_page => 5, :page => params[:page])
-      ## @slots = Slot.paginate(:page => params[:page], :per_page => 10)
-      #@slots = Slot.paginate  :per_page => 5, :page => params[:page],
-      #                        :conditions => ['name_like ?', "%#{params[:search]}%"],
-      #                        :order => 'name'
       
       ## @comments = @site.unapproved_comments.count :all, :group => :slot, :order => '1 desc'
       ## @sections = site.sections.find(:all)
@@ -28,14 +21,8 @@ class SlotsController < ApplicationController
 
     def show
       # this is an autotest
-      
-      @side = "show"
       @body_class = 'js'
       @body_id = 'ylf-ch-none'
-      @method = 'show'
-      @javascripts = ['http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js', 'http://us.js2.yimg.com/us.js.yimg.com/lib/rt/rto1_78.js']
-      @doc_id = "ylf-blog"
-      @doc_class = "doc nobg cls"
       @related = Slot.find(:all, :limit => 5)
       @slot  = Slot.find(params[:id])
       @remark = Remark.new
@@ -49,14 +36,7 @@ class SlotsController < ApplicationController
 
     def new
       @slot = Slot.new
-      
-      ## render(:layout => false) # never use a layout
-      @body_class = "yui-skin-sam write js"
-      @page_title = 'Compose a New Slot Entry'
-      @doc_class = "doc cls"
-
-      
-      
+      @page_title = 'Compose a New Slot Entry'      
     end
 
     def edit
@@ -146,17 +126,7 @@ class SlotsController < ApplicationController
         end
       end
       
-      
-      def managed_action
-        # changes layout for new, edit, and search
-        render  :layout  => "manage"
-        @side = "new"
-        @body_class="yui-skin-sam write js"
-        @skin = 'http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css'
-        @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js']
-        
-      end
-    
+          
     protected
 
       # This is implemented on a per-polymorph basis because the asset.attachable may be

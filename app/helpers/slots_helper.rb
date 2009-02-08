@@ -5,7 +5,9 @@ module SlotsHelper
       
       @stylesheets = ['skin', 'base', 'manage', 'uh-1.1.3'] if controller.action_name  == "new" || controller.action_name  == "edit"
           
-      @stylesheets = ['base', 'manage', 'uh-1.1.3']  if controller.action_name  == "manage"     
+      @stylesheets = ['base', 'manage', 'uh-1.1.3']  if controller.action_name  == "manage" 
+      
+    
   end
   
   def palooza_javascripts
