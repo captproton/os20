@@ -1,54 +1,32 @@
-
-		<div class="main" id="ylf-write">
-			<ul class="links cls">
-				<li class="first"><a href="/manage/">Manage My Slots</a></li>
-				<li><a href="/blog/anwouQPymWso8WG8iFqtnw91mGyHG6_dA8GqYShs7YWtKiQvg/">View My Slots</a></li>
-=======
-	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css">
-	<link rel="stylesheet" type="text/css" charset="UTF-8" href="http://l.yimg.com/jn/css/20090128045025/base.css">
-	<link rel="stylesheet" type="text/css" charset="UTF-8" href="http://l.yimg.com/jn/css/20090128045025/manage.css"/>
-
-	<script type="text/javascript" charset="UTF-8" src="http://l.yimg.com/jn/js/20090128045025/ylf_core.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="http://l.yimg.com/jn/js/20090128045025/manage.js"></script>
-
-
-	
-	
-	<div class="doc cls">
-		<div class="main" id="ylf-write">
+<div id="ylf-write" class="main">
+	<ul class="links cls">
+		<li class="first"> <%= link_to "Manage my Slots", user_path(@current_user) %> </li>
+		
+		<li><%= link_to "View My Slots", user_path(@current_user) %> </li>
+	</ul>			
+	<% form_for (@slot)  do |f| -%>
+		<%= render :partial => "form", :object => f %>
 			
-			<% form_for (@slot)  do |f| -%>
-			<%= render :partial => "form", :object => f %>
-			
-			<!-- </form> -->
-			<% end %>
-			<p>================</p>
+	<!-- </form> -->
+	<% end %>
+	<%= javascript_include_tag('http://l.yimg.com/jn/js/20081208112220/write.js') %>
 
-		</div>
-	</div>
+</div>
 
 <%# ================ %>	
 		<% content_for(:sidebar) do %>
 		
 			<%= render :partial => 'sidebar_new_or_edit' %>
+			
 		<% end %>		
 <%# ================ %>
 
 <% content_for(:javascript_tail) do %>
-<!-- start javascript tail -->
-<script language=javascript>
-	if(window.yzq_d==null)window.yzq_d=new Object();
-	window.yzq_d['OqK3Adj8ek4-']='&U=12dqemq2p%2fN%3dOqK3Adj8ek4-%2fC%3d-1%2fD%3dFSRVY%2fB%3d-1%2fV%3d0';
-</script>
-<noscript>
-	<img width=1 height=1 alt="" src="http://us.bc.yahoo.com/b?P=3FX4HGKIKqhcbnXdSUWfng3OYmBoZkmAnOwADSRO&T=142t5usef%2fX%3d1233165549%2fE%3d967143184%2fR%3dyliving%2fK%3d5%2fV%3d2.1%2fW%3dH%2fY%3dYAHOO%2fF%3d2019670860%2fQ%3d-1%2fS%3d1%2fJ%3dCBABA342&U=12dqemq2p%2fN%3dOqK3Adj8ek4-%2fC%3d-1%2fD%3dFSRVY%2fB%3d-1%2fV%3d0">
-</noscript>
-<div id="yblthm_sip" style="display:none">
-	<noscript>
-		<iframe src="http://media.adrevolver.com/adrevolver/trace?sip=98&cpy=1233165549002717&code=89;91;108;243;807;816" width=0 height=0 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>
-	</noscript>
-</div>
-		<%# javascript_include_tag('write') %>
+	<!-- start javascript tail -->
+	<script language=javascript>
+		if(window.yzq_d==null)window.yzq_d=new Object();
+		window.yzq_d['OqK3Adj8ek4-']='&U=12dqemq2p%2fN%3dOqK3Adj8ek4-%2fC%3d-1%2fD%3dFSRVY%2fB%3d-1%2fV%3d0';
+	</script>
 	
 		<!-- finish javascript tail -->
 

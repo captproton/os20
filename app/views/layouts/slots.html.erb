@@ -59,8 +59,8 @@ if(window.yzq_d==null)window.yzq_d=new Object();
 
 		<%# Render shared/foot if content_for_foot is not defined in action sidebar %>
 		<%= (sidebar = yield :foot) ? sidebar : render(:partial => 'shared/foot') %>
-		foot goes here 
+
 		<%= yield :javascript_tail %>
-	    
+			<script type="text/javascript" charset="UTF-8" src="http://l.yimg.com/jn/js/20090129191543/write.js"></script>
 	</body>
 </html>
