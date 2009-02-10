@@ -36,7 +36,8 @@ class SlotsController < ApplicationController
 
     def new
       @slot = Slot.new
-      @page_title = 'Compose a New Slot Entry'      
+      @page_title = 'Compose a New Slot Entry' 
+      render :layout => "new_slot"      
     end
 
     def edit

@@ -1,33 +1,23 @@
-<div id="ylf-write" class="main">
-	<ul class="links cls">
-		<li class="first"> <%= link_to "Manage my Slots", user_path(@current_user) %> </li>
-		
-		<li><%= link_to "View My Slots", user_path(@current_user) %> </li>
-	</ul>			
-	<% form_for (@slot)  do |f| -%>
-		<%= render :partial => "form", :object => f %>
+		<div class="main" id="ylf-write">
+				<% form_for :slot, :url => slots_path, :html => { :id => "blogForm" }  do |f| -%>
+					<%= render :partial => "form", :object => f %>
+				<%- end -%>
 			
-	<!-- </form> -->
-	<% end %>
-	<%= javascript_include_tag('http://l.yimg.com/jn/js/20081208112220/write.js') %>
-
-</div>
-
-<%# ================ %>	
-		<% content_for(:sidebar) do %>
-		
-			<%= render :partial => 'sidebar_new_or_edit' %>
 			
-		<% end %>		
-<%# ================ %>
+		</div>
+		
+		<%# ================ %>	
+				<% content_for(:sidebar) do %>
 
-<% content_for(:javascript_tail) do %>
-	<!-- start javascript tail -->
-	<script language=javascript>
-		if(window.yzq_d==null)window.yzq_d=new Object();
-		window.yzq_d['OqK3Adj8ek4-']='&U=12dqemq2p%2fN%3dOqK3Adj8ek4-%2fC%3d-1%2fD%3dFSRVY%2fB%3d-1%2fV%3d0';
-	</script>
-	
-		<!-- finish javascript tail -->
+					<%= render :partial => 'sidebar_new_or_edit' %>
+				<% end %>		
+		<%# ================ %>
 
-<% end %>
+		<% content_for(:javascript_tail) do %>
+		<!-- start javascript tail -->
+
+				<%= javascript_include_tag('write') %>
+
+				<!-- finish javascript tail -->
+
+		<% end %>

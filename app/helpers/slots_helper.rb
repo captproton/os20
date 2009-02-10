@@ -3,7 +3,7 @@ module SlotsHelper
   def palooza_style
       @stylesheets = ['base', 'uh-1.1.3'] if controller.action_name  == "index" || controller.action_name  ==  "show"
       
-      @stylesheets = ['skin', 'base', 'manage', 'uh-1.1.3'] if controller.action_name  == "new" || controller.action_name  == "edit"
+      @stylesheets = ['http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css', '20090129191543/base', '20090129191543/manage', 'uh-1.1.3'] if controller.action_name  == "new" || controller.action_name  == "edit"
           
       @stylesheets = ['base', 'manage', 'uh-1.1.3']  if controller.action_name  == "manage" 
       
@@ -13,7 +13,7 @@ module SlotsHelper
   def palooza_javascripts
     @javascripts = ['http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js', 'http://us.js2.yimg.com/us.js.yimg.com/lib/rt/rto1_78.js'] if controller.action_name  == "index" || controller.action_name  ==  "show"
     
-    @javascripts = ['http://l.yimg.com/jn/js/20081208112220/ylf_core.js', 'http://l.yimg.com/jn/js/20081208112220/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js'] if controller.action_name  == "new" || controller.action_name  == "edit"
+    @javascripts = ['20090129191543/ylf_core.js', '20090129191543/manage.js','http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js'] if controller.action_name  == "new" || controller.action_name  == "edit"
         
     @javascripts = ['base', 'manage', 'uh-1.1.3']  if controller.action_name  == "manage"     
         
