@@ -1,28 +1,23 @@
-	<div class="doc cls">
-		<div class="main" id="ylf-write">
-
-			<% form_for :slot, :url => slot_path(@slot), :html => { :method => :put }  do |f| -%>
-			
+<div class="main" id="ylf-write">
+	<% form_for :slot, :url => slot_path(@slot), :html => { :method => :put }  do |f| -%>
 			<%= render :partial => "form", :object => f %>
-						<!-- </form> -->
-			<% end %>
-			<p>================</p>
-
-		</div>
-	</div>
+		<%- end -%>
+	
+	
+</div>
 
 <%# ================ %>	
 		<% content_for(:sidebar) do %>
-		
+
 			<%= render :partial => 'sidebar_new_or_edit' %>
 		<% end %>		
 <%# ================ %>
 
 <% content_for(:javascript_tail) do %>
 <!-- start javascript tail -->
-		
+
 		<%= javascript_include_tag('write') %>
-			
+
 		<!-- finish javascript tail -->
 
 <% end %>

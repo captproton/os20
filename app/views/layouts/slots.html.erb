@@ -1,58 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-"http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-	<head>
-		<title>
-			<%= page_title %> - OSSPTO
-		</title>
-		<meta name="keywords" lang="en" content="diet, nutrition, fitness, wellness, aging, Array, Array">
-		<meta name="description" lang="en" content="A blog and online community that offers women tips and advice on living a healthier life, eating better, exercise, staying well, and keeping their families healthy.">
-		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<% palooza_style %>
-		<%= stylesheet_link_tag(*@stylesheets) if @stylesheets %>
-		<% palooza_javascripts %>
-		<%= javascript_include_tag(*@javascripts) if @javascripts %>
-		<link rel="alternate" type="application/rss+xml" title="Healthy Living | on Shine" href="http://shine.yahoo.com/rss/blog/channel/health/">
-		<%= stylesheet_link_tag(*"http://l.yimg.com/a/lib/uh/css/uh-1.1.3.css") %>
-		
-		<!-- link type="text/css" rel="stylesheet" href="http://l.yimg.com/a/lib/uh/css/uh-1.1.3.css" -->
-		<style type="text/css">
-#ygma .sprite_bg{background-image:url(http://l.yimg.com/a/i/us/uh/bt2/shine_sprite_v1.gif);}#ygma .bd{background:none;}#ygma{background:none;}#ygma .srch{border-bottom:1px solid #D1D1D1;border-top:1px solid #D1D1D1;}#ygma .srch .srchinner{border-left:1px solid #D1D1D1;border-right:1px solid #D1D1D1;background-position:-0px -173px;background-repeat:repeat-x;}#ygma #ygmatop #ygmauseroptions{background:#FCFCFC;color:#000;}#ygma #ygmatop #ygmauseroptions li{background:#fff;color:#000;border-right:1px solid #B9B9B9;}#ygma #ygmatop #ygmauseroptions li.last-child
-		{
-			background:#ECECEC;color:#666;border-bottom:1px solid #B9B9B9;border-top:1px dotted #D4D4D6;
-		}
-		#ygma #ygmabot
-		{
-			font-family:verdana, sans-serif;font-size:1em;
-		}
-		#ygma #ygmabot label 
-		{
-			font-weight: normal;
-		}
-		#ygma #ygmabot input {font-size: 78%;}#ygma a {font-family: verdana, sans-serif;}
-		</style>
-	</head>
-	<body <%= body_class_and_id %>>
-		<!-- no eyebrow content -->
-		<div id="ygma">
-			<div id="ygmaheader">
-				<div class="bd sprite_bg">
-			</div>
-			</div>
-		</div>
-		<script charset="utf-8" type="text/javascript" src="http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js"></script>
+<head>
+	<title>Compose a New Blog Entry - Shine on Yahoo!</title>
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.0/build/assets/skins/sam/skin.css">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" charset="UTF-8" href="http://os20.local/stylesheets/20090129191543/base.css">
+	<link rel="stylesheet" type="text/css" charset="UTF-8" href="http://os20.local/stylesheets/20090129191543/manage.css"/>
 
-		</script>
-		<%= render :partial => "/shared/nav_and_subnav" %>
-		<%= render :partial => '/shared/searchbar' %>
-		<div <%= on_stage %>>
+	<script type="text/javascript" charset="UTF-8" src="http://os20.local/javascripts/20090129191543/ylf_core.js"></script>
+
+	<script type="text/javascript" charset="UTF-8" src="http://os20.local/javascripts/20090129191543/manage.js"></script>
+
+	
+	
+	
+</head>
+<body <%= body_class_and_id %>>
+	<link type="text/css" rel="stylesheet" href="http://l.yimg.com/a/lib/uh/css/uh-1.1.3.css">
+	<div id="ygma">
+		<div id="ygmaheader">
+			<div class="bd sprite_bg">
+		</div>
+		</div>
+	</div>
+	<script charset="utf-8" type="text/javascript" src="http://l.yimg.com/a/lib/uh/js/uh-1.3.0.js"></script>
+
+	</script>
+	<%= render :partial => "/shared/nav_and_subnav" %>
+	<%= render :partial => '/shared/searchbar' %>
+	
+	<div <%= on_stage %>>
 			<%= yield :layout %>
 			<%# Render shared/sidebar if content_for_sidebar is not defined in action sidebar, unless action is manage, then render nothing. %>
+			<%= (sidebar = yield :sidebar) ? sidebar : render(:partial => 'shared/sidebar') unless controller.action_name == 'manage' %>
+			
 		</div>
 
 		<%# Render shared/foot if content_for_foot is not defined in action sidebar %>
-		<%# (sidebar = yield :foot) ? sidebar : render(:partial => 'shared/foot') %>
+		<%= (foot = yield :foot) ? sidebar : render(:partial => 'shared/foot') %>
+	</div>
 
-		<%= yield :javascript_tail %>
-	</body>
+
+	
+	<script type="text/javascript" charset="UTF-8" src="http://os20.local/javascripts/write.js"></script>
+	
+</body>
 </html>
