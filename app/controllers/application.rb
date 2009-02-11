@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
-  include ExceptionNotifiable
+  ## include ExceptionNotifiable #temporarily turned off
 
   class AccessDenied < StandardError; end
 
