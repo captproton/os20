@@ -7,15 +7,10 @@ class MakeRemarkable < ActiveRecord::Migration
     
     add_index :remarks, :user_id
     
-    # take remarks out of discussions
-    rename_column :discussions, :remarkable_type, :publication_type
-    rename_column :discussions, :remarkable_id, :publication_id
     
   end
 
   def self.down
-    rename_column :discussions, :publication_id, :remarkable_id
-    rename_column :discussions, :publication_type, :remarkable_type
     
     remove_index :remarks, :user_id
 
