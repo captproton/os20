@@ -1,5 +1,5 @@
 <div class="main" id="ylf-write">
-	<% form_for :slot, :url => slot_path(@slot), :html => { :method => :put }  do |f| -%>
+	<% form_for :slot, :url => slot_path(@slot), :html => { :method => :put, :id => "blogForm" }  do |f| -%>
 			<%= render :partial => "form", :object => f %>
 		<%- end -%>
 	
@@ -21,3 +21,4 @@
 		<!-- finish javascript tail -->
 
 <% end %>
+
