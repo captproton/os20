@@ -90,7 +90,7 @@ class SlotsController < ApplicationController
       @slot.destroy
       
       respond_to do |format|
-        format.html { redirect_to(slots_url) }
+        format.html { redirect_to(manage_slots_url) }
         format.xml  { head :ok }
       end
       rescue ActiveRecord::RecordNotFound => e
