@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- Simple example to demonstrate the ButtonBar control. -->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" backgroundGradientColors="[0x000000,0x323232]" viewSourceURL="srcview/index.html">
+
+
+    <mx:Panel height="75%" width="75%"
+        paddingTop="10" paddingLeft="10" paddingRight="10" paddingBottom="10"
+        color="0xffffff" borderAlpha="0.15">
+
+       <mx:Label width="100%" color="0x000000"
+           text="Select a button in the ButtonBar control."/>
+
+
+        <mx:ButtonBar  color="0x000000">
+            <mx:dataProvider>
+                <mx:Array>
+                    <mx:String>Why OSS</mx:String>
+                    <mx:String>Community</mx:String>
+                    <mx:String>my OSS</mx:String>
+                    <mx:String>Shop</mx:String>
+                    <mx:String>Give</mx:String>
+                    <mx:String>Contact</mx:String>
+                </mx:Array>
+            </mx:dataProvider>
+        </mx:ButtonBar>
+    </mx:Panel>
+</mx:Application>

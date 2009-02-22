@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="142" >
+	
+	<mx:Button label="rails" 
+		disabledSkin="images/logo.jpg" 
+		toggle="true" color="0xFFAAAA" 
+		textRollOverColor="0xSSSSAA" 
+		textSelectedColor="0xFFFFAA" 
+		upSkin="@Embed(source='images/rails.png')"  height="51" width="51"/>
+	<mx:Button label="pails" 
+		disabledSkin="images/logo.jpg" 
+		toggle="true" color="0xFFAAAA" 
+		textRollOverColor="0xSSSSAA" 
+		textSelectedColor="0xFFFFAA" 
+		upSkin="@Embed(source='images/rails.png')"  height="51" width="51"/>
+	<mx:Button label="gales" 
+		disabledSkin="images/logo.jpg" 
+		toggle="true" color="0xFFAAAA" 
+		textRollOverColor="0xSSSSAA" 
+		textSelectedColor="0xFFFFAA" 
+		upSkin="@Embed(source='images/rails.png')"  height="79" width="79"/>
+</mx:Canvas>

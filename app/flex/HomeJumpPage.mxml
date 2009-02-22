@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical">
+	<mx:HBox>
+		<mx:Button label="button bar goes here" />
+	</mx:HBox>
+	
+	<mx:HBox width="701">
+		<mx:VBox>
+			<mx:Button label="Feature 1"  height="86"/>
+			<mx:Button label="Feature 2"  height="67"/>
+			<mx:Button label="Feature 3"  height="76"/>
+		</mx:VBox>
+		<mx:VBox>
+			<mx:Button label="player goes here"  height="219" width="443"/>
+		</mx:VBox>
+		<mx:VBox height="240" width="161">
+			<mx:Button label="For you buttons here" />
+			<mx:Button label="What's new in"  width="144" height="115"/>
+		</mx:VBox>
+	</mx:HBox>
+</mx:Application>

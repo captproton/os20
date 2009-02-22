@@ -32,6 +32,7 @@ class SlotsController < ApplicationController
       ## @slot  = @slot.to_liquid(:mode => :single)
 
       ## render :text => site.call_render(site.sections.home, :single, 'slots' => [@slot], 'slot' => @slot, 'comments' => @comments, 'site' => site.to_liquid)
+      
     end
 
     def new
@@ -42,6 +43,9 @@ class SlotsController < ApplicationController
     def edit
       @page_title = 'Edit a Slot Entry'
       @slot = current_user.slots.find(params[:id])
+      
+      rescue ActiveRecord::RecordNotFound => e
+        prevent_access(e)
     end
 
     def create
@@ -90,7 +94,8 @@ class SlotsController < ApplicationController
         format.html { redirect_to(slots_url) }
         format.xml  { head :ok }
       end
-      
+      rescue ActiveRecord::RecordNotFound => e
+        prevent_access(e)
     end
     
     def remark
