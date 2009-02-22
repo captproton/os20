@@ -118,7 +118,7 @@ class SlotsController < ApplicationController
     end
       
     def manage
-      @slots = Slot.search(params[:search]) ## manage_slots_path
+      @slots = current_user.slots.search(params[:search]) ## manage_slots_path
     end
 
     private
