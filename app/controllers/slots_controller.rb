@@ -3,7 +3,6 @@ class SlotsController < ApplicationController
     @managable_actions     =  [ :index ]
     before_filter :login_required, :except => :feed
     ## before_filter :check_auth, :only => @protected_actions
-    before_filter :check_auth, :only => @protected_actions
 
     def index
       @body_class="ylf-home"
