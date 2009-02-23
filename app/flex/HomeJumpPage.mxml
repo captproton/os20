@@ -4,6 +4,16 @@
 		<mx:Button label="button bar goes here" />
 	</mx:HBox>
 	
+    <mx:ApplicationControlBar width="80%">
+        <mx:Label text="Ocean Shore" fontWeight="bold" color="0x000000"/>
+        <mx:Button label="Go adobe.com" color="0x000000" />
+        
+        <mx:Label text="Search:" color="0x323232" />
+        <mx:TextInput width="100%" maxWidth="200" />
+        <mx:Spacer width="100%" />
+    </mx:ApplicationControlBar>
+
+	
 	<mx:HBox width="701">
 		<mx:VBox>
 			<mx:Button label="Feature 1"  height="86"/>
@@ -14,7 +24,11 @@
 			<mx:Button label="player goes here"  height="219" width="443"/>
 		</mx:VBox>
 		<mx:VBox height="240" width="161">
-			<mx:Button label="For you buttons here" />
+			<mx:VBox borderThickness="2" borderColor="white" width="150">
+				<mx:Button label="Preschool" />
+				<mx:Button label="Families" />
+				<mx:Button label="Alumni" />
+			</mx:VBox>
 			<mx:Button label="What's new in"  width="144" height="115"/>
 		</mx:VBox>
 	</mx:HBox>
