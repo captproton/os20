@@ -38,7 +38,8 @@
 		<mx:VBox>
 			<mx:Button label="player goes here"  height="219" width="443"/>
 		</mx:VBox>
-		<mx:VBox height="240" width="211">
+		<mx:VBox height="333" width="211">
+		<mx:Panel label="OSS for You">
 
 
 		    <mx:HBox>
@@ -48,7 +49,7 @@
                 dataProvider="{viewStack}"
                 themeColor="haloOrange"
                 fontSize="12"
-                width="150"
+                width="170"
                 height="100" />
         
         <mx:ViewStack id="viewStack"
@@ -75,7 +76,12 @@
 
         </mx:ViewStack>
     </mx:HBox>
-			<mx:Button label="What's new in"  width="150" height="115"/>
+			
+		</mx:Panel>
+    <mx:Panel label="What's new in..."  width="200" >
+    	<mx:Button label="What's new in"  width="150" height="115"/>
+    	
+    </mx:Panel >
 		</mx:VBox>
 	</mx:HBox>
 </mx:Application>
