@@ -35,8 +35,11 @@ ActionController::Routing::Routes.draw do |map|
   end
   ## map.resources :users,    :has_many   => [:assets]
   map.connect ':controller/service.wsdl', :action => 'wsdl'
-  map.connect '', :controller => 'users'
+  map.connect '', :controller => 'jumppage'
 
+  map.error '/error', :controller => '<some_controller>', :action => '<error_action>'
+  map.denied '/denied', :controller => '<some_controller>', :action => '<denied_action>'
+  
   # Install the default route as the lowest priority.
   ## map.connect ':controller/:action/:id.:format'
   #map.connect ':controller/:action/:id'

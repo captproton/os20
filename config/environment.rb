@@ -12,6 +12,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here
+    config.gem "mdarby-restful_acl", :lib => 'restful_acl_controller'
 
   # Skip frameworks you're not going to use (only works if using vendor/rails)
   config.frameworks -= [ :active_resource ] #, :action_mailer ]

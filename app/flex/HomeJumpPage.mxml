@@ -7,11 +7,11 @@
 	<!-- http://blog.flexexamples.com/2008/01/11/setting-the-data-provider-of-a-flex-buttonbar-control-to-a-viewstack-container/ -->
 
 	<mx:VRule width="2" />
-	<mx:LinkButton id="home_button" label="Home" click="navigateToURL(new URLRequest('http://oceanshoreschool.info'), '_top')" />
+	<mx:LinkButton id="home_button" label="Home" click="navigateToURL(new URLRequest('/'), '_top')" />
 	<mx:VRule width="2" />
-	<mx:LinkButton id="why_button" label="Why OSS" click="navigateToURL(new URLRequest('http://oceanshoreschool.info/why/'), '_top')" />
+	<mx:LinkButton id="why_button" label="Why OSS" click="navigateToURL(new URLRequest('/why/'), '_top')" />
 	<mx:VRule width="2" />
-	<mx:LinkButton id="community_button" label="Community" click="navigateToURL(new URLRequest('http://oceanshoreschool.info/community/'), '_top')" />
+	<mx:LinkButton id="community_button" label="Community" click="navigateToURL(new URLRequest('/community/'), '_top')" />
 
 
 	<mx:VRule width="2" />
@@ -22,9 +22,9 @@
 	<mx:VRule width="2" />
 	<mx:LinkButton id="shop_button" label="Shop" click="navigateToURL(new URLRequest('http://astore.amazon.com/oceshosch-20'), '_blank')" />
 	<mx:VRule width="2" />
-	<mx:LinkButton id="give_button" label="Give" click="navigateToURL(new URLRequest('http://oceanshoreschool.info/give/'), '_top')" />
+	<mx:LinkButton id="give_button" label="Give" click="navigateToURL(new URLRequest('/give/'), '_top')" />
 	<mx:VRule width="2" />
-	<mx:LinkButton id="contact_button" label="Contact" click="navigateToURL(new URLRequest('http://oceanshoreschool.info/contact/'), '_top')" />
+	<mx:LinkButton id="contact_button" label="Contact" click="navigateToURL(new URLRequest('/contact/'), '_top')" />
 	
 	</mx:ApplicationControlBar>
 
@@ -39,7 +39,7 @@
 			<mx:Button label="player goes here"  height="219" width="443"/>
 		</mx:VBox>
 		<mx:VBox height="333" width="211">
-		<mx:Panel label="OSS for You">
+		<mx:Panel title="OSS for You">
 
 
 		    <mx:HBox>
@@ -78,8 +78,8 @@
     </mx:HBox>
 			
 		</mx:Panel>
-    <mx:Panel label="What's new in..."  width="200" >
-    	<mx:Button label="What's new in"  width="150" height="115"/>
+    <mx:Panel width="200" title="What's new in PTO" >
+    	<mx:Button label="Volunteer Slots Online"  width="170" height="115" borderColor="blue"  click="navigateToURL(new URLRequest('/slots/'), '_top')" />
     	
     </mx:Panel >
 		</mx:VBox>
