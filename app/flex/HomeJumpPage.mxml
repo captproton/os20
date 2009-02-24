@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical">
 
-	<mx:ApplicationControlBar width="80%">
+	<mx:ApplicationControlBar width="80%" >
 		<mx:Label text="Ocean Shore" fontWeight="bold" color="0x000000"/>
 	
 	<!-- http://blog.flexexamples.com/2008/01/11/setting-the-data-provider-of-a-flex-buttonbar-control-to-a-viewstack-container/ -->
-    <mx:ButtonBar id="buttonBar"
-            dataProvider="{viewStack}"
-            buttonHeight="32" />
 
-    <mx:ViewStack id="viewStack">
-        <mx:VBox label="Home">
-        </mx:VBox>
-        <mx:VBox label="Why OSS" />
-        <mx:VBox label="Community" />
-    
-</mx:ViewStack>
+	<mx:VRule width="2" />
+	<mx:LinkButton id="home_button" label="Home" click="navigateToURL(new URLRequest('http://oceanshoreschool.info'), '_top')" />
+	<mx:VRule width="2" />
+	<mx:LinkButton id="why_button" label="Why OSS" click="navigateToURL(new URLRequest('http://oceanshoreschool.info/why/'), '_top')" />
+	<mx:VRule width="2" />
+	<mx:LinkButton id="community_button" label="Community" click="navigateToURL(new URLRequest('http://oceanshoreschool.info/community/'), '_top')" />
+
+
 	<mx:VRule width="2" />
         <mx:Label text="Search:" color="0x323232" />
-        <mx:TextInput width="80%" maxWidth="200" />
+        <mx:TextInput width="80%" />
         <mx:Button label="Go" color="0x000000" />         
-        <mx:Spacer width="80%" />
 
 	<mx:VRule width="2" />
 	<mx:LinkButton id="shop_button" label="Shop" click="navigateToURL(new URLRequest('http://astore.amazon.com/oceshosch-20'), '_blank')" />
@@ -32,7 +29,7 @@
 	</mx:ApplicationControlBar>
 
 	
-	<mx:HBox width="701">
+	<mx:HBox width="777">
 		<mx:VBox>
 			<mx:Button label="Feature 1"  height="86"/>
 			<mx:Button label="Feature 2"  height="67"/>
@@ -41,13 +38,44 @@
 		<mx:VBox>
 			<mx:Button label="player goes here"  height="219" width="443"/>
 		</mx:VBox>
-		<mx:VBox height="240" width="161">
-			<mx:VBox borderThickness="2" borderColor="white" width="150">
-				<mx:Button label="Preschool" width="140" />
-				<mx:Button label="Families"  width="140" />
-				<mx:Button label="Alumni"  width="140" />
-			</mx:VBox>
-			<mx:Button label="What's new in"  width="144" height="115"/>
+		<mx:VBox height="240" width="211">
+
+
+		    <mx:HBox>
+		    <!-- http://blog.flexexamples.com/2007/08/20/creating-a-vertical-buttonbar-in-flex/ -->
+        <mx:ButtonBar id="buttonBar" 
+                direction="vertical" 
+                dataProvider="{viewStack}"
+                themeColor="haloOrange"
+                fontSize="12"
+                width="150"
+                height="100" />
+        
+        <mx:ViewStack id="viewStack"
+                width="1"
+                height="{buttonBar.height}">
+
+            <mx:Canvas id="checkCanvas"
+                    label="Preschool"
+                    icon="@Embed('com/oceanshore/assets/jumpPage/bulletCheck.png')">
+                <mx:Label text="Success" />
+            </mx:Canvas>
+
+            <mx:Canvas id="warningCanvas" 
+                    label="Families"
+                    icon="@Embed('com/oceanshore/assets/jumpPage/bulletWarning.png')">
+                <mx:Label text="Warning" />
+            </mx:Canvas>
+
+            <mx:Canvas id="criticalCanvas" 
+                    label="Alumni" 
+                    icon="@Embed('com/oceanshore/assets/jumpPage/bulletCritical.png')">
+                <mx:Label text="Error" />
+            </mx:Canvas>
+
+        </mx:ViewStack>
+    </mx:HBox>
+			<mx:Button label="What's new in"  width="150" height="115"/>
 		</mx:VBox>
 	</mx:HBox>
 </mx:Application>
